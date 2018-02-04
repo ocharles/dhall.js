@@ -1,0 +1,301 @@
+completeExpression
+  = whitespace e:expression "" { return e; }
+
+expression
+  = lambda openParens a:label colon b:expression closeParens arrow c:expression
+    {
+      return {
+        type: "Lambda",
+        args: [ a, b, c ]
+      };
+    }
+  / if a:expression then b:expression else c:expression
+    {
+      return {
+        type: "If",
+        args: [ a, b, c ]
+      }
+    }
+  / let a:label b:(colon t:expression { return t; })? equal c:expression in d:expression
+    {
+      return {
+        type: "Let",
+        args: [a, b, c,d]
+      }
+    }
+  / forall openParens a:label colon b:expression closeParens arrow c:expression
+    {
+      return {
+        type: "Forall",
+        args: [a, b, c]
+      }
+    }
+  / annotatedExpression
+
+annotatedExpression
+  = merge a:selectorExpression b:selectorExpression
+    {
+      return {
+        type: "Merge",
+        args: [a, b]
+      }
+    }
+  / a:operatorExpression t:(colon t:expression { return t; })?
+    {
+      if (t) {
+        return {
+          type: "Annotate",
+          args: [ a,t ]
+        }
+      } else {
+        return a;
+      }
+    }
+
+lambda
+  = [\\λ] whitespace
+
+openParens
+  = [(] whitespace
+
+label
+  = l:simpleLabel whitespace
+    { return l; }
+
+colon
+  = [:] whitespace
+
+closeParens
+  = [)] whitespace
+
+arrow
+  = ("->" / [→]) whitespace
+
+whitespace
+  = whitespaceChunk*
+
+simpleLabel
+  = !reserved
+    x:(ALPHA / "_") xs:(ALPHA / DIGIT / [-/_])*
+    { return x + xs.join(''); }
+
+reserved
+  = "let" / "in"
+
+whitespaceChunk
+  = [ ]
+  / endOfLine
+
+ALPHA
+  = [a-zA-Z]
+
+DIGIT
+  = [0-9]
+
+prefer
+  = ("⫽" / "//") whitespace
+
+operatorExpression
+  = orExpression
+
+orExpression
+  = preferExpression
+
+preferExpression =
+  e:applicationExpression prefers:(prefer applicationExpression)*
+  {
+    if (prefers.length) {
+      expected("TODO");
+    }
+    else {
+      return e;
+    }
+  }
+
+applicationExpression
+  = c:constructors? args:selectorExpression+
+    {
+      if (c) {
+        return {
+          type: "Constructors",
+          args: args
+        };
+      }
+      else {
+        if (args.length == 1) {
+          return args[0];
+        }
+        else {
+          expected("TODO");
+        }
+      }
+    }
+
+constructors
+  = "constructors" whitespace
+
+selectorExpression
+  = e:primitiveExpression path:(dot label)*
+    {
+      if (path.length > 0) {
+        expected("TODO");
+      }
+      else {
+        return e;
+      }
+    }
+
+primitiveExpression
+  = naturalLiteral
+  / textLiteral
+  / openBrace a:recordTypeOrLiteral closeBrace
+    {
+      return {
+        type: "Record",
+        args: [a]
+      }
+    }
+  / nonEmptyListLiteral
+  / import
+  / Bool
+  / True
+  / False
+  / a:identifier
+    {
+      return { type: "Var", args: [ a ] }
+    }
+  / openParens a:expression closeParens { return a; }
+
+textLiteral
+  = (doubleQuoteLiteral) whitespace
+
+doubleQuoteLiteral
+  = "\"" doubleQuoteChunk* "\""
+
+doubleQuoteChunk
+  = [a-zA-Z\-.]
+
+Bool
+  = "Bool" whitespace
+    { return { type: "Bool" } }
+
+True
+  = "True" whitespace
+    { return { type: "True" } }
+
+False
+  = "False" whitespace
+    { return { type: "False" } }
+
+if
+  = "if" whitespace
+
+then
+  = "then" whitespace
+
+else
+  = "else" whitespace
+
+let
+  = "let" whitespace
+
+equal
+  = "=" whitespace
+
+in
+  = "in" whitespace
+
+endOfLine
+  = "\n" / "\r\n"
+
+identifier
+  = label
+
+forall
+  = "forall" whitespace
+
+recordTypeOrLiteral
+  = equal { return {} }
+  / nonEmptyRecordTypeOrLiteral
+
+openBrace
+  = "{" whitespace
+
+closeBrace
+  = "}" whitespace
+
+nonEmptyRecordTypeOrLiteral
+  = k:label v:(nonEmptyRecordLiteral)
+    {
+      var fields = {}
+      fields[k] = v[0];
+      return fields;
+    }
+
+nonEmptyRecordLiteral
+  = equal a:expression b:(comma label equal expression)*
+    {
+      return [a, b]
+    }
+
+comma
+  = "," whitespace
+
+merge
+  = "merge" whitespace
+
+dot
+  = "." whitespace
+
+import
+  = p:pathHashed t:(as Text)?
+    {
+      p.asText = t ? true : false;
+      return p;
+    }
+
+pathHashed
+  = p:pathType h:hash? { p.hash = h; return p; }
+
+as
+  = "as" whitespace
+
+Text
+  = "Text" whitespace
+
+pathType
+  = p:file { return { type: "file", path: p } }
+
+file
+  = a:fileRaw whitespace { return a; }
+
+fileRaw
+  = "/" headPathCharacter pathCharacter*
+  / "./" chars:pathCharacter* { return "./" + chars.join(''); }
+
+hash
+  = "sha256:" digits:HEXDIG* & { return digits.length() == 64; }
+
+headPathCharacter
+  = c:. & { return c != " "; } { return c; }
+
+pathCharacter
+  = headPathCharacter / "\\" / "/"
+
+HEXDIG
+  = DIGIT / [ABCDEF]
+
+nonEmptyListLiteral
+  = openBracket expression (comma expression)* closeBracket
+
+openBracket
+  = "[" whitespace
+
+closeBracket
+  = "]" whitespace
+
+naturalLiteral
+  = "+" naturalRaw whitespace
+
+naturalRaw
+  = DIGIT+
