@@ -168,7 +168,7 @@ colon         = ":"  whitespace
 at            = "@"  whitespace
 
 combine = ( "∧" / "/\\"    ) whitespace
-prefer  = ( "∧" / "//"     ) whitespace
+prefer  = ( "⫽" / "//"     ) whitespace
 lambda  = ( "λ" / "\\"     ) whitespace
 forall  = ( "∀" / "forall" ) whitespace
 arrow   = ( "→" / "->"     ) whitespace
