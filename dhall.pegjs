@@ -283,18 +283,27 @@ env
   ) whitespace
 
 bashEnvironmentVariable
-  = (ALPHA / "_") *(ALPHA / DIGIT / "_")
+  = (ALPHA / "_") (ALPHA / DIGIT / "_")*
 
 posixEnvironmentVariable
   = posixEnvironmentVariableCharacter+
 
-posixEnvironmentVariableCharacter =
-      "\\"
-      ( [abfnrtv] )
-    / .
-    / .
-    / .
-    / .
+posixEnvironmentVariableCharacter
+  =   "\u005C"
+      ( "\u0022"
+      / "\u005C"
+      / "\u0061"
+      / "\u0062"
+      / "\u0066"
+      / "\u006E"
+      / "\u0072"
+      / "\u0074"
+      / "\u0076"
+      )
+    / [\u0020-\u0021]
+    / [\u0023-\u003C]
+    / [\u003E-\u005B]
+    / [\u005D-\u007E]
 
 pathType
   = p:file { return { type: "file", path: p } }
