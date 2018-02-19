@@ -470,7 +470,7 @@ primitiveExpression
     {
       return {
         type: "Record",
-        args: [a]
+        fields: a
       }
     }
   / openAngle unionTypeOrLiteral closeAngle

@@ -2,73 +2,65 @@
 
 exports[`normalization/doubleShowA: normalization/doubleShowA 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Object {
-        "node": "Double/show",
-      },
+  "fields": Object {
+    "example0, ": Object {
+      "node": "Double/show",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/doubleShowB: normalization/doubleShowB 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Array [
+  "fields": Object {
+    "example0, ": Array [
+      Array [
+        "\\"",
         Array [
-          "\\"",
-          Array [
-            "-",
-            "0",
-            ".",
-            "4",
-            "2",
-          ],
-          "\\"",
+          "-",
+          "0",
+          ".",
+          "4",
+          "2",
         ],
-        Array [],
+        "\\"",
       ],
-    },
-  ],
+      Array [],
+    ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/integerShowA: normalization/integerShowA 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Object {
-        "node": "Integer/show",
-      },
+  "fields": Object {
+    "example0, ": Object {
+      "node": "Integer/show",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/integerShowB: normalization/integerShowB 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Array [
+  "fields": Object {
+    "example0, ": Array [
+      Array [
+        "\\"",
         Array [
-          "\\"",
-          Array [
-            "1",
-            "3",
-            "3",
-            "7",
-          ],
-          "\\"",
+          "1",
+          "3",
+          "3",
+          "7",
         ],
-        Array [],
+        "\\"",
       ],
-    },
-  ],
+      Array [],
+    ],
+  },
   "type": "Record",
 }
 `;
@@ -129,108 +121,125 @@ Object {
 
 exports[`normalization/optionalBuildA: normalization/optionalBuildA 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Object {
-        "node": "Optional/build",
-      },
+  "fields": Object {
+    "example0, ": Object {
+      "node": "Optional/build",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/optionalBuildB: normalization/optionalBuildB 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Array [
+  "fields": Object {
+    "example0, ": Array [
+      Array [
+        "[",
         Array [
-          "[",
+          " ",
+        ],
+      ],
+      Array [
+        Array [
+          "+",
+          "1",
           Array [
             " ",
           ],
         ],
         Array [
+          "]",
           Array [
-            "+",
-            "1",
-            Array [
-              " ",
-            ],
+            " ",
           ],
-          Array [
-            "]",
-            Array [
-              " ",
-            ],
-          ],
-          Array [
-            ":",
-            Array [
-              " ",
-            ],
-          ],
-          Object {
-            "node": "Optional",
-          },
-          Object {
-            "node": "Natural",
-          },
         ],
+        Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Optional",
+        },
+        Object {
+          "node": "Natural",
+        },
       ],
-    },
-  ],
+    ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/optionalBuildFoldA: normalization/optionalBuildFoldA 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Object {
-        "args": Array [
+  "fields": Object {
+    "example0, ": Object {
+      "args": Array [
+        Array [
+          "f",
           Array [
-            "f",
-            Array [
-              "
+            "
 ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-            ],
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
           ],
-          Object {
-            "args": Array [
+        ],
+        Object {
+          "args": Array [
+            Array [
+              "optional",
               Array [
-                "optional",
-                Array [
-                  " ",
-                ],
+                " ",
               ],
-              Object {
-                "node": "Type",
-              },
-              Object {
-                "args": Array [
+            ],
+            Object {
+              "node": "Type",
+            },
+            Object {
+              "args": Array [
+                Array [
+                  "just",
                   Array [
-                    "just",
+                    " ",
+                  ],
+                ],
+                Array [
+                  Object {
+                    "node": "Text",
+                  },
+                  Array [
+                    "→",
                     Array [
                       " ",
                     ],
                   ],
-                  Array [
-                    Object {
-                      "node": "Text",
-                    },
+                  Object {
+                    "args": Array [
+                      Array [
+                        Array [
+                          "optional",
+                          Array [],
+                        ],
+                        null,
+                        Array [],
+                      ],
+                    ],
+                    "type": "Var",
+                  },
+                ],
+                Object {
+                  "args": Array [
                     Array [
-                      "→",
+                      "nothing",
                       Array [
                         " ",
                       ],
@@ -248,119 +257,117 @@ Object {
                       ],
                       "type": "Var",
                     },
-                  ],
-                  Object {
-                    "args": Array [
-                      Array [
-                        "nothing",
+                    Object {
+                      "args": Array [
                         Array [
-                          " ",
+                          Array [
+                            "optional",
+                            Array [
+                              "
+",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                            ],
+                          ],
+                          null,
+                          Array [],
                         ],
                       ],
-                      Object {
-                        "args": Array [
-                          Array [
-                            Array [
-                              "optional",
-                              Array [],
-                            ],
-                            null,
-                            Array [],
-                          ],
-                        ],
-                        "type": "Var",
-                      },
-                      Object {
-                        "args": Array [
-                          Array [
-                            Array [
-                              "optional",
-                              Array [
-                                "
-",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                              ],
-                            ],
-                            null,
-                            Array [],
-                          ],
-                        ],
-                        "type": "Var",
-                      },
-                    ],
-                    "type": "Forall",
-                  },
-                ],
-                "type": "Forall",
-              },
-            ],
-            "type": "Forall",
-          },
-          Object {
-            "node": "Optional/fold",
-          },
-        ],
-        "type": "Lambda",
-      },
+                      "type": "Var",
+                    },
+                  ],
+                  "type": "Forall",
+                },
+              ],
+              "type": "Forall",
+            },
+          ],
+          "type": "Forall",
+        },
+        Object {
+          "node": "Optional/fold",
+        },
+      ],
+      "type": "Lambda",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
 
 exports[`normalization/optionalBuildFoldB: normalization/optionalBuildFoldB 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Object {
-        "args": Array [
+  "fields": Object {
+    "example0, ": Object {
+      "args": Array [
+        Array [
+          "f",
           Array [
-            "f",
-            Array [
-              "
+            "
 ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-              " ",
-            ],
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
+            " ",
           ],
-          Object {
-            "args": Array [
+        ],
+        Object {
+          "args": Array [
+            Array [
+              "optional",
               Array [
-                "optional",
-                Array [
-                  " ",
-                ],
+                " ",
               ],
-              Object {
-                "node": "Type",
-              },
-              Object {
-                "args": Array [
+            ],
+            Object {
+              "node": "Type",
+            },
+            Object {
+              "args": Array [
+                Array [
+                  "just",
                   Array [
-                    "just",
+                    " ",
+                  ],
+                ],
+                Array [
+                  Object {
+                    "node": "Text",
+                  },
+                  Array [
+                    "→",
                     Array [
                       " ",
                     ],
                   ],
-                  Array [
-                    Object {
-                      "node": "Text",
-                    },
+                  Object {
+                    "args": Array [
+                      Array [
+                        Array [
+                          "optional",
+                          Array [],
+                        ],
+                        null,
+                        Array [],
+                      ],
+                    ],
+                    "type": "Var",
+                  },
+                ],
+                Object {
+                  "args": Array [
                     Array [
-                      "→",
+                      "nothing",
                       Array [
                         " ",
                       ],
@@ -378,82 +385,59 @@ Object {
                       ],
                       "type": "Var",
                     },
-                  ],
-                  Object {
-                    "args": Array [
-                      Array [
-                        "nothing",
+                    Object {
+                      "args": Array [
                         Array [
-                          " ",
+                          Array [
+                            "optional",
+                            Array [
+                              "
+",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                            ],
+                          ],
+                          null,
+                          Array [],
                         ],
                       ],
-                      Object {
-                        "args": Array [
-                          Array [
-                            Array [
-                              "optional",
-                              Array [],
-                            ],
-                            null,
-                            Array [],
-                          ],
-                        ],
-                        "type": "Var",
-                      },
-                      Object {
-                        "args": Array [
-                          Array [
-                            Array [
-                              "optional",
-                              Array [
-                                "
-",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                                " ",
-                              ],
-                            ],
-                            null,
-                            Array [],
-                          ],
-                        ],
-                        "type": "Var",
-                      },
-                    ],
-                    "type": "Forall",
-                  },
-                ],
-                "type": "Forall",
-              },
-            ],
-            "type": "Forall",
-          },
-          Object {
-            "args": Array [
-              Array [
-                Array [
-                  "f",
-                  Array [
-                    "
-",
+                      "type": "Var",
+                    },
                   ],
-                ],
-                null,
-                Array [],
+                  "type": "Forall",
+                },
               ],
+              "type": "Forall",
+            },
+          ],
+          "type": "Forall",
+        },
+        Object {
+          "args": Array [
+            Array [
+              Array [
+                "f",
+                Array [
+                  "
+",
+                ],
+              ],
+              null,
+              Array [],
             ],
-            "type": "Var",
-          },
-        ],
-        "type": "Lambda",
-      },
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Lambda",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
@@ -486,25 +470,23 @@ Object {
       "type": "Lambda",
     },
     Object {
-      "args": Array [
-        Object {
-          "example0, ": Object {
-            "args": Array [
+      "fields": Object {
+        "example0, ": Object {
+          "args": Array [
+            Array [
               Array [
+                "f",
                 Array [
-                  "f",
-                  Array [
-                    " ",
-                  ],
+                  " ",
                 ],
-                null,
-                Array [],
               ],
+              null,
+              Array [],
             ],
-            "type": "Var",
-          },
+          ],
+          "type": "Var",
         },
-      ],
+      },
       "type": "Record",
     },
   ],
@@ -514,15 +496,13 @@ Object {
 
 exports[`normalization/optionalFoldB: normalization/optionalFoldB 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example0, ": Array [
-        "+",
-        "1",
-        Array [],
-      ],
-    },
-  ],
+  "fields": Object {
+    "example0, ": Array [
+      "+",
+      "1",
+      Array [],
+    ],
+  },
   "type": "Record",
 }
 `;
@@ -814,31 +794,29 @@ Object {
             ],
             null,
             Object {
-              "args": Array [
-                Object {
-                  "cores, ": Array [
-                    ":",
-                    Array [
-                      "
+              "fields": Object {
+                "cores, ": Array [
+                  ":",
+                  Array [
+                    "
 ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                      " ",
-                    ],
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
+                    " ",
                   ],
-                },
-              ],
+                ],
+              },
               "type": "Record",
             },
             Object {
@@ -1350,27 +1328,23 @@ Object {
 exports[`parser/annotations: parser/annotations 1`] = `
 Object {
   "expr": Object {
-    "args": Array [
-      Object {
-        "foo, ": Object {
-          "node": "ListAppend",
-        },
+    "fields": Object {
+      "foo, ": Object {
+        "node": "ListAppend",
       },
-    ],
+    },
     "type": "Record",
   },
   "node": "annotate",
   "type": Object {
-    "args": Array [
-      Object {
-        "foo, ": Array [
-          ":",
-          Array [
-            " ",
-          ],
+    "fields": Object {
+      "foo, ": Array [
+        ":",
+        Array [
+          " ",
         ],
-      },
-    ],
+      ],
+    },
     "type": "Record",
   },
 }
@@ -1398,26 +1372,22 @@ Object {
       ],
     ],
     Object {
-      "args": Array [
-        Object {
-          "field0, ": Array [
-            ":",
-            Array [
-              " ",
-            ],
+      "fields": Object {
+        "field0, ": Array [
+          ":",
+          Array [
+            " ",
           ],
-        },
-      ],
+        ],
+      },
       "type": "Record",
     },
     Object {
-      "args": Array [
-        Object {
-          "field00, ": Object {
-            "node": "Natural/fold",
-          },
+      "fields": Object {
+        "field00, ": Object {
+          "node": "Natural/fold",
         },
-      ],
+      },
       "type": "Record",
     },
   ],
@@ -2432,36 +2402,32 @@ Object {
       ],
     ],
     Object {
-      "args": Array [
-        Object {
-          "bar, ": Object {
-            "args": Array [
-              Object {
-                "args": Array [
-                  Object {},
-                ],
-                "type": "Record",
-              },
-              Object {
-                "args": Array [
+      "fields": Object {
+        "bar, ": Object {
+          "args": Array [
+            Object {
+              "fields": Object {},
+              "type": "Record",
+            },
+            Object {
+              "args": Array [
+                Array [
                   Array [
+                    "x",
                     Array [
-                      "x",
-                      Array [
-                        " ",
-                      ],
+                      " ",
                     ],
-                    null,
-                    Array [],
                   ],
+                  null,
+                  Array [],
                 ],
-                "type": "Var",
-              },
-            ],
-            "type": "Merge",
-          },
+              ],
+              "type": "Var",
+            },
+          ],
+          "type": "Merge",
         },
-      ],
+      },
       "type": "Record",
     },
   ],
@@ -2746,55 +2712,53 @@ Array [
 
 exports[`parser/quotedLabel: parser/quotedLabel 1`] = `
 Object {
-  "args": Array [
-    Object {
-      "example1, ": Object {
-        "args": Array [
+  "fields": Object {
+    "example1, ": Object {
+      "args": Array [
+        Array [
           Array [
+            "\`",
             Array [
-              "\`",
-              Array [
-                "l",
-                "e",
-                "t",
-              ],
-              "\`",
+              "l",
+              "e",
+              "t",
             ],
-            Array [
-              " ",
-            ],
+            "\`",
           ],
-          null,
-          Object {
-            "integer": "1",
-            "node": "IntegerLit",
-          },
-          Object {
-            "args": Array [
+          Array [
+            " ",
+          ],
+        ],
+        null,
+        Object {
+          "integer": "1",
+          "node": "IntegerLit",
+        },
+        Object {
+          "args": Array [
+            Array [
               Array [
                 Array [
+                  "\`",
                   Array [
-                    "\`",
-                    Array [
-                      "l",
-                      "e",
-                      "t",
-                    ],
-                    "\`",
+                    "l",
+                    "e",
+                    "t",
                   ],
-                  Array [],
+                  "\`",
                 ],
-                null,
                 Array [],
               ],
+              null,
+              Array [],
             ],
-            "type": "Var",
-          },
-        ],
-        "type": "Let",
-      },
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Let",
     },
-  ],
+  },
   "type": "Record",
 }
 `;
@@ -2802,28 +2766,24 @@ Object {
 exports[`parser/record: parser/record 1`] = `
 Object {
   "expr": Object {
-    "args": Array [
-      Object {
-        "foo, ": Object {
-          "integer": "1",
-          "node": "IntegerLit",
-        },
+    "fields": Object {
+      "foo, ": Object {
+        "integer": "1",
+        "node": "IntegerLit",
       },
-    ],
+    },
     "type": "Record",
   },
   "node": "annotate",
   "type": Object {
-    "args": Array [
-      Object {
-        "foo, ": Array [
-          ":",
-          Array [
-            " ",
-          ],
+    "fields": Object {
+      "foo, ": Array [
+        ":",
+        Array [
+          " ",
         ],
-      },
-    ],
+      ],
+    },
     "type": "Record",
   },
 }
@@ -2974,9 +2934,7 @@ Object {
           ],
         ],
         Object {
-          "args": Array [
-            "",
-          ],
+          "fields": "",
           "type": "Record",
         },
         Array [
@@ -3001,9 +2959,7 @@ Object {
                 ],
               ],
               Object {
-                "args": Array [
-                  Object {},
-                ],
+                "fields": Object {},
                 "type": "Record",
               },
               Array [
@@ -3027,9 +2983,7 @@ Object {
                     ],
                   ],
                   Object {
-                    "args": Array [
-                      "",
-                    ],
+                    "fields": "",
                     "type": "Record",
                   },
                 ],
@@ -3069,9 +3023,7 @@ Object {
           ],
         ],
         Object {
-          "args": Array [
-            "",
-          ],
+          "fields": "",
           "type": "Record",
         },
         Array [
@@ -3096,9 +3048,7 @@ Object {
                 ],
               ],
               Object {
-                "args": Array [
-                  "",
-                ],
+                "fields": "",
                 "type": "Record",
               },
               Array [
@@ -3123,9 +3073,7 @@ Object {
                       ],
                     ],
                     Object {
-                      "args": Array [
-                        "",
-                      ],
+                      "fields": "",
                       "type": "Record",
                     },
                     "",
