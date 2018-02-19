@@ -5,7 +5,7 @@ Object {
   "fields": Object {
     "example0": Object {
       "a": Object {
-        "node": "Double/show",
+        "type": "Double/show",
       },
       "b": Object {
         "n": "-0.42",
@@ -15,7 +15,7 @@ Object {
     },
     "example1": Object {
       "a": Object {
-        "node": "Double/show",
+        "type": "Double/show",
       },
       "b": Object {
         "n": "13.37",
@@ -39,7 +39,7 @@ Object {
         "4",
         "2",
       ],
-      "node": "TextLit",
+      "type": "TextLit",
     },
     "example1": Object {
       "chunks": Array [
@@ -49,7 +49,7 @@ Object {
         "3",
         "7",
       ],
-      "node": "TextLit",
+      "type": "TextLit",
     },
   },
   "type": "RecordLit",
@@ -61,7 +61,7 @@ Object {
   "fields": Object {
     "example0": Object {
       "a": Object {
-        "node": "Integer/show",
+        "type": "Integer/show",
       },
       "b": Object {
         "integer": "1337",
@@ -71,7 +71,7 @@ Object {
     },
     "example1": Object {
       "a": Object {
-        "node": "Integer/show",
+        "type": "Integer/show",
       },
       "b": Object {
         "integer": "-42",
@@ -81,7 +81,7 @@ Object {
     },
     "example2": Object {
       "a": Object {
-        "node": "Integer/show",
+        "type": "Integer/show",
       },
       "b": Object {
         "integer": "0",
@@ -104,7 +104,7 @@ Object {
         "3",
         "7",
       ],
-      "node": "TextLit",
+      "type": "TextLit",
     },
     "example1": Object {
       "chunks": Array [
@@ -112,13 +112,13 @@ Object {
         "4",
         "2",
       ],
-      "node": "TextLit",
+      "type": "TextLit",
     },
     "example2": Object {
       "chunks": Array [
         "0",
       ],
-      "node": "TextLit",
+      "type": "TextLit",
     },
   },
   "type": "RecordLit",
@@ -149,7 +149,7 @@ Object {
 exports[`normalization/naturalShowA: normalization/naturalShowA 1`] = `
 Object {
   "a": Object {
-    "node": "Natural/show",
+    "type": "Natural/show",
   },
   "b": Object {
     "n": "42",
@@ -166,14 +166,14 @@ Object {
     "4",
     "2",
   ],
-  "node": "TextLit",
+  "type": "TextLit",
 }
 `;
 
 exports[`normalization/naturalToIntegerA: normalization/naturalToIntegerA 1`] = `
 Object {
   "a": Object {
-    "node": "Natural/toInteger",
+    "type": "Natural/toInteger",
   },
   "b": Object {
     "n": "1",
@@ -196,10 +196,10 @@ Object {
     "example0": Object {
       "a": Object {
         "a": Object {
-          "node": "Optional/build",
+          "type": "Optional/build",
         },
         "b": Object {
-          "node": "Natural",
+          "type": "Natural",
         },
         "type": "App",
       },
@@ -234,7 +234,7 @@ Object {
           "var": "just",
           "varType": Object {
             "a": Object {
-              "node": "Natural",
+              "type": "Natural",
             },
             "b": Object {
               "type": "Var",
@@ -250,7 +250,7 @@ Object {
         "type": "Lambda",
         "var": "optional",
         "varType": Object {
-          "node": "Type",
+          "type": "Type",
         },
       },
       "type": "App",
@@ -258,10 +258,10 @@ Object {
     "example1": Object {
       "a": Object {
         "a": Object {
-          "node": "Optional/build",
+          "type": "Optional/build",
         },
         "b": Object {
-          "node": "Integer",
+          "type": "Integer",
         },
         "type": "App",
       },
@@ -296,7 +296,7 @@ Object {
           "var": "x",
           "varType": Object {
             "a": Object {
-              "node": "Integer",
+              "type": "Integer",
             },
             "b": Object {
               "type": "Var",
@@ -312,7 +312,7 @@ Object {
         "type": "Lambda",
         "var": "optional",
         "varType": Object {
-          "node": "Type",
+          "type": "Type",
         },
       },
       "type": "App",
@@ -321,10 +321,10 @@ Object {
       "body": Object {
         "a": Object {
           "a": Object {
-            "node": "Optional/build",
+            "type": "Optional/build",
           },
           "b": Object {
-            "node": "Bool",
+            "type": "Bool",
           },
           "type": "App",
         },
@@ -358,7 +358,7 @@ Object {
                     },
                   },
                   "b": Object {
-                    "node": "True",
+                    "type": "True",
                   },
                   "type": "App",
                 },
@@ -378,7 +378,7 @@ Object {
             "var": "just",
             "varType": Object {
               "a": Object {
-                "node": "Bool",
+                "type": "Bool",
               },
               "b": Object {
                 "type": "Var",
@@ -394,7 +394,7 @@ Object {
           "type": "Lambda",
           "var": "optional",
           "varType": Object {
-            "node": "Type",
+            "type": "Type",
           },
         },
         "type": "App",
@@ -403,7 +403,7 @@ Object {
       "var": "id",
       "varType": Object {
         "a": Object {
-          "node": "Type",
+          "type": "Type",
         },
         "b": Object {
           "a": Object {
@@ -453,10 +453,10 @@ Object {
       "body": Object {
         "a": Object {
           "a": Object {
-            "node": "Optional/build",
+            "type": "Optional/build",
           },
           "b": Object {
-            "node": "Bool",
+            "type": "Bool",
           },
           "type": "App",
         },
@@ -490,7 +490,7 @@ Object {
                     },
                   },
                   "b": Object {
-                    "node": "True",
+                    "type": "True",
                   },
                   "type": "App",
                 },
@@ -510,7 +510,7 @@ Object {
             "var": "just",
             "varType": Object {
               "a": Object {
-                "node": "Bool",
+                "type": "Bool",
               },
               "b": Object {
                 "type": "Var",
@@ -526,7 +526,7 @@ Object {
           "type": "Lambda",
           "var": "optional",
           "varType": Object {
-            "node": "Type",
+            "type": "Type",
           },
         },
         "type": "App",
@@ -535,7 +535,7 @@ Object {
       "var": "id",
       "varType": Object {
         "a": Object {
-          "node": "Type",
+          "type": "Type",
         },
         "b": Object {
           "a": Object {
@@ -571,20 +571,20 @@ Object {
       "body": Object {
         "a": Object {
           "a": Object {
-            "node": "Optional/fold",
+            "type": "Optional/fold",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "b": Object {
           "a": Object {
             "a": Object {
-              "node": "Optional/build",
+              "type": "Optional/build",
             },
             "b": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "type": "App",
           },
@@ -603,12 +603,12 @@ Object {
       "var": "f",
       "varType": Object {
         "a": Object {
-          "node": "Type",
+          "type": "Type",
         },
         "b": Object {
           "a": Object {
             "a": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "b": Object {
               "type": "Var",
@@ -648,20 +648,20 @@ Object {
     "example1": Object {
       "a": Object {
         "a": Object {
-          "node": "Optional/build",
+          "type": "Optional/build",
         },
         "b": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "type": "App",
       },
       "b": Object {
         "a": Object {
           "a": Object {
-            "node": "Optional/fold",
+            "type": "Optional/fold",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
@@ -673,7 +673,7 @@ Object {
               "o",
               "o",
             ],
-            "node": "TextLit",
+            "type": "TextLit",
           },
         },
         "type": "App",
@@ -700,12 +700,12 @@ Object {
       "var": "f",
       "varType": Object {
         "a": Object {
-          "node": "Type",
+          "type": "Type",
         },
         "b": Object {
           "a": Object {
             "a": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "b": Object {
               "type": "Var",
@@ -750,7 +750,7 @@ Object {
           "o",
           "o",
         ],
-        "node": "TextLit",
+        "type": "TextLit",
       },
     },
   },
@@ -767,10 +767,10 @@ Object {
           "a": Object {
             "a": Object {
               "a": Object {
-                "node": "Optional/fold",
+                "type": "Optional/fold",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
@@ -784,7 +784,7 @@ Object {
             "type": "App",
           },
           "b": Object {
-            "node": "Natural",
+            "type": "Natural",
           },
           "type": "App",
         },
@@ -796,7 +796,7 @@ Object {
           "type": "Lambda",
           "var": "j",
           "varType": Object {
-            "node": "Text",
+            "type": "Text",
           },
         },
         "type": "App",
@@ -811,10 +811,10 @@ Object {
     "var": "o",
     "varType": Object {
       "a": Object {
-        "node": "Optional",
+        "type": "Optional",
       },
       "b": Object {
-        "node": "Text",
+        "type": "Text",
       },
       "type": "App",
     },
@@ -869,55 +869,55 @@ Object {
         "a": Object {
           "a": Object {
             "a": Object {
-              "node": "List/fold",
+              "type": "List/fold",
             },
             "b": Object {
               "fields": Object {
                 "cores": Object {
-                  "node": "Natural",
+                  "type": "Natural",
                 },
                 "host": Object {
-                  "node": "Text",
+                  "type": "Text",
                 },
                 "key": Object {
-                  "node": "Text",
+                  "type": "Text",
                 },
                 "mandatoryFeatures": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
                 "platforms": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
                 "speedFactor": Object {
-                  "node": "Natural",
+                  "type": "Natural",
                 },
                 "supportedFeatures": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
                 "user": Object {
                   "a": Object {
-                    "node": "Optional",
+                    "type": "Optional",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
@@ -936,7 +936,7 @@ Object {
           "type": "App",
         },
         "b": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "type": "App",
       },
@@ -953,10 +953,10 @@ Object {
                         "a": Object {
                           "a": Object {
                             "a": Object {
-                              "node": "Optional/fold",
+                              "type": "Optional/fold",
                             },
                             "b": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                             "type": "App",
                           },
@@ -964,7 +964,7 @@ Object {
                           "type": "App",
                         },
                         "b": Object {
-                          "node": "Text",
+                          "type": "Text",
                         },
                         "type": "App",
                       },
@@ -989,12 +989,12 @@ Object {
                               "}",
                             ],
                           ],
-                          "node": "TextLit",
+                          "type": "TextLit",
                         },
                         "type": "Lambda",
                         "var": "user",
                         "varType": Object {
-                          "node": "Text",
+                          "type": "Text",
                         },
                       },
                       "type": "App",
@@ -1014,7 +1014,7 @@ Object {
                           "Empty": Object {
                             "body": Object {
                               "chunks": Array [],
-                              "node": "TextLit",
+                              "type": "TextLit",
                             },
                             "type": "Lambda",
                             "var": "_",
@@ -1034,7 +1034,7 @@ Object {
                             "type": "Lambda",
                             "var": "result",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                         },
@@ -1046,10 +1046,10 @@ Object {
                             "a": Object {
                               "a": Object {
                                 "a": Object {
-                                  "node": "List/fold",
+                                  "type": "List/fold",
                                 },
                                 "b": Object {
-                                  "node": "Text",
+                                  "type": "Text",
                                 },
                                 "type": "App",
                               },
@@ -1122,7 +1122,7 @@ Object {
                                                   "chunks": Array [
                                                     ",",
                                                   ],
-                                                  "node": "TextLit",
+                                                  "type": "TextLit",
                                                 },
                                                 "type": "TextAppend",
                                               },
@@ -1142,7 +1142,7 @@ Object {
                                         "type": "Lambda",
                                         "var": "result",
                                         "varType": Object {
-                                          "node": "Text",
+                                          "type": "Text",
                                         },
                                       },
                                     },
@@ -1173,7 +1173,7 @@ Object {
                             "type": "Lambda",
                             "var": "element",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "type": "App",
@@ -1181,7 +1181,7 @@ Object {
                         "b": Object {
                           "alts": Object {
                             "NonEmpty": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "choice": Object {
@@ -1211,11 +1211,11 @@ Object {
                   "\${",
                   Object {
                     "a": Object {
-                      "node": "Integer/show",
+                      "type": "Integer/show",
                     },
                     "b": Object {
                       "a": Object {
-                        "node": "Natural/toInteger",
+                        "type": "Natural/toInteger",
                       },
                       "b": undefined,
                       "type": "App",
@@ -1229,11 +1229,11 @@ Object {
                   "\${",
                   Object {
                     "a": Object {
-                      "node": "Integer/show",
+                      "type": "Integer/show",
                     },
                     "b": Object {
                       "a": Object {
-                        "node": "Natural/toInteger",
+                        "type": "Natural/toInteger",
                       },
                       "b": undefined,
                       "type": "App",
@@ -1252,7 +1252,7 @@ Object {
                           "Empty": Object {
                             "body": Object {
                               "chunks": Array [],
-                              "node": "TextLit",
+                              "type": "TextLit",
                             },
                             "type": "Lambda",
                             "var": "_",
@@ -1272,7 +1272,7 @@ Object {
                             "type": "Lambda",
                             "var": "result",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                         },
@@ -1284,10 +1284,10 @@ Object {
                             "a": Object {
                               "a": Object {
                                 "a": Object {
-                                  "node": "List/fold",
+                                  "type": "List/fold",
                                 },
                                 "b": Object {
-                                  "node": "Text",
+                                  "type": "Text",
                                 },
                                 "type": "App",
                               },
@@ -1360,7 +1360,7 @@ Object {
                                                   "chunks": Array [
                                                     ",",
                                                   ],
-                                                  "node": "TextLit",
+                                                  "type": "TextLit",
                                                 },
                                                 "type": "TextAppend",
                                               },
@@ -1380,7 +1380,7 @@ Object {
                                         "type": "Lambda",
                                         "var": "result",
                                         "varType": Object {
-                                          "node": "Text",
+                                          "type": "Text",
                                         },
                                       },
                                     },
@@ -1411,7 +1411,7 @@ Object {
                             "type": "Lambda",
                             "var": "element",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "type": "App",
@@ -1419,7 +1419,7 @@ Object {
                         "b": Object {
                           "alts": Object {
                             "NonEmpty": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "choice": Object {
@@ -1448,7 +1448,7 @@ Object {
                           "Empty": Object {
                             "body": Object {
                               "chunks": Array [],
-                              "node": "TextLit",
+                              "type": "TextLit",
                             },
                             "type": "Lambda",
                             "var": "_",
@@ -1468,7 +1468,7 @@ Object {
                             "type": "Lambda",
                             "var": "result",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                         },
@@ -1480,10 +1480,10 @@ Object {
                             "a": Object {
                               "a": Object {
                                 "a": Object {
-                                  "node": "List/fold",
+                                  "type": "List/fold",
                                 },
                                 "b": Object {
-                                  "node": "Text",
+                                  "type": "Text",
                                 },
                                 "type": "App",
                               },
@@ -1556,7 +1556,7 @@ Object {
                                                   "chunks": Array [
                                                     ",",
                                                   ],
-                                                  "node": "TextLit",
+                                                  "type": "TextLit",
                                                 },
                                                 "type": "TextAppend",
                                               },
@@ -1576,7 +1576,7 @@ Object {
                                         "type": "Lambda",
                                         "var": "result",
                                         "varType": Object {
-                                          "node": "Text",
+                                          "type": "Text",
                                         },
                                       },
                                     },
@@ -1607,7 +1607,7 @@ Object {
                             "type": "Lambda",
                             "var": "element",
                             "varType": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "type": "App",
@@ -1615,7 +1615,7 @@ Object {
                         "b": Object {
                           "alts": Object {
                             "NonEmpty": Object {
-                              "node": "Text",
+                              "type": "Text",
                             },
                           },
                           "choice": Object {
@@ -1639,7 +1639,7 @@ Object {
                   "n",
                 ],
               ],
-              "node": "TextLit",
+              "type": "TextLit",
             },
             "b": Object {
               "type": "Var",
@@ -1653,7 +1653,7 @@ Object {
           "type": "Lambda",
           "var": "y",
           "varType": Object {
-            "node": "Text",
+            "type": "Text",
           },
         },
         "type": "Lambda",
@@ -1661,50 +1661,50 @@ Object {
         "varType": Object {
           "fields": Object {
             "cores": Object {
-              "node": "Natural",
+              "type": "Natural",
             },
             "host": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "key": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "mandatoryFeatures": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
             "platforms": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
             "speedFactor": Object {
-              "node": "Natural",
+              "type": "Natural",
             },
             "supportedFeatures": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
             "user": Object {
               "a": Object {
-                "node": "Optional",
+                "type": "Optional",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
@@ -1716,7 +1716,7 @@ Object {
     },
     "b": Object {
       "chunks": Array [],
-      "node": "TextLit",
+      "type": "TextLit",
     },
     "type": "App",
   },
@@ -1724,55 +1724,55 @@ Object {
   "var": "xs",
   "varType": Object {
     "a": Object {
-      "node": "List",
+      "type": "List",
     },
     "b": Object {
       "fields": Object {
         "cores": Object {
-          "node": "Natural",
+          "type": "Natural",
         },
         "host": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "key": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "mandatoryFeatures": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "platforms": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "speedFactor": Object {
-          "node": "Natural",
+          "type": "Natural",
         },
         "supportedFeatures": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "user": Object {
           "a": Object {
-            "node": "Optional",
+            "type": "Optional",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
@@ -1802,8 +1802,8 @@ Object {
       "foo": Object {
         "a": Object {
           "a": Object {
-            "type": "Optional",
-            "value": null,
+            "list": Array [],
+            "type": "ListLit",
           },
           "b": Object {
             "list": Array [
@@ -1845,10 +1845,10 @@ Object {
           "node": "annotate",
           "type": Object {
             "a": Object {
-              "node": "List",
+              "type": "List",
             },
             "b": Object {
-              "node": "Integer",
+              "type": "Integer",
             },
             "type": "App",
           },
@@ -1863,28 +1863,28 @@ Object {
     "fields": Object {
       "bar": Object {
         "a": Object {
-          "node": "Optional",
+          "type": "Optional",
         },
         "b": Object {
-          "node": "Integer",
+          "type": "Integer",
         },
         "type": "App",
       },
       "baz": Object {
         "a": Object {
-          "node": "Optional",
+          "type": "Optional",
         },
         "b": Object {
-          "node": "Integer",
+          "type": "Integer",
         },
         "type": "App",
       },
       "foo": Object {
         "a": Object {
-          "node": "List",
+          "type": "List",
         },
         "b": Object {
-          "node": "Integer",
+          "type": "Integer",
         },
         "type": "App",
       },
@@ -1906,64 +1906,64 @@ Object {
   "body": Object {
     "fields": Object {
       "field00": Object {
-        "node": "Natural/fold",
+        "type": "Natural/fold",
       },
       "field01": Object {
-        "node": "Natural/build",
+        "type": "Natural/build",
       },
       "field02": Object {
-        "node": "Natural/isZero",
+        "type": "Natural/isZero",
       },
       "field03": Object {
-        "node": "Natural/even",
+        "type": "Natural/even",
       },
       "field04": Object {
-        "node": "Natural/odd",
+        "type": "Natural/odd",
       },
       "field05": Object {
-        "node": "Natural/toInteger",
+        "type": "Natural/toInteger",
       },
       "field06": Object {
-        "node": "Natural/show",
+        "type": "Natural/show",
       },
       "field07": Object {
-        "node": "Integer/show",
+        "type": "Integer/show",
       },
       "field08": Object {
-        "node": "Double/show",
+        "type": "Double/show",
       },
       "field09": Object {
-        "node": "List/build",
+        "type": "List/build",
       },
       "field10": Object {
-        "node": "List/fold",
+        "type": "List/fold",
       },
       "field11": Object {
-        "node": "List/length",
+        "type": "List/length",
       },
       "field12": Object {
-        "node": "List/head",
+        "type": "List/head",
       },
       "field13": Object {
-        "node": "List/last",
+        "type": "List/last",
       },
       "field14": Object {
-        "node": "List/indexed",
+        "type": "List/indexed",
       },
       "field15": Object {
-        "node": "List/reverse",
+        "type": "List/reverse",
       },
       "field16": Object {
-        "node": "Optional/fold",
+        "type": "Optional/fold",
       },
       "field17": Object {
-        "node": "Optional/build",
+        "type": "Optional/build",
       },
       "field18": Object {
-        "node": "True",
+        "type": "True",
       },
       "field19": Object {
-        "node": "False",
+        "type": "False",
       },
     },
     "type": "RecordLit",
@@ -1973,45 +1973,45 @@ Object {
   "varType": Object {
     "fields": Object {
       "field0": Object {
-        "node": "Bool",
+        "type": "Bool",
       },
       "field1": Object {
         "a": Object {
-          "node": "Optional",
+          "type": "Optional",
         },
         "b": Object {
           "a": Object {
-            "node": "Optional",
+            "type": "Optional",
           },
           "b": Object {
-            "node": "Bool",
+            "type": "Bool",
           },
           "type": "App",
         },
         "type": "App",
       },
       "field2": Object {
-        "node": "Natural",
+        "type": "Natural",
       },
       "field3": Object {
-        "node": "Integer",
+        "type": "Integer",
       },
       "field4": Object {
-        "node": "Double",
+        "type": "Double",
       },
       "field5": Object {
-        "node": "Text",
+        "type": "Text",
       },
       "field6": Object {
         "a": Object {
-          "node": "List",
+          "type": "List",
         },
         "b": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Bool",
+            "type": "Bool",
           },
           "type": "App",
         },
@@ -2028,7 +2028,7 @@ Object {
   "expr": Object {
     "alts": Object {
       "Left": Object {
-        "node": "Natural",
+        "type": "Natural",
       },
     },
     "type": "Union",
@@ -2072,7 +2072,7 @@ Object {
     "B",
     "C",
   ],
-  "node": "TextLit",
+  "type": "TextLit",
 }
 `;
 
@@ -2176,7 +2176,7 @@ Object {
     " ",
     "a",
   ],
-  "node": "TextLit",
+  "type": "TextLit",
 }
 `;
 
@@ -2210,11 +2210,11 @@ exports[`parser/fields: parser/fields 1`] = `undefined`;
 exports[`parser/forall: parser/forall 1`] = `
 Object {
   "a": Object {
-    "node": "Type",
+    "type": "Type",
   },
   "b": Object {
     "a": Object {
-      "node": "Type",
+      "type": "Type",
     },
     "b": Object {
       "type": "Var",
@@ -2234,14 +2234,14 @@ Object {
 exports[`parser/functionType: parser/functionType 1`] = `
 Object {
   "a": Object {
-    "node": "Bool",
+    "type": "Bool",
   },
   "b": Object {
     "a": Object {
-      "node": "Bool",
+      "type": "Bool",
     },
     "b": Object {
-      "node": "Bool",
+      "type": "Bool",
     },
     "name": null,
     "type": "Forall",
@@ -2264,13 +2264,13 @@ Object {
     "type": "Lambda",
     "var": "a",
     "varType": Object {
-      "node": "Type",
+      "type": "Type",
     },
   },
   "type": "Lambda",
   "var": "a",
   "varType": Object {
-    "node": "Type",
+    "type": "Type",
   },
 }
 `;
@@ -2283,7 +2283,7 @@ Object {
   },
   "node": "if",
   "predicate": Object {
-    "node": "True",
+    "type": "True",
   },
   "true": Object {
     "integer": "1",
@@ -2302,7 +2302,7 @@ Object {
       "\${",
       Object {
         "a": Object {
-          "node": "Integer/show",
+          "type": "Integer/show",
         },
         "b": Object {
           "integer": "123",
@@ -2313,7 +2313,7 @@ Object {
       "}",
     ],
   ],
-  "node": "TextLit",
+  "type": "TextLit",
 }
 `;
 
@@ -2336,7 +2336,7 @@ Array [
               "\${",
               Object {
                 "a": Object {
-                  "node": "Integer/show",
+                  "type": "Integer/show",
                 },
                 "b": Object {
                   "integer": "123",
@@ -2384,13 +2384,13 @@ Object {
     "type": "Lambda",
     "var": "b",
     "varType": Object {
-      "node": "Type",
+      "type": "Type",
     },
   },
   "type": "Lambda",
   "var": "a",
   "varType": Object {
-    "node": "Type",
+    "type": "Type",
   },
 }
 `;
@@ -2403,31 +2403,31 @@ Object {
         "a": Object {
           "a": Object {
             "a": Object {
-              "node": "List/fold",
+              "type": "List/fold",
             },
             "b": Object {
               "fields": Object {
                 "cores": Object {
-                  "node": "Natural",
+                  "type": "Natural",
                 },
                 "host": Object {
-                  "node": "Text",
+                  "type": "Text",
                 },
                 "key": Object {
-                  "node": "Text",
+                  "type": "Text",
                 },
                 "mandatoryFeatures": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
                 "platforms": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
                     "alts": Object {
@@ -2441,23 +2441,23 @@ Object {
                   "type": "App",
                 },
                 "speedFactor": Object {
-                  "node": "Natural",
+                  "type": "Natural",
                 },
                 "supportedFeatures": Object {
                   "a": Object {
-                    "node": "List",
+                    "type": "List",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
                 "user": Object {
                   "a": Object {
-                    "node": "Optional",
+                    "type": "Optional",
                   },
                   "b": Object {
-                    "node": "Text",
+                    "type": "Text",
                   },
                   "type": "App",
                 },
@@ -2476,7 +2476,7 @@ Object {
           "type": "App",
         },
         "b": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "type": "App",
       },
@@ -2502,10 +2502,10 @@ Object {
                                             "a": Object {
                                               "a": Object {
                                                 "a": Object {
-                                                  "node": "Optional/fold",
+                                                  "type": "Optional/fold",
                                                 },
                                                 "b": Object {
-                                                  "node": "Text",
+                                                  "type": "Text",
                                                 },
                                                 "type": "App",
                                               },
@@ -2513,7 +2513,7 @@ Object {
                                               "type": "App",
                                             },
                                             "b": Object {
-                                              "node": "Text",
+                                              "type": "Text",
                                             },
                                             "type": "App",
                                           },
@@ -2532,7 +2532,7 @@ Object {
                                                     "chunks": Array [
                                                       "@",
                                                     ],
-                                                    "node": "TextLit",
+                                                    "type": "TextLit",
                                                   },
                                                   "type": "TextAppend",
                                                 },
@@ -2541,14 +2541,14 @@ Object {
                                               },
                                               "b": Object {
                                                 "chunks": Array [],
-                                                "node": "TextLit",
+                                                "type": "TextLit",
                                               },
                                               "type": "TextAppend",
                                             },
                                             "type": "Lambda",
                                             "var": "user",
                                             "varType": Object {
-                                              "node": "Text",
+                                              "type": "Text",
                                             },
                                           },
                                           "type": "App",
@@ -2560,7 +2560,7 @@ Object {
                                         "chunks": Array [
                                           " ",
                                         ],
-                                        "node": "TextLit",
+                                        "type": "TextLit",
                                       },
                                       "type": "TextAppend",
                                     },
@@ -2571,7 +2571,7 @@ Object {
                                             "Empty": Object {
                                               "body": Object {
                                                 "chunks": Array [],
-                                                "node": "TextLit",
+                                                "type": "TextLit",
                                               },
                                               "type": "Lambda",
                                               "var": "_",
@@ -2591,7 +2591,7 @@ Object {
                                               "type": "Lambda",
                                               "var": "result",
                                               "varType": Object {
-                                                "node": "Text",
+                                                "type": "Text",
                                               },
                                             },
                                           },
@@ -2603,7 +2603,7 @@ Object {
                                               "a": Object {
                                                 "a": Object {
                                                   "a": Object {
-                                                    "node": "List/fold",
+                                                    "type": "List/fold",
                                                   },
                                                   "b": Object {
                                                     "alts": Object {
@@ -2666,7 +2666,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2693,7 +2693,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2718,7 +2718,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2742,7 +2742,7 @@ Object {
                                                                             "i",
                                                                             "n",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2765,7 +2765,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2792,7 +2792,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2818,7 +2818,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2844,7 +2844,7 @@ Object {
                                                                             "i",
                                                                             "n",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2870,7 +2870,7 @@ Object {
                                                                             "i",
                                                                             "n",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2897,7 +2897,7 @@ Object {
                                                                             "s",
                                                                             "d",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2922,7 +2922,7 @@ Object {
                                                                             "u",
                                                                             "x",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -2949,7 +2949,7 @@ Object {
                                                                             "i",
                                                                             "s",
                                                                           ],
-                                                                          "node": "TextLit",
+                                                                          "type": "TextLit",
                                                                         },
                                                                         "type": "Lambda",
                                                                         "var": "_",
@@ -3014,7 +3014,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3041,7 +3041,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3066,7 +3066,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3090,7 +3090,7 @@ Object {
                                                                                 "i",
                                                                                 "n",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3113,7 +3113,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3140,7 +3140,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3166,7 +3166,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3192,7 +3192,7 @@ Object {
                                                                                 "i",
                                                                                 "n",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3218,7 +3218,7 @@ Object {
                                                                                 "i",
                                                                                 "n",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3245,7 +3245,7 @@ Object {
                                                                                 "s",
                                                                                 "d",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3270,7 +3270,7 @@ Object {
                                                                                 "u",
                                                                                 "x",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3297,7 +3297,7 @@ Object {
                                                                                 "i",
                                                                                 "s",
                                                                               ],
-                                                                              "node": "TextLit",
+                                                                              "type": "TextLit",
                                                                             },
                                                                             "type": "Lambda",
                                                                             "var": "_",
@@ -3323,7 +3323,7 @@ Object {
                                                                     "chunks": Array [
                                                                       ",",
                                                                     ],
-                                                                    "node": "TextLit",
+                                                                    "type": "TextLit",
                                                                   },
                                                                   "type": "TextAppend",
                                                                 },
@@ -3343,7 +3343,7 @@ Object {
                                                           "type": "Lambda",
                                                           "var": "result",
                                                           "varType": Object {
-                                                            "node": "Text",
+                                                            "type": "Text",
                                                           },
                                                         },
                                                       },
@@ -3388,7 +3388,7 @@ Object {
                                           "b": Object {
                                             "alts": Object {
                                               "NonEmpty": Object {
-                                                "node": "Text",
+                                                "type": "Text",
                                               },
                                             },
                                             "choice": Object {
@@ -3411,7 +3411,7 @@ Object {
                                     "chunks": Array [
                                       " ",
                                     ],
-                                    "node": "TextLit",
+                                    "type": "TextLit",
                                   },
                                   "type": "TextAppend",
                                 },
@@ -3422,17 +3422,17 @@ Object {
                                 "chunks": Array [
                                   " ",
                                 ],
-                                "node": "TextLit",
+                                "type": "TextLit",
                               },
                               "type": "TextAppend",
                             },
                             "b": Object {
                               "a": Object {
-                                "node": "Integer/show",
+                                "type": "Integer/show",
                               },
                               "b": Object {
                                 "a": Object {
-                                  "node": "Natural/toInteger",
+                                  "type": "Natural/toInteger",
                                 },
                                 "b": undefined,
                                 "type": "App",
@@ -3445,17 +3445,17 @@ Object {
                             "chunks": Array [
                               " ",
                             ],
-                            "node": "TextLit",
+                            "type": "TextLit",
                           },
                           "type": "TextAppend",
                         },
                         "b": Object {
                           "a": Object {
-                            "node": "Integer/show",
+                            "type": "Integer/show",
                           },
                           "b": Object {
                             "a": Object {
-                              "node": "Natural/toInteger",
+                              "type": "Natural/toInteger",
                             },
                             "b": undefined,
                             "type": "App",
@@ -3468,7 +3468,7 @@ Object {
                         "chunks": Array [
                           " ",
                         ],
-                        "node": "TextLit",
+                        "type": "TextLit",
                       },
                       "type": "TextAppend",
                     },
@@ -3479,7 +3479,7 @@ Object {
                             "Empty": Object {
                               "body": Object {
                                 "chunks": Array [],
-                                "node": "TextLit",
+                                "type": "TextLit",
                               },
                               "type": "Lambda",
                               "var": "_",
@@ -3499,7 +3499,7 @@ Object {
                               "type": "Lambda",
                               "var": "result",
                               "varType": Object {
-                                "node": "Text",
+                                "type": "Text",
                               },
                             },
                           },
@@ -3511,10 +3511,10 @@ Object {
                               "a": Object {
                                 "a": Object {
                                   "a": Object {
-                                    "node": "List/fold",
+                                    "type": "List/fold",
                                   },
                                   "b": Object {
-                                    "node": "Text",
+                                    "type": "Text",
                                   },
                                   "type": "App",
                                 },
@@ -3587,7 +3587,7 @@ Object {
                                                     "chunks": Array [
                                                       ",",
                                                     ],
-                                                    "node": "TextLit",
+                                                    "type": "TextLit",
                                                   },
                                                   "type": "TextAppend",
                                                 },
@@ -3607,7 +3607,7 @@ Object {
                                           "type": "Lambda",
                                           "var": "result",
                                           "varType": Object {
-                                            "node": "Text",
+                                            "type": "Text",
                                           },
                                         },
                                       },
@@ -3638,7 +3638,7 @@ Object {
                               "type": "Lambda",
                               "var": "element",
                               "varType": Object {
-                                "node": "Text",
+                                "type": "Text",
                               },
                             },
                             "type": "App",
@@ -3646,7 +3646,7 @@ Object {
                           "b": Object {
                             "alts": Object {
                               "NonEmpty": Object {
-                                "node": "Text",
+                                "type": "Text",
                               },
                             },
                             "choice": Object {
@@ -3669,7 +3669,7 @@ Object {
                     "chunks": Array [
                       " ",
                     ],
-                    "node": "TextLit",
+                    "type": "TextLit",
                   },
                   "type": "TextAppend",
                 },
@@ -3680,7 +3680,7 @@ Object {
                         "Empty": Object {
                           "body": Object {
                             "chunks": Array [],
-                            "node": "TextLit",
+                            "type": "TextLit",
                           },
                           "type": "Lambda",
                           "var": "_",
@@ -3700,7 +3700,7 @@ Object {
                           "type": "Lambda",
                           "var": "result",
                           "varType": Object {
-                            "node": "Text",
+                            "type": "Text",
                           },
                         },
                       },
@@ -3712,10 +3712,10 @@ Object {
                           "a": Object {
                             "a": Object {
                               "a": Object {
-                                "node": "List/fold",
+                                "type": "List/fold",
                               },
                               "b": Object {
-                                "node": "Text",
+                                "type": "Text",
                               },
                               "type": "App",
                             },
@@ -3788,7 +3788,7 @@ Object {
                                                 "chunks": Array [
                                                   ",",
                                                 ],
-                                                "node": "TextLit",
+                                                "type": "TextLit",
                                               },
                                               "type": "TextAppend",
                                             },
@@ -3808,7 +3808,7 @@ Object {
                                       "type": "Lambda",
                                       "var": "result",
                                       "varType": Object {
-                                        "node": "Text",
+                                        "type": "Text",
                                       },
                                     },
                                   },
@@ -3839,7 +3839,7 @@ Object {
                           "type": "Lambda",
                           "var": "element",
                           "varType": Object {
-                            "node": "Text",
+                            "type": "Text",
                           },
                         },
                         "type": "App",
@@ -3847,7 +3847,7 @@ Object {
                       "b": Object {
                         "alts": Object {
                           "NonEmpty": Object {
-                            "node": "Text",
+                            "type": "Text",
                           },
                         },
                         "choice": Object {
@@ -3873,7 +3873,7 @@ Object {
                     "n",
                   ],
                 ],
-                "node": "TextLit",
+                "type": "TextLit",
               },
               "type": "TextAppend",
             },
@@ -3889,7 +3889,7 @@ Object {
           "type": "Lambda",
           "var": "y",
           "varType": Object {
-            "node": "Text",
+            "type": "Text",
           },
         },
         "type": "Lambda",
@@ -3897,26 +3897,26 @@ Object {
         "varType": Object {
           "fields": Object {
             "cores": Object {
-              "node": "Natural",
+              "type": "Natural",
             },
             "host": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "key": Object {
-              "node": "Text",
+              "type": "Text",
             },
             "mandatoryFeatures": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
             "platforms": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
                 "alts": Object {
@@ -3930,23 +3930,23 @@ Object {
               "type": "App",
             },
             "speedFactor": Object {
-              "node": "Natural",
+              "type": "Natural",
             },
             "supportedFeatures": Object {
               "a": Object {
-                "node": "List",
+                "type": "List",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
             "user": Object {
               "a": Object {
-                "node": "Optional",
+                "type": "Optional",
               },
               "b": Object {
-                "node": "Text",
+                "type": "Text",
               },
               "type": "App",
             },
@@ -3958,7 +3958,7 @@ Object {
     },
     "b": Object {
       "chunks": Array [],
-      "node": "TextLit",
+      "type": "TextLit",
     },
     "type": "App",
   },
@@ -3966,31 +3966,31 @@ Object {
   "var": "xs",
   "varType": Object {
     "a": Object {
-      "node": "List",
+      "type": "List",
     },
     "b": Object {
       "fields": Object {
         "cores": Object {
-          "node": "Natural",
+          "type": "Natural",
         },
         "host": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "key": Object {
-          "node": "Text",
+          "type": "Text",
         },
         "mandatoryFeatures": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "platforms": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
             "alts": Object {
@@ -4004,23 +4004,23 @@ Object {
           "type": "App",
         },
         "speedFactor": Object {
-          "node": "Natural",
+          "type": "Natural",
         },
         "supportedFeatures": Object {
           "a": Object {
-            "node": "List",
+            "type": "List",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
         "user": Object {
           "a": Object {
-            "node": "Optional",
+            "type": "Optional",
           },
           "b": Object {
-            "node": "Text",
+            "type": "Text",
           },
           "type": "App",
         },
@@ -4092,17 +4092,17 @@ Object {
       "node": "annotate",
       "type": Object {
         "a": Object {
-          "node": "List",
+          "type": "List",
         },
         "b": Object {
-          "node": "Integer",
+          "type": "Integer",
         },
         "type": "App",
       },
     },
     Object {
-      "type": "Optional",
-      "value": null,
+      "list": Array [],
+      "type": "ListLit",
     },
   ],
   "type": "ListLit",
@@ -4144,11 +4144,11 @@ Object {
                 "type": "Lambda",
                 "var": "b",
                 "varType": Object {
-                  "node": "Bool",
+                  "type": "Bool",
                 },
               },
               "Right": Object {
-                "node": "Natural/even",
+                "type": "Natural/even",
               },
             },
             "type": "RecordLit",
@@ -4156,12 +4156,12 @@ Object {
           Object {
             "alts": Object {
               "Right": Object {
-                "node": "Natural",
+                "type": "Natural",
               },
             },
             "choice": Object {
               "expr": Object {
-                "node": "True",
+                "type": "True",
               },
               "name": "Left",
             },
@@ -4220,11 +4220,11 @@ Object {
       "foo": Object {
         "a": Object {
           "a": Object {
-            "node": "False",
+            "type": "False",
           },
           "b": Object {
             "a": Object {
-              "node": "Natural/even",
+              "type": "Natural/even",
             },
             "b": Object {
               "a": Object {
@@ -4250,14 +4250,14 @@ Object {
         },
         "b": Object {
           "a": Object {
-            "node": "True",
+            "type": "True",
           },
           "b": Object {
             "a": Object {
-              "node": "False",
+              "type": "False",
             },
             "b": Object {
-              "node": "True",
+              "type": "True",
             },
             "type": "BoolNE",
           },
@@ -4281,7 +4281,7 @@ Object {
                     "B",
                     "C",
                   ],
-                  "node": "TextLit",
+                  "type": "TextLit",
                 },
                 "b": Object {
                   "chunks": Array [
@@ -4289,7 +4289,7 @@ Object {
                     "E",
                     "F",
                   ],
-                  "node": "TextLit",
+                  "type": "TextLit",
                 },
                 "type": "TextAppend",
               },
@@ -4304,7 +4304,7 @@ Object {
                   "H",
                   "I",
                 ],
-                "node": "TextLit",
+                "type": "TextLit",
               },
             ],
             "type": "ListLit",
@@ -4317,7 +4317,7 @@ Object {
     "b": Object {
       "fields": Object {
         "baz": Object {
-          "node": "True",
+          "type": "True",
         },
       },
       "type": "RecordLit",
@@ -4519,7 +4519,7 @@ Object {
         "type": "NaturalLit",
       },
       "baz": Object {
-        "node": "True",
+        "type": "True",
       },
       "foo": Object {
         "integer": "1",
@@ -4532,13 +4532,13 @@ Object {
   "type": Object {
     "fields": Object {
       "bar": Object {
-        "node": "Natural",
+        "type": "Natural",
       },
       "baz": Object {
-        "node": "Bool",
+        "type": "Bool",
       },
       "foo": Object {
-        "node": "Integer",
+        "type": "Integer",
       },
     },
     "type": "Record",
@@ -4549,7 +4549,7 @@ Object {
 exports[`parser/reservedPrefix: parser/reservedPrefix 1`] = `
 Object {
   "body": Object {
-    "node": "Integer",
+    "type": "Integer",
   },
   "label": "TypeSynonym",
   "type": "Let",
@@ -4620,7 +4620,7 @@ Object {
     " ",
     "a",
   ],
-  "node": "TextLit",
+  "type": "TextLit",
 }
 `;
 
@@ -4658,7 +4658,7 @@ Object {
 exports[`parser/whitespaceBuffet: parser/whitespaceBuffet 1`] = `
 Object {
   "a": Object {
-    "node": "Natural/even",
+    "type": "Natural/even",
   },
   "b": Object {
     "n": "2",

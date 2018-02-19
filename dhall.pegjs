@@ -97,7 +97,7 @@ doubleQuoteChunk
     / [\u005D-\uFFFF]
 
 doubleQuoteLiteral
-  = "\"" a:doubleQuoteChunk* "\"" { return { node: 'TextLit', chunks: a } }
+  = "\"" a:doubleQuoteChunk* "\"" { return { type: 'TextLit', chunks: a } }
 
 singleQuoteContinue =
       "'''"               singleQuoteContinue
@@ -122,35 +122,35 @@ as                =   "as"               whitespace
 using             =   "using"            whitespace
 merge             =   "merge"            whitespace
 constructors      =   "constructors"     whitespace
-NaturalFold       = a:"Natural/fold"     whitespace { return { node: 'Natural/fold' }; }
-NaturalBuild      = a:"Natural/build"    whitespace { return { node: 'Natural/build' }; }
-NaturalIsZero     = a:"Natural/isZero"   whitespace { return { node: 'Natural/isZero' }; }
-NaturalEven       = a:"Natural/even"     whitespace { return { node: 'Natural/even' }; }
-NaturalOdd        = a:"Natural/odd"      whitespace { return { node: 'Natural/odd' }; }
-NaturalToInteger  = a:"Natural/toInteger"whitespace { return { node: 'Natural/toInteger' }; }
-NaturalShow       = a:"Natural/show"     whitespace { return { node: 'Natural/show' }; }
-IntegerShow       = a:"Integer/show"     whitespace { return { node: 'Integer/show' }; }
-DoubleShow        = a:"Double/show"      whitespace { return { node: 'Double/show' }; }
-ListBuild         = a:"List/build"       whitespace { return { node: 'List/build' }; }
-ListFold          = a:"List/fold"        whitespace { return { node: 'List/fold' }; }
-ListLength        = a:"List/length"      whitespace { return { node: 'List/length' }; }
-ListHead          = a:"List/head"        whitespace { return { node: 'List/head' }; }
-ListLast          = a:"List/last"        whitespace { return { node: 'List/last' }; }
-ListIndexed       = a:"List/indexed"     whitespace { return { node: 'List/indexed' }; }
-ListReverse       = a:"List/reverse"     whitespace { return { node: 'List/reverse' }; }
-OptionalFold      = a:"Optional/fold"    whitespace { return { node: 'Optional/fold' }; }
-OptionalBuild     = a:"Optional/build"   whitespace { return { node: 'Optional/build' }; }
-Bool              = a:"Bool"             whitespace { return { node: 'Bool' }; }
-Optional          = a:"Optional"         whitespace { return { node: 'Optional' }; }
-Natural           = a:"Natural"          whitespace { return { node: 'Natural' }; }
-Integer           = a:"Integer"          whitespace { return { node: 'Integer' }; }
-Double            = a:"Double"           whitespace { return { node: 'Double' }; }
-Text              = a:"Text"             whitespace { return { node: 'Text' }; }
-List              = a:"List"             whitespace { return { node: 'List' }; }
-True              = a:"True"             whitespace { return { node: 'True' }; }
-False             = a:"False"            whitespace { return { node: 'False' }; }
-Type              = a:"Type"             whitespace { return { node: 'Type' }; }
-Kind              = a:"Kind"             whitespace { return { node: 'Kind' }; }
+NaturalFold       = a:"Natural/fold"     whitespace { return { type: 'Natural/fold' }; }
+NaturalBuild      = a:"Natural/build"    whitespace { return { type: 'Natural/build' }; }
+NaturalIsZero     = a:"Natural/isZero"   whitespace { return { type: 'Natural/isZero' }; }
+NaturalEven       = a:"Natural/even"     whitespace { return { type: 'Natural/even' }; }
+NaturalOdd        = a:"Natural/odd"      whitespace { return { type: 'Natural/odd' }; }
+NaturalToInteger  = a:"Natural/toInteger"whitespace { return { type: 'Natural/toInteger' }; }
+NaturalShow       = a:"Natural/show"     whitespace { return { type: 'Natural/show' }; }
+IntegerShow       = a:"Integer/show"     whitespace { return { type: 'Integer/show' }; }
+DoubleShow        = a:"Double/show"      whitespace { return { type: 'Double/show' }; }
+ListBuild         = a:"List/build"       whitespace { return { type: 'List/build' }; }
+ListFold          = a:"List/fold"        whitespace { return { type: 'List/fold' }; }
+ListLength        = a:"List/length"      whitespace { return { type: 'List/length' }; }
+ListHead          = a:"List/head"        whitespace { return { type: 'List/head' }; }
+ListLast          = a:"List/last"        whitespace { return { type: 'List/last' }; }
+ListIndexed       = a:"List/indexed"     whitespace { return { type: 'List/indexed' }; }
+ListReverse       = a:"List/reverse"     whitespace { return { type: 'List/reverse' }; }
+OptionalFold      = a:"Optional/fold"    whitespace { return { type: 'Optional/fold' }; }
+OptionalBuild     = a:"Optional/build"   whitespace { return { type: 'Optional/build' }; }
+Bool              = a:"Bool"             whitespace { return { type: 'Bool' }; }
+Optional          = a:"Optional"         whitespace { return { type: 'Optional' }; }
+Natural           = a:"Natural"          whitespace { return { type: 'Natural' }; }
+Integer           = a:"Integer"          whitespace { return { type: 'Integer' }; }
+Double            = a:"Double"           whitespace { return { type: 'Double' }; }
+Text              = a:"Text"             whitespace { return { type: 'Text' }; }
+List              = a:"List"             whitespace { return { type: 'List' }; }
+True              = a:"True"             whitespace { return { type: 'True' }; }
+False             = a:"False"            whitespace { return { type: 'False' }; }
+Type              = a:"Type"             whitespace { return { type: 'Type' }; }
+Kind              = a:"Kind"             whitespace { return { type: 'Kind' }; }
 
 equal         = "="  whitespace
 or            = "||" whitespace
