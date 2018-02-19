@@ -1,6 +1,667 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ifThenElse 1`] = `
+exports[`annotations: annotations 1`] = `
+Object {
+  "expr": Object {
+    "args": Array [
+      Object {
+        "foo, ": Object {
+          "node": "ListAppend",
+        },
+      },
+    ],
+    "type": "Record",
+  },
+  "node": "annotate",
+  "type": Object {
+    "args": Array [
+      Object {
+        "foo, ": Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+      },
+    ],
+    "type": "Record",
+  },
+}
+`;
+
+exports[`blockComment: blockComment 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`builtins: builtins 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "x",
+      Array [
+        "
+",
+        " ",
+        " ",
+        " ",
+        " ",
+      ],
+    ],
+    Object {
+      "args": Array [
+        Object {
+          "field0, ": Array [
+            ":",
+            Array [
+              " ",
+            ],
+          ],
+        },
+      ],
+      "type": "Record",
+    },
+    Object {
+      "args": Array [
+        Object {
+          "field00, ": Object {
+            "node": "Natural/fold",
+          },
+        },
+      ],
+      "type": "Record",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`constructors: constructors 1`] = `
+Object {
+  "expr": Array [
+    Array [
+      "<",
+      Array [
+        " ",
+      ],
+    ],
+    Array [
+      Array [
+        "Left",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Natural",
+        },
+        Array [
+          Array [
+            "|",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            Array [
+              "Right",
+              Array [
+                " ",
+              ],
+            ],
+            Array [
+              Array [
+                ":",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "node": "Bool",
+              },
+              "",
+            ],
+          ],
+        ],
+      ],
+    ],
+    Array [
+      ">",
+      Array [
+        "
+",
+      ],
+    ],
+  ],
+  "node": "constructors",
+}
+`;
+
+exports[`double: double 1`] = `
+Array [
+  Array [
+    "[",
+    Array [
+      " ",
+    ],
+  ],
+  Array [
+    null,
+    Array [
+      "1",
+    ],
+    Array [
+      ".",
+      Array [
+        "1",
+      ],
+      null,
+    ],
+    Array [],
+  ],
+  Array [
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "-",
+        Array [
+          "1",
+        ],
+        Array [
+          ".",
+          Array [
+            "1",
+          ],
+          null,
+        ],
+        Array [],
+      ],
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        null,
+        Array [
+          "1",
+        ],
+        Array [
+          "e",
+          null,
+          Array [
+            "1",
+          ],
+        ],
+        Array [],
+      ],
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        null,
+        Array [
+          "1",
+        ],
+        Array [
+          ".",
+          Array [
+            "1",
+          ],
+          Array [
+            "e",
+            null,
+            Array [
+              "1",
+            ],
+          ],
+        ],
+        Array [],
+      ],
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "-",
+        Array [
+          "1",
+        ],
+        Array [
+          ".",
+          Array [
+            "1",
+          ],
+          null,
+        ],
+        Array [
+          " ",
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "]",
+    Array [
+      "
+",
+    ],
+  ],
+]
+`;
+
+exports[`doubleQuotedString: doubleQuotedString 1`] = `
+Array [
+  Array [
+    "\\"",
+    Array [
+      "A",
+      "B",
+      "C",
+    ],
+    "\\"",
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`environmentVariables: environmentVariables 1`] = `
+Array [
+  Array [
+    "[",
+    Array [
+      " ",
+    ],
+  ],
+  Array [
+    "env:",
+    Array [
+      "F",
+      Array [
+        "O",
+        "O",
+      ],
+    ],
+    Array [
+      "
+",
+      "
+",
+      " ",
+      " ",
+      Array [
+        "--",
+        Array [
+          " ",
+          "Y",
+          "e",
+          "s",
+          ",",
+          " ",
+          "t",
+          "h",
+          "i",
+          "s",
+          " ",
+          "i",
+          "s",
+          " ",
+          "l",
+          "e",
+          "g",
+          "a",
+          "l",
+        ],
+        "
+",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "env:",
+        Array [
+          "\\"",
+          Array [
+            Array [
+              "\\\\",
+              "\\"",
+            ],
+            Array [
+              "\\\\",
+              "\\\\",
+            ],
+            Array [
+              "\\\\",
+              "a",
+            ],
+            Array [
+              "\\\\",
+              "b",
+            ],
+            Array [
+              "\\\\",
+              "f",
+            ],
+            Array [
+              "\\\\",
+              "n",
+            ],
+            Array [
+              "\\\\",
+              "r",
+            ],
+            Array [
+              "\\\\",
+              "t",
+            ],
+            Array [
+              "\\\\",
+              "v",
+            ],
+          ],
+          "\\"",
+        ],
+        Array [
+          "
+",
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "]",
+    Array [
+      "
+",
+    ],
+  ],
+]
+`;
+
+exports[`escapedDoubleQuotedString: escapedDoubleQuotedString 1`] = `
+Array [
+  Array [
+    "\\"",
+    Array [
+      Array [
+        "\\\\",
+        "\\\\",
+      ],
+      Array [
+        "\\\\",
+        "\\"",
+      ],
+      Array [
+        "\\\\",
+        "$",
+      ],
+      Array [
+        "\\\\",
+        "\\\\",
+      ],
+      Array [
+        "\\\\",
+        "/",
+      ],
+      Array [
+        "\\\\",
+        "b",
+      ],
+      Array [
+        "\\\\",
+        "f",
+      ],
+      Array [
+        "\\\\",
+        "n",
+      ],
+      Array [
+        "\\\\",
+        "r",
+      ],
+      Array [
+        "\\\\",
+        "t",
+      ],
+      " ",
+      Array [
+        "\\\\",
+        "u",
+      ],
+      "2",
+      "2",
+      "0",
+      "0",
+      "(",
+      "a",
+      " ",
+      ":",
+      " ",
+      "T",
+      "y",
+      "p",
+      "e",
+      ")",
+      " ",
+      Array [
+        "\\\\",
+        "u",
+      ],
+      "2",
+      "1",
+      "9",
+      "2",
+      " ",
+      "a",
+    ],
+    "\\"",
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`escapedSingleQuotedString: escapedSingleQuotedString 1`] = `
+Array [
+  Array [
+    "''",
+    Array [
+      "
+",
+      Array [
+        "''\${",
+        Array [
+          "
+",
+          Array [
+            "'''",
+            Array [
+              "
+",
+              "''",
+            ],
+          ],
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`fields: fields 1`] = `undefined`;
+
+exports[`forall: forall 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "a",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "node": "Type",
+    },
+    Object {
+      "args": Array [
+        Array [
+          "b",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Type",
+        },
+        Object {
+          "args": Array [
+            Array [
+              Array [
+                "a",
+                Array [
+                  "
+",
+                ],
+              ],
+              null,
+              Array [],
+            ],
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Forall",
+    },
+  ],
+  "type": "Forall",
+}
+`;
+
+exports[`functionType: functionType 1`] = `
+Array [
+  Object {
+    "node": "Bool",
+  },
+  Array [
+    "→",
+    Array [
+      " ",
+    ],
+  ],
+  Array [
+    Object {
+      "node": "Bool",
+    },
+    Array [
+      "->",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "node": "Bool",
+    },
+  ],
+]
+`;
+
+exports[`identifier: identifier 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "a",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "node": "Type",
+    },
+    Object {
+      "args": Array [
+        Array [
+          "a",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Type",
+        },
+        Object {
+          "args": Array [
+            Array [
+              Array [
+                "a",
+                Array [],
+              ],
+              Array [
+                Array [
+                  "@",
+                  Array [],
+                ],
+                "1",
+              ],
+              Array [
+                "
+",
+              ],
+            ],
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Lambda",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`ifThenElse: ifThenElse 1`] = `
 Object {
   "false": Object {
     "integer": "2",
@@ -14,5 +675,1141 @@ Object {
     "integer": "1",
     "node": "IntegerLit",
   },
+}
+`;
+
+exports[`interpolatedDoubleQuotedString: interpolatedDoubleQuotedString 1`] = `
+Array [
+  Array [
+    "\\"",
+    Array [
+      "A",
+      "B",
+      "C",
+      Array [
+        "\${",
+        Object {
+          "node": "Integer/show",
+        },
+        "}",
+      ],
+    ],
+    "\\"",
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`interpolatedSingleQuotedString: interpolatedSingleQuotedString 1`] = `
+Array [
+  Array [
+    "''",
+    Array [
+      "
+",
+      Array [
+        "A",
+        Array [
+          "B",
+          Array [
+            "C",
+            Array [
+              "
+",
+              Array [
+                "\${",
+                Object {
+                  "node": "Integer/show",
+                },
+                "}",
+                Array [
+                  "
+",
+                  "''",
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`label: label 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/",
+      Array [
+        " ",
+      ],
+    ],
+    null,
+    Object {
+      "integer": "1",
+      "node": "IntegerLit",
+    },
+    Object {
+      "args": Array [
+        Array [
+          Array [
+            "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/",
+            Array [
+              "
+",
+            ],
+          ],
+          null,
+          Array [],
+        ],
+      ],
+      "type": "Var",
+    },
+  ],
+  "type": "Let",
+}
+`;
+
+exports[`lambda: lambda 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "a",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "node": "Type",
+    },
+    Object {
+      "args": Array [
+        Array [
+          "b",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Type",
+        },
+        Object {
+          "args": Array [
+            Array [
+              Array [
+                "a",
+                Array [
+                  "
+",
+                ],
+              ],
+              null,
+              Array [],
+            ],
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Lambda",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`largeExpression: largeExpression 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "xs",
+      Array [
+        "
+",
+        " ",
+        " ",
+        " ",
+        " ",
+      ],
+    ],
+    Object {
+      "node": "List",
+    },
+    Object {
+      "node": "List/fold",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`let: let 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "x",
+      Array [
+        " ",
+      ],
+    ],
+    null,
+    Object {
+      "integer": "1",
+      "node": "IntegerLit",
+    },
+    Object {
+      "args": Array [
+        Array [
+          "y",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Integer",
+        },
+        Object {
+          "integer": "2",
+          "node": "IntegerLit",
+        },
+        Object {
+          "args": Array [
+            Array [
+              Array [
+                "x",
+                Array [
+                  "
+",
+                ],
+              ],
+              null,
+              Array [],
+            ],
+          ],
+          "type": "Var",
+        },
+      ],
+      "type": "Let",
+    },
+  ],
+  "type": "Let",
+}
+`;
+
+exports[`lineComment: lineComment 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`list: list 1`] = `
+Array [
+  Array [
+    "[",
+    Array [
+      " ",
+    ],
+  ],
+  Array [
+    Array [
+      "[",
+      Array [],
+    ],
+    Object {
+      "integer": "1",
+      "node": "IntegerLit",
+    },
+    Array [
+      Array [
+        Array [
+          ",",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "integer": "2",
+          "node": "IntegerLit",
+        },
+      ],
+      Array [
+        Array [
+          ",",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "integer": "3",
+          "node": "IntegerLit",
+        },
+      ],
+    ],
+    Array [
+      "]",
+      Array [
+        "
+",
+      ],
+    ],
+  ],
+  Array [
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Object {
+        "expr": Array [
+          Array [
+            "[",
+            Array [],
+          ],
+          Object {
+            "integer": "1",
+            "node": "IntegerLit",
+          },
+          Array [
+            Array [
+              Array [
+                ",",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "integer": "2",
+                "node": "IntegerLit",
+              },
+            ],
+            Array [
+              Array [
+                ",",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "integer": "3",
+                "node": "IntegerLit",
+              },
+            ],
+          ],
+          Array [
+            "]",
+            Array [
+              " ",
+            ],
+          ],
+        ],
+        "node": "annotate",
+        "type": Object {
+          "node": "List",
+        },
+      },
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        Array [
+          "[",
+          Array [],
+        ],
+        Array [
+          Array [
+            "]",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            ":",
+            Array [
+              " ",
+            ],
+          ],
+          Object {
+            "node": "List",
+          },
+          Object {
+            "node": "Integer",
+          },
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "]",
+    Array [
+      "
+",
+    ],
+  ],
+]
+`;
+
+exports[`merge: merge 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "x",
+      Array [
+        " ",
+      ],
+    ],
+    Array [
+      Array [
+        "<",
+        Array [],
+      ],
+      "",
+      Array [
+        ">",
+        Array [],
+      ],
+    ],
+    Object {
+      "args": Array [
+        Object {
+          "bar, ": Object {
+            "args": Array [
+              Object {
+                "args": Array [
+                  Object {},
+                ],
+                "type": "Record",
+              },
+              Object {
+                "args": Array [
+                  Array [
+                    Array [
+                      "x",
+                      Array [
+                        " ",
+                      ],
+                    ],
+                    null,
+                    Array [],
+                  ],
+                ],
+                "type": "Var",
+              },
+            ],
+            "type": "Merge",
+          },
+        },
+      ],
+      "type": "Record",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`natural: natural 1`] = `
+Array [
+  Array [
+    "[",
+    Array [
+      " ",
+    ],
+  ],
+  Array [
+    "+",
+    "0",
+    Array [],
+  ],
+  Array [
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "+",
+        "1",
+        Array [],
+      ],
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "+",
+        "01",
+        Array [],
+      ],
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        "+",
+        "10",
+        Array [
+          " ",
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "]",
+    Array [
+      "
+",
+    ],
+  ],
+]
+`;
+
+exports[`nestedBlockComment: nestedBlockComment 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`operators: operators 1`] = `
+Object {
+  "node": "Combine",
+}
+`;
+
+exports[`pathTermination: pathTermination 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "x",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "asText": false,
+      "hash": null,
+      "path": "./example",
+      "type": "file",
+    },
+    Object {
+      "asText": false,
+      "hash": null,
+      "path": "./example",
+      "type": "file",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`paths: paths 1`] = `
+Array [
+  Array [
+    "[",
+    Array [
+      " ",
+    ],
+  ],
+  Object {
+    "asText": false,
+    "hash": null,
+    "path": Array [
+      "/",
+      "a",
+      Array [
+        "b",
+        "s",
+        "o",
+        "l",
+        "u",
+        "t",
+        "e",
+        "/",
+        "p",
+        "a",
+        "t",
+        "h",
+      ],
+    ],
+    "type": "file",
+  },
+  Array [
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Object {
+        "asText": false,
+        "hash": null,
+        "path": "./relative/path",
+        "type": "file",
+      },
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Object {
+        "asText": false,
+        "hash": null,
+        "path": Array [
+          "~/",
+          Array [
+            "h",
+            "o",
+            "m",
+            "e",
+            "/",
+            "a",
+            "n",
+            "c",
+            "h",
+            "o",
+            "r",
+            "e",
+            "d",
+            "/",
+            "p",
+            "a",
+            "t",
+            "h",
+          ],
+        ],
+        "type": "file",
+      },
+    ],
+    Array [
+      Array [
+        ",",
+        Array [
+          " ",
+        ],
+      ],
+      Object {
+        "asText": false,
+        "hash": null,
+        "path": Array [
+          "/",
+          "i",
+          Array [
+            "p",
+            "f",
+            "s",
+            "/",
+            "Q",
+            "m",
+            "Q",
+            "8",
+            "w",
+            "5",
+            "P",
+            "L",
+            "c",
+            "s",
+            "N",
+            "z",
+            "5",
+            "6",
+            "d",
+            "M",
+            "v",
+            "R",
+            "t",
+            "q",
+            "5",
+            "4",
+            "v",
+            "b",
+            "u",
+            "P",
+            "e",
+            "9",
+            "c",
+            "N",
+            "n",
+            "C",
+            "C",
+            "U",
+            "X",
+            "A",
+            "Q",
+            "p",
+            "6",
+            "x",
+            "L",
+            "c",
+            "6",
+            "C",
+            "c",
+            "x",
+            "/",
+            "P",
+            "r",
+            "e",
+            "l",
+            "u",
+            "d",
+            "e",
+          ],
+        ],
+        "type": "file",
+      },
+    ],
+  ],
+  Array [
+    "]",
+    Array [
+      "
+",
+    ],
+  ],
+]
+`;
+
+exports[`quotedLabel: quotedLabel 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example1, ": Object {
+        "args": Array [
+          Array [
+            Array [
+              "\`",
+              Array [
+                "l",
+                "e",
+                "t",
+              ],
+              "\`",
+            ],
+            Array [
+              " ",
+            ],
+          ],
+          null,
+          Object {
+            "integer": "1",
+            "node": "IntegerLit",
+          },
+          Object {
+            "args": Array [
+              Array [
+                Array [
+                  Array [
+                    "\`",
+                    Array [
+                      "l",
+                      "e",
+                      "t",
+                    ],
+                    "\`",
+                  ],
+                  Array [],
+                ],
+                null,
+                Array [],
+              ],
+            ],
+            "type": "Var",
+          },
+        ],
+        "type": "Let",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`record: record 1`] = `
+Object {
+  "expr": Object {
+    "args": Array [
+      Object {
+        "foo, ": Object {
+          "integer": "1",
+          "node": "IntegerLit",
+        },
+      },
+    ],
+    "type": "Record",
+  },
+  "node": "annotate",
+  "type": Object {
+    "args": Array [
+      Object {
+        "foo, ": Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+      },
+    ],
+    "type": "Record",
+  },
+}
+`;
+
+exports[`reservedPrefix: reservedPrefix 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "TypeSynonym",
+      Array [
+        " ",
+      ],
+    ],
+    null,
+    Object {
+      "node": "Integer",
+    },
+    Object {
+      "expr": Object {
+        "integer": "1",
+        "node": "IntegerLit",
+      },
+      "node": "annotate",
+      "type": Object {
+        "args": Array [
+          Array [
+            Array [
+              "TypeSynonym",
+              Array [
+                "
+",
+              ],
+            ],
+            null,
+            Array [],
+          ],
+        ],
+        "type": "Var",
+      },
+    },
+  ],
+  "type": "Let",
+}
+`;
+
+exports[`singleQuotedString: singleQuotedString 1`] = `
+Array [
+  Array [
+    "''",
+    Array [
+      "
+",
+      Array [
+        "A",
+        Array [
+          "B",
+          Array [
+            "C",
+            Array [
+              "
+",
+              Array [
+                "D",
+                Array [
+                  "E",
+                  Array [
+                    "F",
+                    Array [
+                      "
+",
+                      "''",
+                    ],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`unicodeComment: unicodeComment 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`unicodeDoubleQuotedString: unicodeDoubleQuotedString 1`] = `
+Array [
+  Array [
+    "\\"",
+    Array [
+      "∀",
+      "(",
+      "a",
+      " ",
+      ":",
+      " ",
+      "T",
+      "y",
+      "p",
+      "e",
+      ")",
+      " ",
+      "→",
+      " ",
+      "a",
+    ],
+    "\\"",
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`union: union 1`] = `
+Object {
+  "expr": Array [
+    Array [
+      "<",
+      Array [
+        " ",
+      ],
+    ],
+    Array [
+      Array [
+        "A",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "args": Array [
+            "",
+          ],
+          "type": "Record",
+        },
+        Array [
+          Array [
+            "|",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            Array [
+              "B",
+              Array [
+                " ",
+              ],
+            ],
+            Array [
+              Array [
+                "=",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "args": Array [
+                  Object {},
+                ],
+                "type": "Record",
+              },
+              Array [
+                Array [
+                  Array [
+                    "|",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Array [
+                    "C",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Array [
+                    ":",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Object {
+                    "args": Array [
+                      "",
+                    ],
+                    "type": "Record",
+                  },
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    Array [
+      ">",
+      Array [
+        " ",
+      ],
+    ],
+  ],
+  "node": "annotate",
+  "type": Array [
+    Array [
+      "<",
+      Array [
+        " ",
+      ],
+    ],
+    Array [
+      Array [
+        "A",
+        Array [
+          " ",
+        ],
+      ],
+      Array [
+        Array [
+          ":",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "args": Array [
+            "",
+          ],
+          "type": "Record",
+        },
+        Array [
+          Array [
+            "|",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            Array [
+              "B",
+              Array [
+                " ",
+              ],
+            ],
+            Array [
+              Array [
+                ":",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "args": Array [
+                  "",
+                ],
+                "type": "Record",
+              },
+              Array [
+                Array [
+                  "|",
+                  Array [
+                    " ",
+                  ],
+                ],
+                Array [
+                  Array [
+                    "C",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Array [
+                    Array [
+                      ":",
+                      Array [
+                        " ",
+                      ],
+                    ],
+                    Object {
+                      "args": Array [
+                        "",
+                      ],
+                      "type": "Record",
+                    },
+                    "",
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+    Array [
+      ">",
+      Array [
+        "
+",
+      ],
+    ],
+  ],
+}
+`;
+
+exports[`whitespace: whitespace 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`whitespaceBuffet: whitespaceBuffet 1`] = `
+Object {
+  "node": "Natural/even",
 }
 `;

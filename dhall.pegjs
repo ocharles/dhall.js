@@ -196,7 +196,7 @@ naturalLiteral
   = "+" naturalRaw whitespace
 
 identifier
-  = label (at naturalRaw)?
+  = label (at naturalRaw)? whitespace
 
 headPathCharacter =
       [\u0021-\u0027]
