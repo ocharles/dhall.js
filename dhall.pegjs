@@ -185,7 +185,7 @@ naturalRaw
   }
 
 integerLiteral
-  = a:naturalRaw whitespace {
+  = "-"? a:naturalRaw whitespace {
       return {
           node: 'IntegerLit',
           integer: a

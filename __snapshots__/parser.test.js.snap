@@ -1,6 +1,1353 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`annotations: annotations 1`] = `
+exports[`normalization/doubleShowA: normalization/doubleShowA 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Object {
+        "node": "Double/show",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/doubleShowB: normalization/doubleShowB 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Array [
+        Array [
+          "\\"",
+          Array [
+            "-",
+            "0",
+            ".",
+            "4",
+            "2",
+          ],
+          "\\"",
+        ],
+        Array [],
+      ],
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/integerShowA: normalization/integerShowA 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Object {
+        "node": "Integer/show",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/integerShowB: normalization/integerShowB 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Array [
+        Array [
+          "\\"",
+          Array [
+            "1",
+            "3",
+            "3",
+            "7",
+          ],
+          "\\"",
+        ],
+        Array [],
+      ],
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/naturalPlusA: normalization/naturalPlusA 1`] = `
+Object {
+  "node": "NaturalPlus",
+}
+`;
+
+exports[`normalization/naturalPlusB: normalization/naturalPlusB 1`] = `
+Array [
+  "+",
+  "3",
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`normalization/naturalShowA: normalization/naturalShowA 1`] = `
+Object {
+  "node": "Natural/show",
+}
+`;
+
+exports[`normalization/naturalShowB: normalization/naturalShowB 1`] = `
+Array [
+  Array [
+    "\\"",
+    Array [
+      "+",
+      "4",
+      "2",
+    ],
+    "\\"",
+  ],
+  Array [
+    "
+",
+  ],
+]
+`;
+
+exports[`normalization/naturalToIntegerA: normalization/naturalToIntegerA 1`] = `
+Object {
+  "node": "Natural/toInteger",
+}
+`;
+
+exports[`normalization/naturalToIntegerB: normalization/naturalToIntegerB 1`] = `
+Object {
+  "integer": "1",
+  "node": "IntegerLit",
+}
+`;
+
+exports[`normalization/optionalBuildA: normalization/optionalBuildA 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Object {
+        "node": "Optional/build",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/optionalBuildB: normalization/optionalBuildB 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Array [
+        Array [
+          "[",
+          Array [
+            " ",
+          ],
+        ],
+        Array [
+          Array [
+            "+",
+            "1",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            "]",
+            Array [
+              " ",
+            ],
+          ],
+          Array [
+            ":",
+            Array [
+              " ",
+            ],
+          ],
+          Object {
+            "node": "Optional",
+          },
+          Object {
+            "node": "Natural",
+          },
+        ],
+      ],
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/optionalBuildFoldA: normalization/optionalBuildFoldA 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Object {
+        "args": Array [
+          Array [
+            "f",
+            Array [
+              "
+",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+            ],
+          ],
+          Object {
+            "args": Array [
+              Array [
+                "optional",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "node": "Type",
+              },
+              Object {
+                "args": Array [
+                  Array [
+                    "just",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Array [
+                    Object {
+                      "node": "Text",
+                    },
+                    Array [
+                      "→",
+                      Array [
+                        " ",
+                      ],
+                    ],
+                    Object {
+                      "args": Array [
+                        Array [
+                          Array [
+                            "optional",
+                            Array [],
+                          ],
+                          null,
+                          Array [],
+                        ],
+                      ],
+                      "type": "Var",
+                    },
+                  ],
+                  Object {
+                    "args": Array [
+                      Array [
+                        "nothing",
+                        Array [
+                          " ",
+                        ],
+                      ],
+                      Object {
+                        "args": Array [
+                          Array [
+                            Array [
+                              "optional",
+                              Array [],
+                            ],
+                            null,
+                            Array [],
+                          ],
+                        ],
+                        "type": "Var",
+                      },
+                      Object {
+                        "args": Array [
+                          Array [
+                            Array [
+                              "optional",
+                              Array [
+                                "
+",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                              ],
+                            ],
+                            null,
+                            Array [],
+                          ],
+                        ],
+                        "type": "Var",
+                      },
+                    ],
+                    "type": "Forall",
+                  },
+                ],
+                "type": "Forall",
+              },
+            ],
+            "type": "Forall",
+          },
+          Object {
+            "node": "Optional/fold",
+          },
+        ],
+        "type": "Lambda",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/optionalBuildFoldB: normalization/optionalBuildFoldB 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Object {
+        "args": Array [
+          Array [
+            "f",
+            Array [
+              "
+",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+              " ",
+            ],
+          ],
+          Object {
+            "args": Array [
+              Array [
+                "optional",
+                Array [
+                  " ",
+                ],
+              ],
+              Object {
+                "node": "Type",
+              },
+              Object {
+                "args": Array [
+                  Array [
+                    "just",
+                    Array [
+                      " ",
+                    ],
+                  ],
+                  Array [
+                    Object {
+                      "node": "Text",
+                    },
+                    Array [
+                      "→",
+                      Array [
+                        " ",
+                      ],
+                    ],
+                    Object {
+                      "args": Array [
+                        Array [
+                          Array [
+                            "optional",
+                            Array [],
+                          ],
+                          null,
+                          Array [],
+                        ],
+                      ],
+                      "type": "Var",
+                    },
+                  ],
+                  Object {
+                    "args": Array [
+                      Array [
+                        "nothing",
+                        Array [
+                          " ",
+                        ],
+                      ],
+                      Object {
+                        "args": Array [
+                          Array [
+                            Array [
+                              "optional",
+                              Array [],
+                            ],
+                            null,
+                            Array [],
+                          ],
+                        ],
+                        "type": "Var",
+                      },
+                      Object {
+                        "args": Array [
+                          Array [
+                            Array [
+                              "optional",
+                              Array [
+                                "
+",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                                " ",
+                              ],
+                            ],
+                            null,
+                            Array [],
+                          ],
+                        ],
+                        "type": "Var",
+                      },
+                    ],
+                    "type": "Forall",
+                  },
+                ],
+                "type": "Forall",
+              },
+            ],
+            "type": "Forall",
+          },
+          Object {
+            "args": Array [
+              Array [
+                Array [
+                  "f",
+                  Array [
+                    "
+",
+                  ],
+                ],
+                null,
+                Array [],
+              ],
+            ],
+            "type": "Var",
+          },
+        ],
+        "type": "Lambda",
+      },
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/optionalFoldA: normalization/optionalFoldA 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "f",
+      Array [
+        " ",
+      ],
+    ],
+    null,
+    Object {
+      "args": Array [
+        Array [
+          "o",
+          Array [
+            " ",
+          ],
+        ],
+        Object {
+          "node": "Optional",
+        },
+        Object {
+          "node": "Optional/fold",
+        },
+      ],
+      "type": "Lambda",
+    },
+    Object {
+      "args": Array [
+        Object {
+          "example0, ": Object {
+            "args": Array [
+              Array [
+                Array [
+                  "f",
+                  Array [
+                    " ",
+                  ],
+                ],
+                null,
+                Array [],
+              ],
+            ],
+            "type": "Var",
+          },
+        },
+      ],
+      "type": "Record",
+    },
+  ],
+  "type": "Let",
+}
+`;
+
+exports[`normalization/optionalFoldB: normalization/optionalFoldB 1`] = `
+Object {
+  "args": Array [
+    Object {
+      "example0, ": Array [
+        "+",
+        "1",
+        Array [],
+      ],
+    },
+  ],
+  "type": "Record",
+}
+`;
+
+exports[`normalization/remoteSystemsA: normalization/remoteSystemsA 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "Text/concatMap",
+      Array [
+        " ",
+      ],
+    ],
+    null,
+    Array [
+      Array [
+        Array [
+          "http",
+          "s",
+        ],
+        "://",
+        Array [
+          null,
+          Array [
+            "i",
+            "p",
+            "f",
+            "s",
+            ".",
+            "i",
+            "o",
+          ],
+          null,
+        ],
+        Array [
+          Array [
+            "/",
+            Array [
+              "i",
+              "p",
+              "f",
+              "s",
+            ],
+          ],
+          Array [
+            "/",
+            Array [
+              "Q",
+              "m",
+              "Q",
+              "8",
+              "w",
+              "5",
+              "P",
+              "L",
+              "c",
+              "s",
+              "N",
+              "z",
+              "5",
+              "6",
+              "d",
+              "M",
+              "v",
+              "R",
+              "t",
+              "q",
+              "5",
+              "4",
+              "v",
+              "b",
+              "u",
+              "P",
+              "e",
+              "9",
+              "c",
+              "N",
+              "n",
+              "C",
+              "C",
+              "U",
+              "X",
+              "A",
+              "Q",
+              "p",
+              "6",
+              "x",
+              "L",
+              "c",
+              "6",
+              "C",
+              "c",
+              "x",
+            ],
+          ],
+          Array [
+            "/",
+            Array [
+              "P",
+              "r",
+              "e",
+              "l",
+              "u",
+              "d",
+              "e",
+            ],
+          ],
+          Array [
+            "/",
+            Array [
+              "T",
+              "e",
+              "x",
+              "t",
+            ],
+          ],
+          Array [
+            "/",
+            Array [
+              "c",
+              "o",
+              "n",
+              "c",
+              "a",
+              "t",
+              "M",
+              "a",
+              "p",
+            ],
+          ],
+        ],
+        null,
+        null,
+      ],
+      Array [
+        " ",
+        "
+",
+        "
+",
+      ],
+      null,
+    ],
+    Object {
+      "args": Array [
+        Array [
+          "Text/concatSep",
+          Array [
+            " ",
+          ],
+        ],
+        null,
+        Array [
+          Array [
+            Array [
+              "http",
+              "s",
+            ],
+            "://",
+            Array [
+              null,
+              Array [
+                "i",
+                "p",
+                "f",
+                "s",
+                ".",
+                "i",
+                "o",
+              ],
+              null,
+            ],
+            Array [
+              Array [
+                "/",
+                Array [
+                  "i",
+                  "p",
+                  "f",
+                  "s",
+                ],
+              ],
+              Array [
+                "/",
+                Array [
+                  "Q",
+                  "m",
+                  "Q",
+                  "8",
+                  "w",
+                  "5",
+                  "P",
+                  "L",
+                  "c",
+                  "s",
+                  "N",
+                  "z",
+                  "5",
+                  "6",
+                  "d",
+                  "M",
+                  "v",
+                  "R",
+                  "t",
+                  "q",
+                  "5",
+                  "4",
+                  "v",
+                  "b",
+                  "u",
+                  "P",
+                  "e",
+                  "9",
+                  "c",
+                  "N",
+                  "n",
+                  "C",
+                  "C",
+                  "U",
+                  "X",
+                  "A",
+                  "Q",
+                  "p",
+                  "6",
+                  "x",
+                  "L",
+                  "c",
+                  "6",
+                  "C",
+                  "c",
+                  "x",
+                ],
+              ],
+              Array [
+                "/",
+                Array [
+                  "P",
+                  "r",
+                  "e",
+                  "l",
+                  "u",
+                  "d",
+                  "e",
+                ],
+              ],
+              Array [
+                "/",
+                Array [
+                  "T",
+                  "e",
+                  "x",
+                  "t",
+                ],
+              ],
+              Array [
+                "/",
+                Array [
+                  "c",
+                  "o",
+                  "n",
+                  "c",
+                  "a",
+                  "t",
+                  "S",
+                  "e",
+                  "p",
+                ],
+              ],
+            ],
+            null,
+            null,
+          ],
+          Array [
+            " ",
+            "
+",
+            "
+",
+          ],
+          null,
+        ],
+        Object {
+          "args": Array [
+            Array [
+              "Row",
+              Array [
+                " ",
+              ],
+            ],
+            null,
+            Object {
+              "args": Array [
+                Object {
+                  "cores, ": Array [
+                    ":",
+                    Array [
+                      "
+",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                      " ",
+                    ],
+                  ],
+                },
+              ],
+              "type": "Record",
+            },
+            Object {
+              "args": Array [
+                Array [
+                  "renderRow",
+                  Array [
+                    " ",
+                  ],
+                ],
+                null,
+                Object {
+                  "args": Array [
+                    Array [
+                      "row",
+                      Array [
+                        "
+",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                        " ",
+                      ],
+                    ],
+                    Object {
+                      "args": Array [
+                        Array [
+                          Array [
+                            "Row",
+                            Array [
+                              "
+",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                              " ",
+                            ],
+                          ],
+                          null,
+                          Array [],
+                        ],
+                      ],
+                      "type": "Var",
+                    },
+                    Object {
+                      "args": Array [
+                        Array [
+                          "host",
+                          Array [
+                            " ",
+                          ],
+                        ],
+                        null,
+                        Object {
+                          "node": "Optional/fold",
+                        },
+                        Object {
+                          "args": Array [
+                            Array [
+                              "platforms",
+                              Array [
+                                " ",
+                              ],
+                            ],
+                            null,
+                            Object {
+                              "args": Array [
+                                Array [
+                                  Array [
+                                    "Text/concatSep",
+                                    Array [
+                                      " ",
+                                    ],
+                                  ],
+                                  null,
+                                  Array [],
+                                ],
+                              ],
+                              "type": "Var",
+                            },
+                            Object {
+                              "args": Array [
+                                Array [
+                                  "key",
+                                  Array [
+                                    " ",
+                                  ],
+                                ],
+                                null,
+                                undefined,
+                                Object {
+                                  "args": Array [
+                                    Array [
+                                      "cores",
+                                      Array [
+                                        " ",
+                                      ],
+                                    ],
+                                    null,
+                                    Object {
+                                      "node": "Integer/show",
+                                    },
+                                    Object {
+                                      "args": Array [
+                                        Array [
+                                          "speedFactor",
+                                          Array [
+                                            " ",
+                                          ],
+                                        ],
+                                        null,
+                                        Object {
+                                          "node": "Integer/show",
+                                        },
+                                        Object {
+                                          "args": Array [
+                                            Array [
+                                              "supportedFeatures",
+                                              Array [
+                                                " ",
+                                              ],
+                                            ],
+                                            null,
+                                            Object {
+                                              "args": Array [
+                                                Array [
+                                                  Array [
+                                                    "Text/concatSep",
+                                                    Array [
+                                                      " ",
+                                                    ],
+                                                  ],
+                                                  null,
+                                                  Array [],
+                                                ],
+                                              ],
+                                              "type": "Var",
+                                            },
+                                            Object {
+                                              "args": Array [
+                                                Array [
+                                                  "mandatoryFeatures",
+                                                  Array [
+                                                    " ",
+                                                  ],
+                                                ],
+                                                null,
+                                                Object {
+                                                  "args": Array [
+                                                    Array [
+                                                      Array [
+                                                        "Text/concatSep",
+                                                        Array [
+                                                          " ",
+                                                        ],
+                                                      ],
+                                                      null,
+                                                      Array [],
+                                                    ],
+                                                  ],
+                                                  "type": "Var",
+                                                },
+                                                Array [
+                                                  Array [
+                                                    "''",
+                                                    Array [
+                                                      "
+",
+                                                      Array [
+                                                        " ",
+                                                        Array [
+                                                          " ",
+                                                          Array [
+                                                            " ",
+                                                            Array [
+                                                              " ",
+                                                              Array [
+                                                                " ",
+                                                                Array [
+                                                                  " ",
+                                                                  Array [
+                                                                    " ",
+                                                                    Array [
+                                                                      " ",
+                                                                      Array [
+                                                                        " ",
+                                                                        Array [
+                                                                          " ",
+                                                                          Array [
+                                                                            " ",
+                                                                            Array [
+                                                                              " ",
+                                                                              Array [
+                                                                                " ",
+                                                                                Array [
+                                                                                  " ",
+                                                                                  Array [
+                                                                                    " ",
+                                                                                    Array [
+                                                                                      " ",
+                                                                                      Array [
+                                                                                        "\${",
+                                                                                        Object {
+                                                                                          "args": Array [
+                                                                                            Array [
+                                                                                              Array [
+                                                                                                "host",
+                                                                                                Array [],
+                                                                                              ],
+                                                                                              null,
+                                                                                              Array [],
+                                                                                            ],
+                                                                                          ],
+                                                                                          "type": "Var",
+                                                                                        },
+                                                                                        "}",
+                                                                                        Array [
+                                                                                          " ",
+                                                                                          Array [
+                                                                                            "\${",
+                                                                                            Object {
+                                                                                              "args": Array [
+                                                                                                Array [
+                                                                                                  Array [
+                                                                                                    "platforms",
+                                                                                                    Array [],
+                                                                                                  ],
+                                                                                                  null,
+                                                                                                  Array [],
+                                                                                                ],
+                                                                                              ],
+                                                                                              "type": "Var",
+                                                                                            },
+                                                                                            "}",
+                                                                                            Array [
+                                                                                              " ",
+                                                                                              Array [
+                                                                                                "\${",
+                                                                                                Object {
+                                                                                                  "args": Array [
+                                                                                                    Array [
+                                                                                                      Array [
+                                                                                                        "key",
+                                                                                                        Array [],
+                                                                                                      ],
+                                                                                                      null,
+                                                                                                      Array [],
+                                                                                                    ],
+                                                                                                  ],
+                                                                                                  "type": "Var",
+                                                                                                },
+                                                                                                "}",
+                                                                                                Array [
+                                                                                                  " ",
+                                                                                                  Array [
+                                                                                                    "\${",
+                                                                                                    Object {
+                                                                                                      "args": Array [
+                                                                                                        Array [
+                                                                                                          Array [
+                                                                                                            "cores",
+                                                                                                            Array [],
+                                                                                                          ],
+                                                                                                          null,
+                                                                                                          Array [],
+                                                                                                        ],
+                                                                                                      ],
+                                                                                                      "type": "Var",
+                                                                                                    },
+                                                                                                    "}",
+                                                                                                    Array [
+                                                                                                      " ",
+                                                                                                      Array [
+                                                                                                        "\${",
+                                                                                                        Object {
+                                                                                                          "args": Array [
+                                                                                                            Array [
+                                                                                                              Array [
+                                                                                                                "speedFactor",
+                                                                                                                Array [],
+                                                                                                              ],
+                                                                                                              null,
+                                                                                                              Array [],
+                                                                                                            ],
+                                                                                                          ],
+                                                                                                          "type": "Var",
+                                                                                                        },
+                                                                                                        "}",
+                                                                                                        Array [
+                                                                                                          " ",
+                                                                                                          Array [
+                                                                                                            "\${",
+                                                                                                            Object {
+                                                                                                              "args": Array [
+                                                                                                                Array [
+                                                                                                                  Array [
+                                                                                                                    "supportedFeatures",
+                                                                                                                    Array [],
+                                                                                                                  ],
+                                                                                                                  null,
+                                                                                                                  Array [],
+                                                                                                                ],
+                                                                                                              ],
+                                                                                                              "type": "Var",
+                                                                                                            },
+                                                                                                            "}",
+                                                                                                            Array [
+                                                                                                              " ",
+                                                                                                              Array [
+                                                                                                                "\${",
+                                                                                                                Object {
+                                                                                                                  "args": Array [
+                                                                                                                    Array [
+                                                                                                                      Array [
+                                                                                                                        "mandatoryFeatures",
+                                                                                                                        Array [],
+                                                                                                                      ],
+                                                                                                                      null,
+                                                                                                                      Array [],
+                                                                                                                    ],
+                                                                                                                  ],
+                                                                                                                  "type": "Var",
+                                                                                                                },
+                                                                                                                "}",
+                                                                                                                Array [
+                                                                                                                  "
+",
+                                                                                                                  Array [
+                                                                                                                    " ",
+                                                                                                                    Array [
+                                                                                                                      " ",
+                                                                                                                      Array [
+                                                                                                                        " ",
+                                                                                                                        Array [
+                                                                                                                          " ",
+                                                                                                                          Array [
+                                                                                                                            " ",
+                                                                                                                            Array [
+                                                                                                                              " ",
+                                                                                                                              Array [
+                                                                                                                                " ",
+                                                                                                                                Array [
+                                                                                                                                  " ",
+                                                                                                                                  Array [
+                                                                                                                                    " ",
+                                                                                                                                    Array [
+                                                                                                                                      " ",
+                                                                                                                                      Array [
+                                                                                                                                        " ",
+                                                                                                                                        Array [
+                                                                                                                                          " ",
+                                                                                                                                          Array [
+                                                                                                                                            " ",
+                                                                                                                                            Array [
+                                                                                                                                              " ",
+                                                                                                                                              Array [
+                                                                                                                                                " ",
+                                                                                                                                                Array [
+                                                                                                                                                  " ",
+                                                                                                                                                  "''",
+                                                                                                                                                ],
+                                                                                                                                              ],
+                                                                                                                                            ],
+                                                                                                                                          ],
+                                                                                                                                        ],
+                                                                                                                                      ],
+                                                                                                                                    ],
+                                                                                                                                  ],
+                                                                                                                                ],
+                                                                                                                              ],
+                                                                                                                            ],
+                                                                                                                          ],
+                                                                                                                        ],
+                                                                                                                      ],
+                                                                                                                    ],
+                                                                                                                  ],
+                                                                                                                ],
+                                                                                                              ],
+                                                                                                            ],
+                                                                                                          ],
+                                                                                                        ],
+                                                                                                      ],
+                                                                                                    ],
+                                                                                                  ],
+                                                                                                ],
+                                                                                              ],
+                                                                                            ],
+                                                                                          ],
+                                                                                        ],
+                                                                                      ],
+                                                                                    ],
+                                                                                  ],
+                                                                                ],
+                                                                              ],
+                                                                            ],
+                                                                          ],
+                                                                        ],
+                                                                      ],
+                                                                    ],
+                                                                  ],
+                                                                ],
+                                                              ],
+                                                            ],
+                                                          ],
+                                                        ],
+                                                      ],
+                                                    ],
+                                                  ],
+                                                  Array [
+                                                    "
+",
+                                                    "
+",
+                                                  ],
+                                                ],
+                                              ],
+                                              "type": "Let",
+                                            },
+                                          ],
+                                          "type": "Let",
+                                        },
+                                      ],
+                                      "type": "Let",
+                                    },
+                                  ],
+                                  "type": "Let",
+                                },
+                              ],
+                              "type": "Let",
+                            },
+                          ],
+                          "type": "Let",
+                        },
+                      ],
+                      "type": "Let",
+                    },
+                  ],
+                  "type": "Lambda",
+                },
+                Object {
+                  "args": Array [
+                    Array [
+                      Array [
+                        "Text/concatMap",
+                        Array [
+                          " ",
+                        ],
+                      ],
+                      null,
+                      Array [],
+                    ],
+                  ],
+                  "type": "Var",
+                },
+              ],
+              "type": "Let",
+            },
+          ],
+          "type": "Let",
+        },
+      ],
+      "type": "Let",
+    },
+  ],
+  "type": "Let",
+}
+`;
+
+exports[`normalization/remoteSystemsB: normalization/remoteSystemsB 1`] = `
+Object {
+  "args": Array [
+    Array [
+      "xs",
+      Array [
+        " ",
+      ],
+    ],
+    Object {
+      "node": "List",
+    },
+    Object {
+      "node": "List/fold",
+    },
+  ],
+  "type": "Lambda",
+}
+`;
+
+exports[`parser/annotations: parser/annotations 1`] = `
 Object {
   "expr": Object {
     "args": Array [
@@ -29,14 +1376,14 @@ Object {
 }
 `;
 
-exports[`blockComment: blockComment 1`] = `
+exports[`parser/blockComment: parser/blockComment 1`] = `
 Object {
   "integer": "1",
   "node": "IntegerLit",
 }
 `;
 
-exports[`builtins: builtins 1`] = `
+exports[`parser/builtins: parser/builtins 1`] = `
 Object {
   "args": Array [
     Array [
@@ -78,7 +1425,7 @@ Object {
 }
 `;
 
-exports[`constructors: constructors 1`] = `
+exports[`parser/constructors: parser/constructors 1`] = `
 Object {
   "expr": Array [
     Array [
@@ -146,7 +1493,7 @@ Object {
 }
 `;
 
-exports[`double: double 1`] = `
+exports[`parser/double: parser/double 1`] = `
 Array [
   Array [
     "[",
@@ -276,7 +1623,7 @@ Array [
 ]
 `;
 
-exports[`doubleQuotedString: doubleQuotedString 1`] = `
+exports[`parser/doubleQuotedString: parser/doubleQuotedString 1`] = `
 Array [
   Array [
     "\\"",
@@ -294,7 +1641,7 @@ Array [
 ]
 `;
 
-exports[`environmentVariables: environmentVariables 1`] = `
+exports[`parser/environmentVariables: parser/environmentVariables 1`] = `
 Array [
   Array [
     "[",
@@ -415,7 +1762,7 @@ Array [
 ]
 `;
 
-exports[`escapedDoubleQuotedString: escapedDoubleQuotedString 1`] = `
+exports[`parser/escapedDoubleQuotedString: parser/escapedDoubleQuotedString 1`] = `
 Array [
   Array [
     "\\"",
@@ -500,7 +1847,7 @@ Array [
 ]
 `;
 
-exports[`escapedSingleQuotedString: escapedSingleQuotedString 1`] = `
+exports[`parser/escapedSingleQuotedString: parser/escapedSingleQuotedString 1`] = `
 Array [
   Array [
     "''",
@@ -531,9 +1878,9 @@ Array [
 ]
 `;
 
-exports[`fields: fields 1`] = `undefined`;
+exports[`parser/fields: parser/fields 1`] = `undefined`;
 
-exports[`forall: forall 1`] = `
+exports[`parser/forall: parser/forall 1`] = `
 Object {
   "args": Array [
     Array [
@@ -580,7 +1927,7 @@ Object {
 }
 `;
 
-exports[`functionType: functionType 1`] = `
+exports[`parser/functionType: parser/functionType 1`] = `
 Array [
   Object {
     "node": "Bool",
@@ -608,7 +1955,7 @@ Array [
 ]
 `;
 
-exports[`identifier: identifier 1`] = `
+exports[`parser/identifier: parser/identifier 1`] = `
 Object {
   "args": Array [
     Array [
@@ -661,7 +2008,7 @@ Object {
 }
 `;
 
-exports[`ifThenElse: ifThenElse 1`] = `
+exports[`parser/ifThenElse: parser/ifThenElse 1`] = `
 Object {
   "false": Object {
     "integer": "2",
@@ -678,7 +2025,7 @@ Object {
 }
 `;
 
-exports[`interpolatedDoubleQuotedString: interpolatedDoubleQuotedString 1`] = `
+exports[`parser/interpolatedDoubleQuotedString: parser/interpolatedDoubleQuotedString 1`] = `
 Array [
   Array [
     "\\"",
@@ -703,7 +2050,7 @@ Array [
 ]
 `;
 
-exports[`interpolatedSingleQuotedString: interpolatedSingleQuotedString 1`] = `
+exports[`parser/interpolatedSingleQuotedString: parser/interpolatedSingleQuotedString 1`] = `
 Array [
   Array [
     "''",
@@ -744,7 +2091,7 @@ Array [
 ]
 `;
 
-exports[`label: label 1`] = `
+exports[`parser/label: parser/label 1`] = `
 Object {
   "args": Array [
     Array [
@@ -779,7 +2126,7 @@ Object {
 }
 `;
 
-exports[`lambda: lambda 1`] = `
+exports[`parser/lambda: parser/lambda 1`] = `
 Object {
   "args": Array [
     Array [
@@ -826,7 +2173,7 @@ Object {
 }
 `;
 
-exports[`largeExpression: largeExpression 1`] = `
+exports[`parser/largeExpression: parser/largeExpression 1`] = `
 Object {
   "args": Array [
     Array [
@@ -851,7 +2198,7 @@ Object {
 }
 `;
 
-exports[`let: let 1`] = `
+exports[`parser/let: parser/let 1`] = `
 Object {
   "args": Array [
     Array [
@@ -904,14 +2251,14 @@ Object {
 }
 `;
 
-exports[`lineComment: lineComment 1`] = `
+exports[`parser/lineComment: parser/lineComment 1`] = `
 Object {
   "integer": "1",
   "node": "IntegerLit",
 }
 `;
 
-exports[`list: list 1`] = `
+exports[`parser/list: parser/list 1`] = `
 Array [
   Array [
     "[",
@@ -1064,7 +2411,7 @@ Array [
 ]
 `;
 
-exports[`merge: merge 1`] = `
+exports[`parser/merge: parser/merge 1`] = `
 Object {
   "args": Array [
     Array [
@@ -1122,7 +2469,7 @@ Object {
 }
 `;
 
-exports[`natural: natural 1`] = `
+exports[`parser/natural: parser/natural 1`] = `
 Array [
   Array [
     "[",
@@ -1188,20 +2535,20 @@ Array [
 ]
 `;
 
-exports[`nestedBlockComment: nestedBlockComment 1`] = `
+exports[`parser/nestedBlockComment: parser/nestedBlockComment 1`] = `
 Object {
   "integer": "1",
   "node": "IntegerLit",
 }
 `;
 
-exports[`operators: operators 1`] = `
+exports[`parser/operators: parser/operators 1`] = `
 Object {
   "node": "Combine",
 }
 `;
 
-exports[`pathTermination: pathTermination 1`] = `
+exports[`parser/pathTermination: parser/pathTermination 1`] = `
 Object {
   "args": Array [
     Array [
@@ -1227,7 +2574,7 @@ Object {
 }
 `;
 
-exports[`paths: paths 1`] = `
+exports[`parser/paths: parser/paths 1`] = `
 Array [
   Array [
     "[",
@@ -1397,7 +2744,7 @@ Array [
 ]
 `;
 
-exports[`quotedLabel: quotedLabel 1`] = `
+exports[`parser/quotedLabel: parser/quotedLabel 1`] = `
 Object {
   "args": Array [
     Object {
@@ -1452,7 +2799,7 @@ Object {
 }
 `;
 
-exports[`record: record 1`] = `
+exports[`parser/record: parser/record 1`] = `
 Object {
   "expr": Object {
     "args": Array [
@@ -1482,7 +2829,7 @@ Object {
 }
 `;
 
-exports[`reservedPrefix: reservedPrefix 1`] = `
+exports[`parser/reservedPrefix: parser/reservedPrefix 1`] = `
 Object {
   "args": Array [
     Array [
@@ -1523,7 +2870,7 @@ Object {
 }
 `;
 
-exports[`singleQuotedString: singleQuotedString 1`] = `
+exports[`parser/singleQuotedString: parser/singleQuotedString 1`] = `
 Array [
   Array [
     "''",
@@ -1566,14 +2913,14 @@ Array [
 ]
 `;
 
-exports[`unicodeComment: unicodeComment 1`] = `
+exports[`parser/unicodeComment: parser/unicodeComment 1`] = `
 Object {
   "integer": "1",
   "node": "IntegerLit",
 }
 `;
 
-exports[`unicodeDoubleQuotedString: unicodeDoubleQuotedString 1`] = `
+exports[`parser/unicodeDoubleQuotedString: parser/unicodeDoubleQuotedString 1`] = `
 Array [
   Array [
     "\\"",
@@ -1603,7 +2950,7 @@ Array [
 ]
 `;
 
-exports[`union: union 1`] = `
+exports[`parser/union: parser/union 1`] = `
 Object {
   "expr": Array [
     Array [
@@ -1801,14 +3148,14 @@ Object {
 }
 `;
 
-exports[`whitespace: whitespace 1`] = `
+exports[`parser/whitespace: parser/whitespace 1`] = `
 Object {
   "integer": "1",
   "node": "IntegerLit",
 }
 `;
 
-exports[`whitespaceBuffet: whitespaceBuffet 1`] = `
+exports[`parser/whitespaceBuffet: parser/whitespaceBuffet 1`] = `
 Object {
   "node": "Natural/even",
 }
