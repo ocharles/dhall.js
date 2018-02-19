@@ -1,0 +1,30 @@
+{
+  "name": "dhall.js",
+  "version": "1.0.0",
+  "description": "`dhall.js` allows you to work with [Dhall](https://github.com/dhall-lang) expressions in JavaScript.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.2",
+    "jest": "^22.3.0",
+    "jest-cli": "^22.3.0",
+    "pegjs": "^0.10.0",
+    "pegjs-loader": "^0.5.4",
+    "webpack": "^3.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocharles/dhall.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ocharles/dhall.js/issues"
+  },
+  "homepage": "https://github.com/ocharles/dhall.js#readme"
+}
