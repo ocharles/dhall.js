@@ -58,7 +58,7 @@ HEXDIG
   = DIGIT / [ABCDEF]
 
 simpleLabel
-  = !reserved
+  = !(reserved !((ALPHA / DIGIT / [\-/_])))
     x:(ALPHA / "_") xs:(ALPHA / DIGIT / [\-/_])*
     { return x + xs.join(''); }
 
