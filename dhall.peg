@@ -30,16 +30,18 @@ expression
         args: [a, b, c]
       }
     }
+  / operatorExpression arrow expression
   / annotatedExpression
 
 annotatedExpression
-  = merge a:selectorExpression b:selectorExpression
+  = merge a:selectorExpression b:selectorExpression (colon applicationExpression)?
     {
       return {
         type: "Merge",
         args: [a, b]
       }
     }
+  / openBracket (emptyCollection / nonEmptyOptional)
   / a:operatorExpression t:(colon t:expression { return t; })?
     {
       if (t) {
@@ -51,6 +53,19 @@ annotatedExpression
         return a;
       }
     }
+
+
+emptyCollection
+  = closeBracket colon (List / Optional) selectorExpression
+
+nonEmptyOptional
+  = expression closeBracket colon Optional selectorExpression
+
+List
+  = "List" whitespace
+  
+Optional
+  = "Optional" whitespace
 
 lambda
   = [\\λ] whitespace
@@ -69,7 +84,7 @@ closeParens
   = [)] whitespace
 
 arrow
-  = ("->" / [→]) whitespace
+  = ("->" / "→") whitespace
 
 whitespace
   = whitespaceChunk*
@@ -85,6 +100,22 @@ reserved
 whitespaceChunk
   = [ ]
   / endOfLine
+  / lineComment
+  / blockComment
+
+blockComment
+  = "{-" blockCommentContinue
+
+blockCommentContinue
+  = "-}" / blockCommentChunk blockCommentContinue
+
+blockCommentChunk
+  = blockComment
+  / tab
+  / endOfLine
+  / .
+
+tab = "\t"
 
 ALPHA
   = [a-zA-Z]
@@ -95,59 +126,38 @@ DIGIT
 prefer
   = ("⫽" / "//") whitespace
 
+listAppend
+  = "#" whitespace
+
 operatorExpression
   = orExpression
 
 orExpression
-  = preferExpression
+  = textAppendExpression
+
+textAppendExpression
+  = listAppendExpression (textAppend listAppendExpression)*
+
+listAppendExpression
+  = preferExpression (listAppend preferExpression)*
 
 preferExpression =
   e:applicationExpression prefers:(prefer applicationExpression)*
-  {
-    if (prefers.length) {
-      expected("TODO");
-    }
-    else {
-      return e;
-    }
-  }
 
 applicationExpression
   = c:constructors? args:selectorExpression+
-    {
-      if (c) {
-        return {
-          type: "Constructors",
-          args: args
-        };
-      }
-      else {
-        if (args.length == 1) {
-          return args[0];
-        }
-        else {
-          expected("TODO");
-        }
-      }
-    }
 
 constructors
   = "constructors" whitespace
 
 selectorExpression
   = e:primitiveExpression path:(dot label)*
-    {
-      if (path.length > 0) {
-        expected("TODO");
-      }
-      else {
-        return e;
-      }
-    }
 
 primitiveExpression
-  = naturalLiteral
+  = doubleLiteral
+  / naturalLiteral
   / textLiteral
+  / integerLiteral
   / openBrace a:recordTypeOrLiteral closeBrace
     {
       return {
@@ -155,6 +165,7 @@ primitiveExpression
         args: [a]
       }
     }
+  / openAngle unionTypeOrLiteral closeAngle
   / nonEmptyListLiteral
   / import
   / Bool
@@ -165,6 +176,12 @@ primitiveExpression
       return { type: "Var", args: [ a ] }
     }
   / openParens a:expression closeParens { return a; }
+  
+openAngle
+  = "<" whitespace
+
+integerLiteral
+  = naturalRaw whitespace
 
 textLiteral
   = (doubleQuoteLiteral) whitespace
@@ -173,7 +190,7 @@ doubleQuoteLiteral
   = "\"" doubleQuoteChunk* "\""
 
 doubleQuoteChunk
-  = [a-zA-Z\-.]
+  = [a-zA-Z\-.@ 0-9_,\\]
 
 Bool
   = "Bool" whitespace
@@ -208,15 +225,20 @@ in
 endOfLine
   = "\n" / "\r\n"
 
+
 identifier
-  = label
+  = label (at naturalRaw)?
+ 
+at
+  = "@" whitespace
 
 forall
-  = "forall" whitespace
+  = ("forall" / "∀") whitespace
 
 recordTypeOrLiteral
-  = equal { return {} }
+  = equal { return {} } 
   / nonEmptyRecordTypeOrLiteral
+  / ""
 
 openBrace
   = "{" whitespace
@@ -225,7 +247,7 @@ closeBrace
   = "}" whitespace
 
 nonEmptyRecordTypeOrLiteral
-  = k:label v:(nonEmptyRecordLiteral)
+  = k:label v:(nonEmptyRecordLiteral / nonEmptyRecordType)
     {
       var fields = {}
       fields[k] = v[0];
@@ -237,6 +259,9 @@ nonEmptyRecordLiteral
     {
       return [a, b]
     }
+
+nonEmptyRecordType
+  = colon expression (comma expression)*
 
 comma
   = "," whitespace
@@ -299,3 +324,53 @@ naturalLiteral
 
 naturalRaw
   = DIGIT+
+
+unionTypeOrLiteral 
+  = nonEmptyUnionTypeOrLiteral / ""
+
+nonEmptyUnionTypeOrLiteral 
+  = label
+  ( equal expression (bar label colon expression)*
+  / colon expression (bar nonEmptyUnionTypeOrLiteral / "")
+  )
+
+closeAngle
+  = ">" whitespace
+
+bar
+  = "|" whitespace
+
+doubleLiteral
+  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent)
+
+exponent
+  = "e" ("+" / "-")? DIGIT+
+ 
+lineComment
+  = "--" notEndOfLine* endOfLine
+
+notEndOfLine
+  = [a-zA-Z ,]
+
+env
+  = "env:"
+  ( bashEnvironmentVariable
+  / '"' posixEnvironmentVariable '"'
+  ) whitespace
+
+bashEnvironmentVariable
+  = (ALPHA / "_") *(ALPHA / DIGIT / "_")
+
+posixEnvironmentVariable
+  = posixEnvironmentVariableCharacter+
+
+posixEnvironmentVariableCharacter =
+      "\\"
+      ( [abfnrtv] )
+    / .
+    / .
+    / .
+    / .
+
+textAppend
+  = "++" whitespace
