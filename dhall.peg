@@ -73,9 +73,11 @@ lambda
 openParens
   = [(] whitespace
 
+quotedLabel
+  = (ALPHA / DIGIT / [\-/_:.])+
+
 label
-  = l:simpleLabel whitespace
-    { return l; }
+  = ("`" quotedLabel "`" / l:simpleLabel) whitespace
 
 colon
   = [:] whitespace
@@ -133,16 +135,34 @@ operatorExpression
   = orExpression
 
 orExpression
-  = textAppendExpression
+  = plusExpression (or plusExpression)*
+
+plusExpression
+  = textAppendExpression (plus listAppendExpression)*
 
 textAppendExpression
   = listAppendExpression (textAppend listAppendExpression)*
 
 listAppendExpression
-  = preferExpression (listAppend preferExpression)*
+  = andExpression (listAppend andExpression)*
+
+andExpression
+  = combineExpression (and combineExpression)*
+  
+combineExpression
+  = preferExpression (combine preferExpression)*
 
 preferExpression =
-  e:applicationExpression prefers:(prefer applicationExpression)*
+  e:timesExpression prefers:(prefer timesExpression)*
+
+timesExpression =
+  e:equalExpression prefers:(times equalExpression)*
+
+equalExpression =
+  e:notEqualExpression prefers:(doubleEqual notEqualExpression)*
+
+notEqualExpression =
+  e:applicationExpression prefers:(notEqual applicationExpression)*
 
 applicationExpression
   = c:constructors? args:selectorExpression+
@@ -374,3 +394,11 @@ posixEnvironmentVariableCharacter =
 
 textAppend
   = "++" whitespace
+  
+or = "||" whitespace
+plus = "+" whitespace
+and = "&&" whitespace
+combine = ("∧" / "/\\") whitespace
+times = "*" whitespace
+doubleEqual = "==" whitespace
+notEqual = "!=" whitespace
