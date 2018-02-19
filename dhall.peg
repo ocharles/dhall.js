@@ -1,5 +1,208 @@
 completeExpression
-  = whitespace e:expression "" { return e; }
+  = whitespace e:expression { return e; }
+
+endOfLine
+  = "\n" / "\r\n"
+
+tab
+  = "\t"
+
+blockComment
+  = "{-" blockCommentContinue
+
+blockCommentChunk
+  = blockComment
+  / . // TODO %x20-10FFFF
+  / tab
+  / endOfLine
+
+blockCommentContinue
+  = "-}" / blockCommentChunk blockCommentContinue
+
+notEndOfLine
+  = [a-zA-Z ,] // TODO %x20-10FFFF
+  / tab
+
+lineComment
+  = "--" notEndOfLine* endOfLine
+
+whitespaceChunk
+  = [ ]
+  / tab
+  / endOfLine
+  / lineComment
+  / blockComment
+
+whitespace
+  = whitespaceChunk*
+
+ALPHA
+  = [a-zA-Z]
+
+DIGIT
+  = [0-9]
+
+HEXDIG
+  = DIGIT / [ABCDEF]
+
+simpleLabel
+  = !reserved
+    x:(ALPHA / "_") xs:(ALPHA / DIGIT / [\-/_])*
+    { return x + xs.join(''); }
+
+quotedLabel
+  = (ALPHA / DIGIT / [\-/_:.])+
+
+label
+  = ("`" quotedLabel "`" / l:simpleLabel) whitespace
+
+// TODO
+doubleQuoteChunk
+  = [a-zA-Z\-.@ 0-9_,\\]
+
+doubleQuoteLiteral
+  = "\"" doubleQuoteChunk* "\""
+
+// TODO singleQuoteLiteral
+
+textLiteral
+  = (doubleQuoteLiteral /* TODO / singleQuoteLiteral */) whitespace
+
+if                = "if"               whitespace
+then              = "then"             whitespace
+else              = "else"             whitespace
+let               = "let"              whitespace
+in                = "in"               whitespace
+as                = "as"               whitespace
+using             = "using"            whitespace
+merge             = "merge"            whitespace
+constructors      = "constructors"     whitespace
+NaturalFold       = "Natural-fold"     whitespace
+NaturalBuild      = "Natural-build"    whitespace
+NaturalIsZero     = "Natural-isZero"   whitespace
+NaturalEven       = "Natural-even"     whitespace
+NaturalOdd        = "Natural-odd"      whitespace
+NaturalToInteger  = "Natural-toInteger"whitespace
+NaturalShow       = "Natural-show"     whitespace
+IntegerShow       = "Integer-show"     whitespace
+DoubleShow        = "Double-show"      whitespace
+ListBuild         = "List-build"       whitespace
+ListFold          = "List-fold"        whitespace
+ListLength        = "List-length"      whitespace
+ListHead          = "List-head"        whitespace
+ListLast          = "List-last"        whitespace
+ListIndexed       = "List-indexed"     whitespace
+ListReverse       = "List-reverse"     whitespace
+OptionalFold      = "Optional-fold"    whitespace
+OptionalBuild     = "Optional-build"   whitespace
+Bool              = "Bool"             whitespace
+Optional          = "Optional"         whitespace
+Natural           = "Natural"          whitespace
+Integer           = "Integer"          whitespace
+Double            = "Double"           whitespace
+Text              = "Text"             whitespace
+List              = "List"             whitespace
+True              = "True"             whitespace
+False             = "False"            whitespace
+Type              = "Type"             whitespace
+Kind              = "Kind"             whitespace
+
+equal         = "="  whitespace
+or            = "||" whitespace
+plus          = "+"  whitespace
+textAppend    = "++" whitespace
+listAppend    = "#"  whitespace
+and           = "&&" whitespace
+times         = "*"  whitespace
+doubleEqual   = "==" whitespace
+notEqual      = "!=" whitespace
+dot           = "."  whitespace
+openBrace     = "{"  whitespace
+closeBrace    = "}"  whitespace
+openBracket   = "["  whitespace
+closeBracket  = "]"  whitespace
+openAngle     = "<"  whitespace
+closeAngle    = ">"  whitespace
+bar           = "|"  whitespace
+comma         = ","  whitespace
+openParens    = "("  whitespace
+closeParens   = ")"  whitespace
+colon         = ":"  whitespace
+at            = "@"  whitespace
+
+combine = ( "∧" / "/\\"    ) whitespace
+prefer  = ( "∧" / "//"     ) whitespace
+lambda  = ( "λ" / "\\"     ) whitespace
+forall  = ( "∀" / "forall" ) whitespace
+arrow   = ( "→" / "->"     ) whitespace
+
+exponent
+  = "e" ("+" / "-")? DIGIT+
+
+doubleLiteral
+  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent)
+
+naturalRaw
+  = DIGIT+
+
+integerLiteral
+  = naturalRaw whitespace
+
+naturalLiteral
+  = "+" naturalRaw whitespace
+
+identifier
+  = label (at naturalRaw)?
+
+// TODO
+headPathCharacter
+  = c:. & { return c != " "; } { return c; }
+
+pathCharacter
+  = headPathCharacter / "\\" / "/"
+
+fileRaw
+  = "/" headPathCharacter pathCharacter*
+  / "./" chars:pathCharacter* { return "./" + chars.join(''); }
+
+file
+  = a:fileRaw whitespace { return a; }
+
+env
+  = "env:"
+  ( bashEnvironmentVariable
+  / '"' posixEnvironmentVariable '"'
+  ) whitespace
+
+bashEnvironmentVariable
+  = (ALPHA / "_") *(ALPHA / DIGIT / "_")
+
+posixEnvironmentVariable
+  = posixEnvironmentVariableCharacter+
+
+posixEnvironmentVariableCharacter =
+      "\\"
+      ( [abfnrtv] )
+    / .
+    / .
+    / .
+    / .
+
+pathType
+  = p:file { return { type: "file", path: p } }
+
+hash
+  = "sha256:" digits:HEXDIG* & { return digits.length() == 64; }
+
+pathHashed
+  = p:pathType h:hash? { p.hash = h; return p; }
+
+import
+  = p:pathHashed t:(as Text)?
+    {
+      p.asText = t ? true : false;
+      return p;
+    }
 
 expression
   = lambda openParens a:label colon b:expression closeParens arrow c:expression
@@ -54,82 +257,11 @@ annotatedExpression
       }
     }
 
-
 emptyCollection
   = closeBracket colon (List / Optional) selectorExpression
 
 nonEmptyOptional
   = expression closeBracket colon Optional selectorExpression
-
-List
-  = "List" whitespace
-  
-Optional
-  = "Optional" whitespace
-
-lambda
-  = [\\λ] whitespace
-
-openParens
-  = [(] whitespace
-
-quotedLabel
-  = (ALPHA / DIGIT / [\-/_:.])+
-
-label
-  = ("`" quotedLabel "`" / l:simpleLabel) whitespace
-
-colon
-  = [:] whitespace
-
-closeParens
-  = [)] whitespace
-
-arrow
-  = ("->" / "→") whitespace
-
-whitespace
-  = whitespaceChunk*
-
-simpleLabel
-  = !reserved
-    x:(ALPHA / "_") xs:(ALPHA / DIGIT / [-/_])*
-    { return x + xs.join(''); }
-
-reserved
-  = "let" / "in"
-
-whitespaceChunk
-  = [ ]
-  / endOfLine
-  / lineComment
-  / blockComment
-
-blockComment
-  = "{-" blockCommentContinue
-
-blockCommentContinue
-  = "-}" / blockCommentChunk blockCommentContinue
-
-blockCommentChunk
-  = blockComment
-  / tab
-  / endOfLine
-  / .
-
-tab = "\t"
-
-ALPHA
-  = [a-zA-Z]
-
-DIGIT
-  = [0-9]
-
-prefer
-  = ("⫽" / "//") whitespace
-
-listAppend
-  = "#" whitespace
 
 operatorExpression
   = orExpression
@@ -148,7 +280,7 @@ listAppendExpression
 
 andExpression
   = combineExpression (and combineExpression)*
-  
+
 combineExpression
   = preferExpression (combine preferExpression)*
 
@@ -167,17 +299,14 @@ notEqualExpression =
 applicationExpression
   = c:constructors? args:selectorExpression+
 
-constructors
-  = "constructors" whitespace
-
 selectorExpression
   = e:primitiveExpression path:(dot label)*
 
 primitiveExpression
   = doubleLiteral
   / naturalLiteral
-  / textLiteral
   / integerLiteral
+  / textLiteral
   / openBrace a:recordTypeOrLiteral closeBrace
     {
       return {
@@ -188,83 +317,45 @@ primitiveExpression
   / openAngle unionTypeOrLiteral closeAngle
   / nonEmptyListLiteral
   / import
-  / Bool
-  / True
-  / False
   / a:identifier
     {
       return { type: "Var", args: [ a ] }
     }
+  / NaturalFold
+  / NaturalBuild
+  / NaturalIsZero
+  / NaturalEven
+  / NaturalOdd
+  / NaturalToInteger
+  / NaturalShow
+  / IntegerShow
+  / DoubleShow
+  / ListBuild
+  / ListFold
+  / ListLength
+  / ListHead
+  / ListLast
+  / ListIndexed
+  / ListReverse
+  / OptionalFold
+  / OptionalBuild
+  / Bool
+  / Optional
+  / Natural
+  / Integer
+  / Double
+  / Text
+  / List
+  / True
+  / False
+  / Type
+  / Kind
   / openParens a:expression closeParens { return a; }
-  
-openAngle
-  = "<" whitespace
-
-integerLiteral
-  = naturalRaw whitespace
-
-textLiteral
-  = (doubleQuoteLiteral) whitespace
-
-doubleQuoteLiteral
-  = "\"" doubleQuoteChunk* "\""
-
-doubleQuoteChunk
-  = [a-zA-Z\-.@ 0-9_,\\]
-
-Bool
-  = "Bool" whitespace
-    { return { type: "Bool" } }
-
-True
-  = "True" whitespace
-    { return { type: "True" } }
-
-False
-  = "False" whitespace
-    { return { type: "False" } }
-
-if
-  = "if" whitespace
-
-then
-  = "then" whitespace
-
-else
-  = "else" whitespace
-
-let
-  = "let" whitespace
-
-equal
-  = "=" whitespace
-
-in
-  = "in" whitespace
-
-endOfLine
-  = "\n" / "\r\n"
-
-
-identifier
-  = label (at naturalRaw)? whitespace
- 
-at
-  = "@" whitespace
-
-forall
-  = ("forall" / "∀") whitespace
 
 recordTypeOrLiteral
-  = equal { return {} } 
+  = equal { return {} }
   / nonEmptyRecordTypeOrLiteral
   / ""
-
-openBrace
-  = "{" whitespace
-
-closeBrace
-  = "}" whitespace
 
 nonEmptyRecordTypeOrLiteral
   = k:label v:(nonEmptyRecordLiteral / nonEmptyRecordType)
@@ -274,131 +365,26 @@ nonEmptyRecordTypeOrLiteral
       return fields;
     }
 
+nonEmptyRecordType
+  = colon expression (comma expression)*
+
 nonEmptyRecordLiteral
   = equal a:expression b:(comma label equal expression)*
     {
       return [a, b]
     }
 
-nonEmptyRecordType
-  = colon expression (comma expression)*
-
-comma
-  = "," whitespace
-
-merge
-  = "merge" whitespace
-
-dot
-  = "." whitespace
-
-import
-  = p:pathHashed t:(as Text)?
-    {
-      p.asText = t ? true : false;
-      return p;
-    }
-
-pathHashed
-  = p:pathType h:hash? { p.hash = h; return p; }
-
-as
-  = "as" whitespace
-
-Text
-  = "Text" whitespace
-
-pathType
-  = p:file { return { type: "file", path: p } }
-
-file
-  = a:fileRaw whitespace { return a; }
-
-fileRaw
-  = "/" headPathCharacter pathCharacter*
-  / "./" chars:pathCharacter* { return "./" + chars.join(''); }
-
-hash
-  = "sha256:" digits:HEXDIG* & { return digits.length() == 64; }
-
-headPathCharacter
-  = c:. & { return c != " "; } { return c; }
-
-pathCharacter
-  = headPathCharacter / "\\" / "/"
-
-HEXDIG
-  = DIGIT / [ABCDEF]
-
-nonEmptyListLiteral
-  = openBracket expression (comma expression)* closeBracket
-
-openBracket
-  = "[" whitespace
-
-closeBracket
-  = "]" whitespace
-
-naturalLiteral
-  = "+" naturalRaw whitespace
-
-naturalRaw
-  = DIGIT+
-
-unionTypeOrLiteral 
+unionTypeOrLiteral
   = nonEmptyUnionTypeOrLiteral / ""
 
-nonEmptyUnionTypeOrLiteral 
+nonEmptyUnionTypeOrLiteral
   = label
   ( equal expression (bar label colon expression)*
   / colon expression (bar nonEmptyUnionTypeOrLiteral / "")
   )
 
-closeAngle
-  = ">" whitespace
+nonEmptyListLiteral
+  = openBracket expression (comma expression)* closeBracket
 
-bar
-  = "|" whitespace
-
-doubleLiteral
-  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent) whitespace
-
-exponent
-  = "e" ("+" / "-")? DIGIT+
- 
-lineComment
-  = "--" notEndOfLine* endOfLine
-
-notEndOfLine
-  = [a-zA-Z ,]
-
-env
-  = "env:"
-  ( bashEnvironmentVariable
-  / '"' posixEnvironmentVariable '"'
-  ) whitespace
-
-bashEnvironmentVariable
-  = (ALPHA / "_") *(ALPHA / DIGIT / "_")
-
-posixEnvironmentVariable
-  = posixEnvironmentVariableCharacter+
-
-posixEnvironmentVariableCharacter =
-      "\\"
-      ( [abfnrtv] )
-    / .
-    / .
-    / .
-    / .
-
-textAppend
-  = "++" whitespace
-  
-or = "||" whitespace
-plus = "+" whitespace
-and = "&&" whitespace
-combine = ("∧" / "/\\") whitespace
-times = "*" whitespace
-doubleEqual = "==" whitespace
-notEqual = "!=" whitespace
+reserved
+  = "let" / "in" // TODO
