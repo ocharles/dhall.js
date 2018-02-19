@@ -247,7 +247,7 @@ endOfLine
 
 
 identifier
-  = label (at naturalRaw)?
+  = label (at naturalRaw)? whitespace
  
 at
   = "@" whitespace
@@ -361,7 +361,7 @@ bar
   = "|" whitespace
 
 doubleLiteral
-  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent)
+  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent) whitespace
 
 exponent
   = "e" ("+" / "-")? DIGIT+
