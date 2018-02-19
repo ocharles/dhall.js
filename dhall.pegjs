@@ -369,7 +369,7 @@ expression
   / if a:expression then b:expression else c:expression
     {
       return {
-        node: 'if',
+        type: 'BoolIf',
         predicate: a,
         true: b,
         false: c
