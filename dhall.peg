@@ -2,17 +2,17 @@ completeExpression
   = whitespace e:expression { return e; }
 
 endOfLine
-  = "\n" / "\r\n"
+  = "\u000A" / "\u000D" "\u000A"
 
 tab
-  = "\t"
+  = "\u0009"
 
 blockComment
   = "{-" blockCommentContinue
 
 blockCommentChunk
   = blockComment
-  / . // TODO %x20-10FFFF
+  / [\u0020-\uFFFF]
   / tab
   / endOfLine
 
@@ -20,7 +20,7 @@ blockCommentContinue
   = "-}" / blockCommentChunk blockCommentContinue
 
 notEndOfLine
-  = [a-zA-Z ,] // TODO %x20-10FFFF
+  = [\u0020-\uFFFF]
   / tab
 
 lineComment
@@ -37,10 +37,10 @@ whitespace
   = whitespaceChunk*
 
 ALPHA
-  = [a-zA-Z]
+  = [\u0041-\u005A] / [\u0061-\u007A]
 
 DIGIT
-  = [0-9]
+  = [\u0030-\u0039]
 
 HEXDIG
   = DIGIT / [ABCDEF]
@@ -58,15 +58,40 @@ label
 
 // TODO
 doubleQuoteChunk
-  = [a-zA-Z\-.@ 0-9_,\\]
+  =
+      "${" expression "}"
+    / "\u005C"
+      ( "\u0022"
+      / "\u0024"
+      / "\u005C"
+      / "\u002F"
+      / "\u0062"
+      / "\u0066"
+      / "\u006E"
+      / "\u0072"
+      / "\u0074"
+      / "\u0075"
+      )
+    / [\u0020-\u0021]
+    / [\u0023-\u005B]
+    / [\u005D-\uFFFF]
 
 doubleQuoteLiteral
   = "\"" doubleQuoteChunk* "\""
 
-// TODO singleQuoteLiteral
+singleQuoteContinue =
+      "'''"               singleQuoteContinue
+    / "${" expression "}" singleQuoteContinue
+    / "''${"              singleQuoteContinue
+    / "''"
+    / [\u0020-\uFFFF]     singleQuoteContinue
+    / tab                 singleQuoteContinue
+    / endOfLine           singleQuoteContinue
+
+singleQuoteLiteral = "''" singleQuoteContinue
 
 textLiteral
-  = (doubleQuoteLiteral /* TODO / singleQuoteLiteral */) whitespace
+  = (doubleQuoteLiteral / singleQuoteLiteral) whitespace
 
 if                = "if"               whitespace
 then              = "then"             whitespace
@@ -77,24 +102,24 @@ as                = "as"               whitespace
 using             = "using"            whitespace
 merge             = "merge"            whitespace
 constructors      = "constructors"     whitespace
-NaturalFold       = "Natural-fold"     whitespace
-NaturalBuild      = "Natural-build"    whitespace
-NaturalIsZero     = "Natural-isZero"   whitespace
-NaturalEven       = "Natural-even"     whitespace
-NaturalOdd        = "Natural-odd"      whitespace
-NaturalToInteger  = "Natural-toInteger"whitespace
-NaturalShow       = "Natural-show"     whitespace
-IntegerShow       = "Integer-show"     whitespace
-DoubleShow        = "Double-show"      whitespace
-ListBuild         = "List-build"       whitespace
-ListFold          = "List-fold"        whitespace
-ListLength        = "List-length"      whitespace
-ListHead          = "List-head"        whitespace
-ListLast          = "List-last"        whitespace
-ListIndexed       = "List-indexed"     whitespace
-ListReverse       = "List-reverse"     whitespace
-OptionalFold      = "Optional-fold"    whitespace
-OptionalBuild     = "Optional-build"   whitespace
+NaturalFold       = "Natural/fold"     whitespace
+NaturalBuild      = "Natural/build"    whitespace
+NaturalIsZero     = "Natural/isZero"   whitespace
+NaturalEven       = "Natural/even"     whitespace
+NaturalOdd        = "Natural/odd"      whitespace
+NaturalToInteger  = "Natural/toInteger"whitespace
+NaturalShow       = "Natural/show"     whitespace
+IntegerShow       = "Integer/show"     whitespace
+DoubleShow        = "Double/show"      whitespace
+ListBuild         = "List/build"       whitespace
+ListFold          = "List/fold"        whitespace
+ListLength        = "List/length"      whitespace
+ListHead          = "List/head"        whitespace
+ListLast          = "List/last"        whitespace
+ListIndexed       = "List/indexed"     whitespace
+ListReverse       = "List/reverse"     whitespace
+OptionalFold      = "Optional/fold"    whitespace
+OptionalBuild     = "Optional/build"   whitespace
 Bool              = "Bool"             whitespace
 Optional          = "Optional"         whitespace
 Natural           = "Natural"          whitespace
@@ -154,9 +179,16 @@ naturalLiteral
 identifier
   = label (at naturalRaw)?
 
-// TODO
-headPathCharacter
-  = c:. & { return c != " "; } { return c; }
+headPathCharacter =
+      [\u0021-\u0027]
+    / [\u002A-\u002B]
+    / [\u002D-\u002E]
+    / [\u0030-\u003B]
+    / "\u003D"
+    / [\u003F-\u005A]
+    / [\u005E-\u007A]
+    / "\u007C"
+    / "\u007E"
 
 pathCharacter
   = headPathCharacter / "\\" / "/"
@@ -164,9 +196,66 @@ pathCharacter
 fileRaw
   = "/" headPathCharacter pathCharacter*
   / "./" chars:pathCharacter* { return "./" + chars.join(''); }
+  / "../" pathCharacter*
+  / "~/"  pathCharacter*
 
 file
   = a:fileRaw whitespace { return a; }
+
+scheme =
+  "http" "s"?
+
+httpRaw = scheme "://" authority pathAbempty ("?" query)? ("#" fragment)?
+
+// NOTE: Backtrack if parsing the optional user info prefix fails
+authority = (userinfo "@")? host (":" port)?
+
+userinfo = ( unreserved / pctEncoded / subDelims / ":" )*
+
+host = IPLiteral / IPv4address / regName
+
+port = DIGIT*
+
+IPLiteral = "[" ( /* IPv6address  / */ IPvFuture  ) "]"
+
+IPvFuture = "v" HEXDIG* "." ( unreserved / subDelims / ":" )+
+
+// TODO
+// IPv6address
+
+// h16 = 1*4HEXDIG
+
+// ls32 = ( h16 ":" h16 ) / IPv4address
+
+IPv4address = decOctet "." decOctet "." decOctet "." decOctet
+
+// NOTE: Backtrack when parsing these alternatives and try them in reverse order
+// TODO
+decOctet = DIGIT
+//          / %x31-39 DIGIT      ; 10-99
+//          / "1" 2DIGIT         ; 100-199
+//          / "2" %x30-34 DIGIT  ; 200-249
+//          / "25" %x30-35       ; 250-255
+
+regName = ( unreserved / pctEncoded / subDelims )*
+
+pathAbempty = ( "/" segment )*
+
+segment = pchar*
+
+pchar = unreserved / pctEncoded / subDelims / ":" / "@"
+
+query = ( pchar / "/" / "?" )*
+
+fragment = ( pchar / "/" / "?" )*
+
+pctEncoded = "%" HEXDIG HEXDIG
+
+unreserved  = ALPHA / DIGIT / "-" / "." / "_" / "~"
+
+subDelims = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
+
+http = httpRaw whitespace (using pathHashed)?
 
 env
   = "env:"
@@ -190,6 +279,8 @@ posixEnvironmentVariableCharacter =
 
 pathType
   = p:file { return { type: "file", path: p } }
+  / http
+  / env
 
 hash
   = "sha256:" digits:HEXDIG* & { return digits.length() == 64; }
@@ -318,9 +409,9 @@ primitiveExpression
   / nonEmptyListLiteral
   / import
   / a:identifier
-    {
-      return { type: "Var", args: [ a ] }
-    }
+  {
+    return { type: "Var", args: [ a ] }
+  }
   / NaturalFold
   / NaturalBuild
   / NaturalIsZero
@@ -387,4 +478,4 @@ nonEmptyListLiteral
   = openBracket expression (comma expression)* closeBracket
 
 reserved
-  = "let" / "in" // TODO
+  = "if" / "then" / "else" / "let" / "in" / "as" / "using" / "merge" / "constructors" / "Natural/fold" / "Natural/build" / "Natural/isZero" / "Natural/even" / "Natural/odd" / "Natural/toInteger" / "Natural/show" / "Integer/show" / "Double/show" / "List/build" / "List/fold" / "List/length" / "List/head" / "List/last" / "List/indexed" / "List/reverse" / "Optional/fold" / "Optional/build" / "Bool" / "Optional" / "Natural" / "Integer" / "Double" / "Text" / "List" / "True" / "False" / "Type" / "Kind"
