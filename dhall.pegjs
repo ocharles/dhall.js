@@ -1,3 +1,15 @@
+{
+  function operatorPostProcess(node, a, args) {
+    if (args.length) {
+      return {
+        node: node
+      };
+    } else {
+      return a;
+    } 
+  }
+}
+
 completeExpression
   = whitespace e:expression { return e; }
 
@@ -93,44 +105,44 @@ singleQuoteLiteral = "''" singleQuoteContinue
 textLiteral
   = (doubleQuoteLiteral / singleQuoteLiteral) whitespace
 
-if                = "if"               whitespace
-then              = "then"             whitespace
-else              = "else"             whitespace
-let               = "let"              whitespace
-in                = "in"               whitespace
-as                = "as"               whitespace
-using             = "using"            whitespace
-merge             = "merge"            whitespace
-constructors      = "constructors"     whitespace
-NaturalFold       = "Natural/fold"     whitespace
-NaturalBuild      = "Natural/build"    whitespace
-NaturalIsZero     = "Natural/isZero"   whitespace
-NaturalEven       = "Natural/even"     whitespace
-NaturalOdd        = "Natural/odd"      whitespace
-NaturalToInteger  = "Natural/toInteger"whitespace
-NaturalShow       = "Natural/show"     whitespace
-IntegerShow       = "Integer/show"     whitespace
-DoubleShow        = "Double/show"      whitespace
-ListBuild         = "List/build"       whitespace
-ListFold          = "List/fold"        whitespace
-ListLength        = "List/length"      whitespace
-ListHead          = "List/head"        whitespace
-ListLast          = "List/last"        whitespace
-ListIndexed       = "List/indexed"     whitespace
-ListReverse       = "List/reverse"     whitespace
-OptionalFold      = "Optional/fold"    whitespace
-OptionalBuild     = "Optional/build"   whitespace
-Bool              = "Bool"             whitespace
-Optional          = "Optional"         whitespace
-Natural           = "Natural"          whitespace
-Integer           = "Integer"          whitespace
-Double            = "Double"           whitespace
-Text              = "Text"             whitespace
-List              = "List"             whitespace
-True              = "True"             whitespace
-False             = "False"            whitespace
-Type              = "Type"             whitespace
-Kind              = "Kind"             whitespace
+if                =   "if"               whitespace
+then              =   "then"             whitespace
+else              =   "else"             whitespace
+let               =   "let"              whitespace
+in                =   "in"               whitespace
+as                = a:"as"               whitespace { return { node: ''}}
+using             = a:"using"            whitespace { return { node: ''}}
+merge             = a:"merge"            whitespace { return { node: ''}}
+constructors      = a:"constructors"     whitespace { return { node: ''}}
+NaturalFold       = a:"Natural/fold"     whitespace { return { node: 'Natural/fold' }; }
+NaturalBuild      = a:"Natural/build"    whitespace { return { node: 'Natural/build' }; }
+NaturalIsZero     = a:"Natural/isZero"   whitespace { return { node: 'Natural/isZero' }; }
+NaturalEven       = a:"Natural/even"     whitespace { return { node: 'Natural/even' }; }
+NaturalOdd        = a:"Natural/odd"      whitespace { return { node: 'Natural/odd' }; }
+NaturalToInteger  = a:"Natural/toInteger"whitespace { return { node: 'Natural/toInteger' }; }
+NaturalShow       = a:"Natural/show"     whitespace { return { node: 'Natural/show' }; }
+IntegerShow       = a:"Integer/show"     whitespace { return { node: 'Integer/show' }; }
+DoubleShow        = a:"Double/show"      whitespace { return { node: 'Double/show' }; }
+ListBuild         = a:"List/build"       whitespace { return { node: 'List/build' }; }
+ListFold          = a:"List/fold"        whitespace { return { node: 'List/fold' }; }
+ListLength        = a:"List/length"      whitespace { return { node: 'List/length' }; }
+ListHead          = a:"List/head"        whitespace { return { node: 'List/head' }; }
+ListLast          = a:"List/last"        whitespace { return { node: 'List/last' }; }
+ListIndexed       = a:"List/indexed"     whitespace { return { node: 'List/indexed' }; }
+ListReverse       = a:"List/reverse"     whitespace { return { node: 'List/reverse' }; }
+OptionalFold      = a:"Optional/fold"    whitespace { return { node: 'Optional/fold' }; }
+OptionalBuild     = a:"Optional/build"   whitespace { return { node: 'Optional/build' }; }
+Bool              = a:"Bool"             whitespace { return { node: 'Bool' }; }
+Optional          = a:"Optional"         whitespace { return { node: 'Optional' }; }
+Natural           = a:"Natural"          whitespace { return { node: 'Natural' }; }
+Integer           = a:"Integer"          whitespace { return { node: 'Integer' }; }
+Double            = a:"Double"           whitespace { return { node: 'Double' }; }
+Text              = a:"Text"             whitespace { return { node: 'Text' }; }
+List              = a:"List"             whitespace { return { node: 'List' }; }
+True              = a:"True"             whitespace { return { node: 'True' }; }
+False             = a:"False"            whitespace { return { node: 'False' }; }
+Type              = a:"Type"             whitespace { return { node: 'Type' }; }
+Kind              = a:"Kind"             whitespace { return { node: 'Kind' }; }
 
 equal         = "="  whitespace
 or            = "||" whitespace
@@ -168,10 +180,17 @@ doubleLiteral
   = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent)
 
 naturalRaw
-  = DIGIT+
+  = digits:DIGIT+ {
+      return digits.join('');
+  }
 
 integerLiteral
-  = naturalRaw whitespace
+  = a:naturalRaw whitespace {
+      return {
+          node: 'IntegerLit',
+          integer: a
+      }
+  }
 
 naturalLiteral
   = "+" naturalRaw whitespace
@@ -306,8 +325,10 @@ expression
   / if a:expression then b:expression else c:expression
     {
       return {
-        type: "If",
-        args: [ a, b, c ]
+        node: 'if',
+        predicate: a,
+        true: b,
+        false: c
       }
     }
   / let a:label b:(colon t:expression { return t; })? equal c:expression in d:expression
@@ -340,8 +361,9 @@ annotatedExpression
     {
       if (t) {
         return {
-          type: "Annotate",
-          args: [ a,t ]
+          node: "annotate",
+          expr: a,
+          type: t
         }
       } else {
         return a;
@@ -358,40 +380,77 @@ operatorExpression
   = orExpression
 
 orExpression
-  = plusExpression (or plusExpression)*
+  = a:plusExpression args:(or plusExpression)* {
+      return operatorPostProcess('BoolOr', a, args);
+    }
 
 plusExpression
-  = textAppendExpression (plus listAppendExpression)*
+  = a:textAppendExpression args:(plus listAppendExpression)* {
+      return operatorPostProcess('NaturalPlus', a, args);
+    }
 
 textAppendExpression
-  = listAppendExpression (textAppend listAppendExpression)*
+  = a:listAppendExpression args:(textAppend listAppendExpression)* {
+      return operatorPostProcess('TextAppend', a, args); 
+    }
 
 listAppendExpression
-  = andExpression (listAppend andExpression)*
+  = a:andExpression args:(listAppend andExpression)* {
+      return operatorPostProcess('ListAppend', a, args);
+    }
 
 andExpression
-  = combineExpression (and combineExpression)*
+  = a:combineExpression args:(and combineExpression)* {
+      return operatorPostProcess('BoolAnd', a, args);
+    }
 
 combineExpression
-  = preferExpression (combine preferExpression)*
+  = a:preferExpression args:(combine preferExpression)* {
+      return operatorPostProcess('Combine', a, args); 
+    }
 
-preferExpression =
-  e:timesExpression prefers:(prefer timesExpression)*
+preferExpression
+  = a:timesExpression args:(prefer timesExpression)* {
+      return operatorPostProcess('Prefer', a, args); 
+    }
 
-timesExpression =
-  e:equalExpression prefers:(times equalExpression)*
+timesExpression 
+  = a:equalExpression args:(times equalExpression)* {
+      return operatorPostProcess('NaturalTimes', a, args); 
+    }
 
-equalExpression =
-  e:notEqualExpression prefers:(doubleEqual notEqualExpression)*
+equalExpression 
+  = a:notEqualExpression args:(doubleEqual notEqualExpression)* {
+      return operatorPostProcess('BoolEQ', a, args); 
+    }
 
-notEqualExpression =
-  e:applicationExpression prefers:(notEqual applicationExpression)*
+notEqualExpression 
+  = a:applicationExpression args:(notEqual applicationExpression)* {
+      return operatorPostProcess('BoolNE', a, args); 
+    }
 
 applicationExpression
-  = c:constructors? args:selectorExpression+
+  = c:constructors? args:selectorExpression+ {
+      if (c) {
+        return {
+          node: 'constructors',
+          expr: args[0] // TODO
+        } 
+      }
+      else {
+        return args[0]; // TODO
+      }
+    }
 
 selectorExpression
-  = e:primitiveExpression path:(dot label)*
+  = e:primitiveExpression path:(dot label)* {
+      if (path.length) {
+          // TODO
+      }   
+      else {
+          return e;
+      }
+    }
 
 primitiveExpression
   = doubleLiteral

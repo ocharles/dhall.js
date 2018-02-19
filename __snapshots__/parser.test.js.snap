@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ifThenElse 1`] = `
+Object {
+  "false": Object {
+    "integer": "2",
+    "node": "IntegerLit",
+  },
+  "node": "if",
+  "predicate": Object {
+    "node": "True",
+  },
+  "true": Object {
+    "integer": "1",
+    "node": "IntegerLit",
+  },
+}
+`;
