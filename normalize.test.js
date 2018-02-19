@@ -15,8 +15,9 @@ function testNormalize(fileName) {
                     path.join(__dirname, 'dhall-haskell/tests/normalization/' + fileName + 'B.dhall'),
                     (err, dataB) => {
                         if (err) throw err;
+
                         expect(normalize(parser.parse(dataA.toString())))
-                            .toBe(parser.parse(dataB.toString()));
+                            .toEqual(parser.parse(dataB.toString()));
                         done();
                     });
             });

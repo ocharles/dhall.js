@@ -1,13 +1,22 @@
 {
-  function operatorPostProcess(node, a, args) {
-    if (args.length) {
-      return {
-        node: node
-      };
-    } else {
-      return a;
-    } 
-  }
+    function operatorPostProcess(node, a, args) {
+        return [a].concat(args).reduce(function (a, b) {
+            return {
+                type: node,
+                a: a,
+                b: b[1]
+            }
+        });
+    }
+
+    function catObjects(b) {
+        var fields = {};
+        b.forEach(function (item){
+            var key = Object.keys(item)[0];
+            fields[key] = item[key];
+        });
+        return fields;
+    };
 }
 
 completeExpression
@@ -66,12 +75,11 @@ quotedLabel
   = (ALPHA / DIGIT / [\-/_:.])+
 
 label
-  = ("`" quotedLabel "`" / l:simpleLabel) whitespace
+  = a:("`" l:quotedLabel "`" { return l; } / simpleLabel) whitespace { return a; }
 
 // TODO
 doubleQuoteChunk
-  =
-      "${" expression "}"
+  =   "${" expression "}"
     / "\u005C"
       ( "\u0022"
       / "\u0024"
@@ -89,7 +97,7 @@ doubleQuoteChunk
     / [\u005D-\uFFFF]
 
 doubleQuoteLiteral
-  = "\"" doubleQuoteChunk* "\""
+  = "\"" a:doubleQuoteChunk* "\"" { return { node: 'TextLit', chunks: a } }
 
 singleQuoteContinue =
       "'''"               singleQuoteContinue
@@ -103,17 +111,17 @@ singleQuoteContinue =
 singleQuoteLiteral = "''" singleQuoteContinue
 
 textLiteral
-  = (doubleQuoteLiteral / singleQuoteLiteral) whitespace
+  = a:(doubleQuoteLiteral / singleQuoteLiteral) whitespace { return a; }
 
 if                =   "if"               whitespace
 then              =   "then"             whitespace
 else              =   "else"             whitespace
 let               =   "let"              whitespace
 in                =   "in"               whitespace
-as                = a:"as"               whitespace { return { node: ''}}
-using             = a:"using"            whitespace { return { node: ''}}
-merge             = a:"merge"            whitespace { return { node: ''}}
-constructors      = a:"constructors"     whitespace { return { node: ''}}
+as                =   "as"               whitespace
+using             =   "using"            whitespace
+merge             =   "merge"            whitespace
+constructors      =   "constructors"     whitespace
 NaturalFold       = a:"Natural/fold"     whitespace { return { node: 'Natural/fold' }; }
 NaturalBuild      = a:"Natural/build"    whitespace { return { node: 'Natural/build' }; }
 NaturalIsZero     = a:"Natural/isZero"   whitespace { return { node: 'Natural/isZero' }; }
@@ -177,7 +185,12 @@ exponent
   = "e" ("+" / "-")? DIGIT+
 
 doubleLiteral
-  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent) whitespace
+  = a:"-"? b:DIGIT+ c:(d:"." e:DIGIT+ f:exponent? { return d + e.join(''); } / exponent) whitespace {
+      return {
+          type: 'DoubleLit',
+          n: (a ? a : '') + b.join('') + c
+      }
+  }
 
 naturalRaw
   = digits:DIGIT+ {
@@ -185,18 +198,23 @@ naturalRaw
   }
 
 integerLiteral
-  = "-"? a:naturalRaw whitespace {
+  = a:"-"? b:naturalRaw whitespace {
       return {
           node: 'IntegerLit',
-          integer: a
+          integer: (a ? a : '') + b
       }
   }
 
 naturalLiteral
-  = "+" naturalRaw whitespace
+  = "+" n:naturalRaw whitespace { return { type: 'NaturalLit', n: n } }
 
 identifier
-  = label (at naturalRaw)? whitespace
+  = l:label n:(at n:naturalRaw { return n; })? whitespace {
+      return {
+          n: n ? n : 0,
+          label: l
+      };
+  }
 
 headPathCharacter =
       [\u0021-\u0027]
@@ -213,10 +231,10 @@ pathCharacter
   = headPathCharacter / "\\" / "/"
 
 fileRaw
-  = "/" headPathCharacter pathCharacter*
-  / "./" chars:pathCharacter* { return "./" + chars.join(''); }
+  = ("/" headPathCharacter pathCharacter*
+  / "./" chars:pathCharacter*
   / "../" pathCharacter*
-  / "~/"  pathCharacter*
+  / "~/"  pathCharacter*) { return text(); }
 
 file
   = a:fileRaw whitespace { return a; }
@@ -224,7 +242,11 @@ file
 scheme =
   "http" "s"?
 
-httpRaw = scheme "://" authority pathAbempty ("?" query)? ("#" fragment)?
+httpRaw =
+    scheme "://" authority pathAbempty ("?" query)? ("#" fragment)?
+    {
+        return text();
+    }
 
 // NOTE: Backtrack if parsing the optional user info prefix fails
 authority = (userinfo "@")? host (":" port)?
@@ -274,13 +296,18 @@ unreserved  = ALPHA / DIGIT / "-" / "." / "_" / "~"
 
 subDelims = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
 
-http = httpRaw whitespace (using pathHashed)?
+http
+    = a:httpRaw whitespace h:(using h:pathHashed { return h; })? {
+        return {
+            url: a,
+            headers: h
+        };
+    }
 
 env
   = "env:"
-  ( bashEnvironmentVariable
-  / '"' posixEnvironmentVariable '"'
-  ) whitespace
+    e:( (  bashEnvironmentVariable / '"' posixEnvironmentVariable '"' ) { return text(); } )
+    whitespace { return e; }
 
 bashEnvironmentVariable
   = (ALPHA / "_") (ALPHA / DIGIT / "_")*
@@ -307,28 +334,36 @@ posixEnvironmentVariableCharacter
 
 pathType
   = p:file { return { type: "file", path: p } }
-  / http
-  / env
+  / u:http { return { type: "http", req: u } }
+  / e:env  { return { type: "env", env: e } }
 
 hash
   = "sha256:" digits:HEXDIG* & { return digits.length() == 64; }
 
 pathHashed
-  = p:pathType h:hash? { p.hash = h; return p; }
+  = p:pathType h:hash? {
+      p.hash = h;
+      return p;
+  }
 
 import
   = p:pathHashed t:(as Text)?
     {
       p.asText = t ? true : false;
-      return p;
+      return {
+          type: 'Import',
+          import: p
+      };
     }
 
 expression
   = lambda openParens a:label colon b:expression closeParens arrow c:expression
     {
       return {
-        type: "Lambda",
-        args: [ a, b, c ]
+          type: "Lambda",
+          "var": a,
+          varType: b,
+          body: c
       };
     }
   / if a:expression then b:expression else c:expression
@@ -343,18 +378,29 @@ expression
   / let a:label b:(colon t:expression { return t; })? equal c:expression in d:expression
     {
       return {
-        type: "Let",
-        args: [a, b, c,d]
+          type: "Let",
+          label: a,
+          varType: b,
+          body: c
       }
     }
   / forall openParens a:label colon b:expression closeParens arrow c:expression
     {
       return {
-        type: "Forall",
-        args: [a, b, c]
+          type: "Forall",
+          name: a,
+          a: b,
+          b: c
       }
     }
-  / operatorExpression arrow expression
+  / a:operatorExpression arrow b:expression {
+      return {
+          type: 'Forall',
+          name: null,
+          a: a,
+          b: b
+      }
+  }
   / annotatedExpression
 
 annotatedExpression
@@ -365,7 +411,7 @@ annotatedExpression
         args: [a, b]
       }
     }
-  / openBracket (emptyCollection / nonEmptyOptional)
+  / openBracket a:(emptyCollection / nonEmptyOptional) { return a; }
   / a:operatorExpression t:(colon t:expression { return t; })?
     {
       if (t) {
@@ -380,10 +426,27 @@ annotatedExpression
     }
 
 emptyCollection
-  = closeBracket colon (List / Optional) selectorExpression
+  = closeBracket colon t:(List / Optional) selectorExpression {
+      if (t.type == 'List') {
+        return {
+            type: 'ListLit',
+            list: []
+        }
+      } else {
+          return {
+              type: 'Optional',
+              value: null
+          }
+      }
+    }
 
 nonEmptyOptional
-  = expression closeBracket colon Optional selectorExpression
+  = a:expression closeBracket colon Optional selectorExpression {
+      return {
+          type: 'Optional',
+          value: a
+      }
+  }
 
 operatorExpression
   = orExpression
@@ -400,7 +463,7 @@ plusExpression
 
 textAppendExpression
   = a:listAppendExpression args:(textAppend listAppendExpression)* {
-      return operatorPostProcess('TextAppend', a, args); 
+      return operatorPostProcess('TextAppend', a, args);
     }
 
 listAppendExpression
@@ -415,39 +478,49 @@ andExpression
 
 combineExpression
   = a:preferExpression args:(combine preferExpression)* {
-      return operatorPostProcess('Combine', a, args); 
+      return operatorPostProcess('Combine', a, args);
     }
 
 preferExpression
   = a:timesExpression args:(prefer timesExpression)* {
-      return operatorPostProcess('Prefer', a, args); 
+      return operatorPostProcess('Prefer', a, args);
     }
 
-timesExpression 
+timesExpression
   = a:equalExpression args:(times equalExpression)* {
-      return operatorPostProcess('NaturalTimes', a, args); 
+      return operatorPostProcess('NaturalTimes', a, args);
     }
 
-equalExpression 
+equalExpression
   = a:notEqualExpression args:(doubleEqual notEqualExpression)* {
-      return operatorPostProcess('BoolEQ', a, args); 
+      return operatorPostProcess('BoolEQ', a, args);
     }
 
-notEqualExpression 
+notEqualExpression
   = a:applicationExpression args:(notEqual applicationExpression)* {
-      return operatorPostProcess('BoolNE', a, args); 
+      return operatorPostProcess('BoolNE', a, args);
     }
 
 applicationExpression
   = c:constructors? args:selectorExpression+ {
+      var body = args.reduce(
+          function (a, b) {
+              return {
+                  type: 'App',
+                  a: a,
+                  b: b
+              }
+          }
+      );
+
       if (c) {
         return {
           node: 'constructors',
-          expr: args[0] // TODO
-        } 
+          expr: body
+        }
       }
       else {
-        return args[0]; // TODO
+        return body
       }
     }
 
@@ -455,7 +528,7 @@ selectorExpression
   = e:primitiveExpression path:(dot label)* {
       if (path.length) {
           // TODO
-      }   
+      }
       else {
           return e;
       }
@@ -466,19 +539,13 @@ primitiveExpression
   / naturalLiteral
   / integerLiteral
   / textLiteral
-  / openBrace a:recordTypeOrLiteral closeBrace
-    {
-      return {
-        type: "Record",
-        fields: a
-      }
-    }
-  / openAngle unionTypeOrLiteral closeAngle
+  / openBrace a:recordTypeOrLiteral closeBrace { return a; }
+  / openAngle a:unionTypeOrLiteral closeAngle { return a; }
   / nonEmptyListLiteral
   / import
   / a:identifier
   {
-    return { type: "Var", args: [ a ] }
+    return { type: "Var", "var": a }
   }
   / NaturalFold
   / NaturalBuild
@@ -512,38 +579,75 @@ primitiveExpression
   / openParens a:expression closeParens { return a; }
 
 recordTypeOrLiteral
-  = equal { return {} }
+  = equal { return { type: 'RecordLit', fields: {} } }
   / nonEmptyRecordTypeOrLiteral
-  / ""
+  / "" { return { type: 'Record', fields: {} } }
 
 nonEmptyRecordTypeOrLiteral
   = k:label v:(nonEmptyRecordLiteral / nonEmptyRecordType)
     {
-      var fields = {}
+      var fields = v[1]
       fields[k] = v[0];
-      return fields;
+      return {
+          type: v[2],
+          fields: fields
+      };
     }
 
 nonEmptyRecordType
-  = colon expression (comma expression)*
+  = colon a:expression b:(comma k:label colon t:expression { var fields = {}; fields[k] = t; return fields; })*
+    {
+        var fields = {};
+        b.forEach(function (item){
+            var key = Object.keys(item)[0];
+            fields[key] = item[key];
+        });
+        return [a, fields, 'Record']
+    }
 
 nonEmptyRecordLiteral
-  = equal a:expression b:(comma label equal expression)*
+  = equal a:expression b:(comma k:label equal v:expression { var fields = {}; fields[k] = v; return fields; })*
     {
-      return [a, b]
+        var fields = {};
+        b.forEach(function (item){
+            var key = Object.keys(item)[0];
+            fields[key] = item[key];
+        });
+        return [a, fields, 'RecordLit']
     }
 
 unionTypeOrLiteral
-  = nonEmptyUnionTypeOrLiteral / ""
+  = nonEmptyUnionTypeOrLiteral / "" { return { type: 'Union', alts: [] } }
 
 nonEmptyUnionTypeOrLiteral
-  = label
-  ( equal expression (bar label colon expression)*
-  / colon expression (bar nonEmptyUnionTypeOrLiteral / "")
-  )
+  = l:label equal a:expression alts:(bar k:label colon v:expression { var fields = {}; fields[k] = v; return fields; })*
+    {
+      return {
+          type: 'UnionLit',
+          choice: {
+              name: l,
+              expr: a
+          },
+          alts: catObjects(alts)
+      }
+  }
+  / l:label colon v:expression alts:(bar nonEmptyUnionTypeOrLiteral / "") {
+      // TODO
+      alts = {};
+      alts[l] = v;
+      return {
+          type: 'Union',
+          alts: alts
+      }
+  }
 
 nonEmptyListLiteral
-  = openBracket expression (comma expression)* closeBracket
+  = openBracket a:expression b:(comma c:expression { return c; })* closeBracket {
+      return {
+          type: 'ListLit',
+          list: [a].concat(b)
+      }
+  }
 
 reserved
   = "if" / "then" / "else" / "let" / "in" / "as" / "using" / "merge" / "constructors" / "Natural/fold" / "Natural/build" / "Natural/isZero" / "Natural/even" / "Natural/odd" / "Natural/toInteger" / "Natural/show" / "Integer/show" / "Double/show" / "List/build" / "List/fold" / "List/length" / "List/head" / "List/last" / "List/indexed" / "List/reverse" / "Optional/fold" / "Optional/build" / "Bool" / "Optional" / "Natural" / "Integer" / "Double" / "Text" / "List" / "True" / "False" / "Type" / "Kind"

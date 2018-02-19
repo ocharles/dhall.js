@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "`dhall.js` allows you to work with [Dhall](https://github.com/dhall-lang) expressions in JavaScript.",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "bignumber.js": "^6.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.2.2",
