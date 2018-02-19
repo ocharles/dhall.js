@@ -177,7 +177,7 @@ exponent
   = "e" ("+" / "-")? DIGIT+
 
 doubleLiteral
-  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent)
+  = "-"? DIGIT+ ("." DIGIT+ exponent? / exponent) whitespace
 
 naturalRaw
   = digits:DIGIT+ {
