@@ -11,8 +11,8 @@ function expectNormalize(exprA, exprB) {
 
 function testNormalize(fileName) {
   test(fileName, done => {
-    const filePathA = path.join(__dirname, `../dhall-haskell/tests/${fileName}A.dhall`);
-    const filePathB = path.join(__dirname, `../dhall-haskell/tests/${fileName}B.dhall`);
+    const filePathA = path.join(__dirname, `../dhall-haskell/tests/normalization/${fileName}A.dhall`);
+    const filePathB = path.join(__dirname, `../dhall-haskell/tests/normalization/${fileName}B.dhall`);
 
     fs.readFile(filePathA, (errA, dataA) => {
       if (errA) throw errA;
