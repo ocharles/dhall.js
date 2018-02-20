@@ -6,7 +6,8 @@
     "extends": "airbnb-base",
     "env": {
         "es6": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "rules":{
         "arrow-parens": [2, "as-needed"]
