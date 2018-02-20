@@ -7,7 +7,6 @@
     "extends": "eslint:recommended",
     "rules": {
         "no-unused-vars": "warn",
-        "mocha/no-exclusive-tests": "error",
         "no-console": "off",
         "comma-dangle": [
             "error",
