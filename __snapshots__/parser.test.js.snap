@@ -64,8 +64,8 @@ Object {
         "type": "Integer/show",
       },
       "b": Object {
-        "integer": "1337",
-        "node": "IntegerLit",
+        "n": "1337",
+        "type": "IntegerLit",
       },
       "type": "App",
     },
@@ -74,8 +74,8 @@ Object {
         "type": "Integer/show",
       },
       "b": Object {
-        "integer": "-42",
-        "node": "IntegerLit",
+        "n": "-42",
+        "type": "IntegerLit",
       },
       "type": "App",
     },
@@ -84,8 +84,8 @@ Object {
         "type": "Integer/show",
       },
       "b": Object {
-        "integer": "0",
-        "node": "IntegerLit",
+        "n": "0",
+        "type": "IntegerLit",
       },
       "type": "App",
     },
@@ -185,8 +185,8 @@ Object {
 
 exports[`normalization/naturalToIntegerB: normalization/naturalToIntegerB 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
@@ -277,8 +277,8 @@ Object {
                 },
               },
               "b": Object {
-                "integer": "1",
-                "node": "IntegerLit",
+                "n": "1",
+                "type": "IntegerLit",
               },
               "type": "App",
             },
@@ -445,8 +445,8 @@ Object {
     "example1": Object {
       "type": "Optional",
       "value": Object {
-        "integer": "1",
-        "node": "IntegerLit",
+        "n": "1",
+        "type": "IntegerLit",
       },
     },
     "example2": Object {
@@ -761,6 +761,48 @@ Object {
 exports[`normalization/optionalFoldA: normalization/optionalFoldA 1`] = `
 Object {
   "body": Object {
+    "fields": Object {
+      "example0": Object {
+        "a": Object {
+          "type": "Var",
+          "var": Object {
+            "label": "f",
+            "n": 0,
+          },
+        },
+        "b": Object {
+          "type": "Optional",
+          "value": Object {
+            "chunks": Array [
+              "f",
+              "o",
+              "o",
+            ],
+            "type": "TextLit",
+          },
+        },
+        "type": "App",
+      },
+      "example1": Object {
+        "a": Object {
+          "type": "Var",
+          "var": Object {
+            "label": "f",
+            "n": 0,
+          },
+        },
+        "b": Object {
+          "type": "Optional",
+          "value": null,
+        },
+        "type": "App",
+      },
+    },
+    "type": "RecordLit",
+  },
+  "label": "f",
+  "type": "Let",
+  "val": Object {
     "body": Object {
       "a": Object {
         "a": Object {
@@ -819,8 +861,6 @@ Object {
       "type": "App",
     },
   },
-  "label": "f",
-  "type": "Let",
   "varType": null,
 }
 `;
@@ -844,6 +884,596 @@ Object {
 exports[`normalization/remoteSystemsA: normalization/remoteSystemsA 1`] = `
 Object {
   "body": Object {
+    "body": Object {
+      "body": Object {
+        "body": Object {
+          "a": Object {
+            "a": Object {
+              "type": "Var",
+              "var": Object {
+                "label": "Text/concatMap",
+                "n": 0,
+              },
+            },
+            "b": Object {
+              "type": "Var",
+              "var": Object {
+                "label": "Row",
+                "n": 0,
+              },
+            },
+            "type": "App",
+          },
+          "b": Object {
+            "type": "Var",
+            "var": Object {
+              "label": "renderRow",
+              "n": 0,
+            },
+          },
+          "type": "App",
+        },
+        "label": "renderRow",
+        "type": "Let",
+        "val": Object {
+          "body": Object {
+            "body": Object {
+              "body": Object {
+                "body": Object {
+                  "body": Object {
+                    "body": Object {
+                      "body": Object {
+                        "body": Object {
+                          "chunks": Array [
+                            "
+",
+                            Array [
+                              " ",
+                              Array [
+                                " ",
+                                Array [
+                                  " ",
+                                  Array [
+                                    " ",
+                                    Array [
+                                      " ",
+                                      Array [
+                                        " ",
+                                        Array [
+                                          " ",
+                                          Array [
+                                            " ",
+                                            Array [
+                                              " ",
+                                              Array [
+                                                " ",
+                                                Array [
+                                                  " ",
+                                                  Array [
+                                                    " ",
+                                                    Array [
+                                                      " ",
+                                                      Array [
+                                                        " ",
+                                                        Array [
+                                                          " ",
+                                                          Array [
+                                                            " ",
+                                                            Array [
+                                                              "\${",
+                                                              Object {
+                                                                "type": "Var",
+                                                                "var": Object {
+                                                                  "label": "host",
+                                                                  "n": 0,
+                                                                },
+                                                              },
+                                                              "}",
+                                                              Array [
+                                                                " ",
+                                                                Array [
+                                                                  "\${",
+                                                                  Object {
+                                                                    "type": "Var",
+                                                                    "var": Object {
+                                                                      "label": "platforms",
+                                                                      "n": 0,
+                                                                    },
+                                                                  },
+                                                                  "}",
+                                                                  Array [
+                                                                    " ",
+                                                                    Array [
+                                                                      "\${",
+                                                                      Object {
+                                                                        "type": "Var",
+                                                                        "var": Object {
+                                                                          "label": "key",
+                                                                          "n": 0,
+                                                                        },
+                                                                      },
+                                                                      "}",
+                                                                      Array [
+                                                                        " ",
+                                                                        Array [
+                                                                          "\${",
+                                                                          Object {
+                                                                            "type": "Var",
+                                                                            "var": Object {
+                                                                              "label": "cores",
+                                                                              "n": 0,
+                                                                            },
+                                                                          },
+                                                                          "}",
+                                                                          Array [
+                                                                            " ",
+                                                                            Array [
+                                                                              "\${",
+                                                                              Object {
+                                                                                "type": "Var",
+                                                                                "var": Object {
+                                                                                  "label": "speedFactor",
+                                                                                  "n": 0,
+                                                                                },
+                                                                              },
+                                                                              "}",
+                                                                              Array [
+                                                                                " ",
+                                                                                Array [
+                                                                                  "\${",
+                                                                                  Object {
+                                                                                    "type": "Var",
+                                                                                    "var": Object {
+                                                                                      "label": "supportedFeatures",
+                                                                                      "n": 0,
+                                                                                    },
+                                                                                  },
+                                                                                  "}",
+                                                                                  Array [
+                                                                                    " ",
+                                                                                    Array [
+                                                                                      "\${",
+                                                                                      Object {
+                                                                                        "type": "Var",
+                                                                                        "var": Object {
+                                                                                          "label": "mandatoryFeatures",
+                                                                                          "n": 0,
+                                                                                        },
+                                                                                      },
+                                                                                      "}",
+                                                                                      Array [
+                                                                                        "
+",
+                                                                                        Array [
+                                                                                          " ",
+                                                                                          Array [
+                                                                                            " ",
+                                                                                            Array [
+                                                                                              " ",
+                                                                                              Array [
+                                                                                                " ",
+                                                                                                Array [
+                                                                                                  " ",
+                                                                                                  Array [
+                                                                                                    " ",
+                                                                                                    Array [
+                                                                                                      " ",
+                                                                                                      Array [
+                                                                                                        " ",
+                                                                                                        Array [
+                                                                                                          " ",
+                                                                                                          Array [
+                                                                                                            " ",
+                                                                                                            Array [
+                                                                                                              " ",
+                                                                                                              Array [
+                                                                                                                " ",
+                                                                                                                Array [
+                                                                                                                  " ",
+                                                                                                                  Array [
+                                                                                                                    " ",
+                                                                                                                    Array [
+                                                                                                                      " ",
+                                                                                                                      Array [
+                                                                                                                        " ",
+                                                                                                                        "''",
+                                                                                                                      ],
+                                                                                                                    ],
+                                                                                                                  ],
+                                                                                                                ],
+                                                                                                              ],
+                                                                                                            ],
+                                                                                                          ],
+                                                                                                        ],
+                                                                                                      ],
+                                                                                                    ],
+                                                                                                  ],
+                                                                                                ],
+                                                                                              ],
+                                                                                            ],
+                                                                                          ],
+                                                                                        ],
+                                                                                      ],
+                                                                                    ],
+                                                                                  ],
+                                                                                ],
+                                                                              ],
+                                                                            ],
+                                                                          ],
+                                                                        ],
+                                                                      ],
+                                                                    ],
+                                                                  ],
+                                                                ],
+                                                              ],
+                                                            ],
+                                                          ],
+                                                        ],
+                                                      ],
+                                                    ],
+                                                  ],
+                                                ],
+                                              ],
+                                            ],
+                                          ],
+                                        ],
+                                      ],
+                                    ],
+                                  ],
+                                ],
+                              ],
+                            ],
+                          ],
+                          "type": "TextLit",
+                        },
+                        "label": "mandatoryFeatures",
+                        "type": "Let",
+                        "val": Object {
+                          "a": Object {
+                            "a": Object {
+                              "type": "Var",
+                              "var": Object {
+                                "label": "Text/concatSep",
+                                "n": 0,
+                              },
+                            },
+                            "b": Object {
+                              "chunks": Array [
+                                ",",
+                              ],
+                              "type": "TextLit",
+                            },
+                            "type": "App",
+                          },
+                          "b": Object {
+                            "expr": Object {
+                              "type": "Var",
+                              "var": Object {
+                                "label": "row",
+                                "n": 0,
+                              },
+                            },
+                            "field": "mandatoryFeatures",
+                            "type": "Field",
+                          },
+                          "type": "App",
+                        },
+                        "varType": null,
+                      },
+                      "label": "supportedFeatures",
+                      "type": "Let",
+                      "val": Object {
+                        "a": Object {
+                          "a": Object {
+                            "type": "Var",
+                            "var": Object {
+                              "label": "Text/concatSep",
+                              "n": 0,
+                            },
+                          },
+                          "b": Object {
+                            "chunks": Array [
+                              ",",
+                            ],
+                            "type": "TextLit",
+                          },
+                          "type": "App",
+                        },
+                        "b": Object {
+                          "expr": Object {
+                            "type": "Var",
+                            "var": Object {
+                              "label": "row",
+                              "n": 0,
+                            },
+                          },
+                          "field": "supportedFeatures",
+                          "type": "Field",
+                        },
+                        "type": "App",
+                      },
+                      "varType": null,
+                    },
+                    "label": "speedFactor",
+                    "type": "Let",
+                    "val": Object {
+                      "a": Object {
+                        "type": "Integer/show",
+                      },
+                      "b": Object {
+                        "a": Object {
+                          "type": "Natural/toInteger",
+                        },
+                        "b": Object {
+                          "expr": Object {
+                            "type": "Var",
+                            "var": Object {
+                              "label": "row",
+                              "n": 0,
+                            },
+                          },
+                          "field": "speedFactor",
+                          "type": "Field",
+                        },
+                        "type": "App",
+                      },
+                      "type": "App",
+                    },
+                    "varType": null,
+                  },
+                  "label": "cores",
+                  "type": "Let",
+                  "val": Object {
+                    "a": Object {
+                      "type": "Integer/show",
+                    },
+                    "b": Object {
+                      "a": Object {
+                        "type": "Natural/toInteger",
+                      },
+                      "b": Object {
+                        "expr": Object {
+                          "type": "Var",
+                          "var": Object {
+                            "label": "row",
+                            "n": 0,
+                          },
+                        },
+                        "field": "cores",
+                        "type": "Field",
+                      },
+                      "type": "App",
+                    },
+                    "type": "App",
+                  },
+                  "varType": null,
+                },
+                "label": "key",
+                "type": "Let",
+                "val": Object {
+                  "expr": Object {
+                    "type": "Var",
+                    "var": Object {
+                      "label": "row",
+                      "n": 0,
+                    },
+                  },
+                  "field": "key",
+                  "type": "Field",
+                },
+                "varType": null,
+              },
+              "label": "platforms",
+              "type": "Let",
+              "val": Object {
+                "a": Object {
+                  "a": Object {
+                    "type": "Var",
+                    "var": Object {
+                      "label": "Text/concatSep",
+                      "n": 0,
+                    },
+                  },
+                  "b": Object {
+                    "chunks": Array [
+                      ",",
+                    ],
+                    "type": "TextLit",
+                  },
+                  "type": "App",
+                },
+                "b": Object {
+                  "expr": Object {
+                    "type": "Var",
+                    "var": Object {
+                      "label": "row",
+                      "n": 0,
+                    },
+                  },
+                  "field": "platforms",
+                  "type": "Field",
+                },
+                "type": "App",
+              },
+              "varType": null,
+            },
+            "label": "host",
+            "type": "Let",
+            "val": Object {
+              "a": Object {
+                "a": Object {
+                  "a": Object {
+                    "a": Object {
+                      "a": Object {
+                        "type": "Optional/fold",
+                      },
+                      "b": Object {
+                        "type": "Text",
+                      },
+                      "type": "App",
+                    },
+                    "b": Object {
+                      "expr": Object {
+                        "type": "Var",
+                        "var": Object {
+                          "label": "row",
+                          "n": 0,
+                        },
+                      },
+                      "field": "user",
+                      "type": "Field",
+                    },
+                    "type": "App",
+                  },
+                  "b": Object {
+                    "type": "Text",
+                  },
+                  "type": "App",
+                },
+                "b": Object {
+                  "body": Object {
+                    "chunks": Array [
+                      Array [
+                        "\${",
+                        Object {
+                          "type": "Var",
+                          "var": Object {
+                            "label": "user",
+                            "n": 0,
+                          },
+                        },
+                        "}",
+                      ],
+                      "@",
+                      Array [
+                        "\${",
+                        Object {
+                          "expr": Object {
+                            "type": "Var",
+                            "var": Object {
+                              "label": "row",
+                              "n": 0,
+                            },
+                          },
+                          "field": "host",
+                          "type": "Field",
+                        },
+                        "}",
+                      ],
+                    ],
+                    "type": "TextLit",
+                  },
+                  "type": "Lambda",
+                  "var": "user",
+                  "varType": Object {
+                    "type": "Text",
+                  },
+                },
+                "type": "App",
+              },
+              "b": Object {
+                "expr": Object {
+                  "type": "Var",
+                  "var": Object {
+                    "label": "row",
+                    "n": 0,
+                  },
+                },
+                "field": "host",
+                "type": "Field",
+              },
+              "type": "App",
+            },
+            "varType": null,
+          },
+          "type": "Lambda",
+          "var": "row",
+          "varType": Object {
+            "type": "Var",
+            "var": Object {
+              "label": "Row",
+              "n": 0,
+            },
+          },
+        },
+        "varType": null,
+      },
+      "label": "Row",
+      "type": "Let",
+      "val": Object {
+        "fields": Object {
+          "cores": Object {
+            "type": "Natural",
+          },
+          "host": Object {
+            "type": "Text",
+          },
+          "key": Object {
+            "type": "Text",
+          },
+          "mandatoryFeatures": Object {
+            "a": Object {
+              "type": "List",
+            },
+            "b": Object {
+              "type": "Text",
+            },
+            "type": "App",
+          },
+          "platforms": Object {
+            "a": Object {
+              "type": "List",
+            },
+            "b": Object {
+              "type": "Text",
+            },
+            "type": "App",
+          },
+          "speedFactor": Object {
+            "type": "Natural",
+          },
+          "supportedFeatures": Object {
+            "a": Object {
+              "type": "List",
+            },
+            "b": Object {
+              "type": "Text",
+            },
+            "type": "App",
+          },
+          "user": Object {
+            "a": Object {
+              "type": "Optional",
+            },
+            "b": Object {
+              "type": "Text",
+            },
+            "type": "App",
+          },
+        },
+        "type": "Record",
+      },
+      "varType": null,
+    },
+    "label": "Text/concatSep",
+    "type": "Let",
+    "val": Object {
+      "import": Object {
+        "asText": false,
+        "hash": null,
+        "req": Object {
+          "headers": null,
+          "url": "https://ipfs.io/ipfs/QmQ8w5PLcsNz56dMvRtq54vbuPe9cNnCCUXAQp6xLc6Ccx/Prelude/Text/concatSep",
+        },
+        "type": "http",
+      },
+      "type": "Import",
+    },
+    "varType": null,
+  },
+  "label": "Text/concatMap",
+  "type": "Let",
+  "val": Object {
     "import": Object {
       "asText": false,
       "hash": null,
@@ -855,8 +1485,6 @@ Object {
     },
     "type": "Import",
   },
-  "label": "Text/concatMap",
-  "type": "Let",
   "varType": null,
 }
 `;
@@ -960,7 +1588,17 @@ Object {
                             },
                             "type": "App",
                           },
-                          "b": undefined,
+                          "b": Object {
+                            "expr": Object {
+                              "type": "Var",
+                              "var": Object {
+                                "label": "x",
+                                "n": 0,
+                              },
+                            },
+                            "field": "user",
+                            "type": "Field",
+                          },
                           "type": "App",
                         },
                         "b": Object {
@@ -985,7 +1623,17 @@ Object {
                             "@",
                             Array [
                               "\${",
-                              undefined,
+                              Object {
+                                "expr": Object {
+                                  "type": "Var",
+                                  "var": Object {
+                                    "label": "x",
+                                    "n": 0,
+                                  },
+                                },
+                                "field": "host",
+                                "type": "Field",
+                              },
                               "}",
                             ],
                           ],
@@ -999,244 +1647,16 @@ Object {
                       },
                       "type": "App",
                     },
-                    "b": undefined,
-                    "type": "App",
-                  },
-                  "}",
-                ],
-                " ",
-                Array [
-                  "\${",
-                  Object {
-                    "args": Array [
-                      Object {
-                        "fields": Object {
-                          "Empty": Object {
-                            "body": Object {
-                              "chunks": Array [],
-                              "type": "TextLit",
-                            },
-                            "type": "Lambda",
-                            "var": "_",
-                            "varType": Object {
-                              "fields": Object {},
-                              "type": "Record",
-                            },
-                          },
-                          "NonEmpty": Object {
-                            "body": Object {
-                              "type": "Var",
-                              "var": Object {
-                                "label": "result",
-                                "n": 0,
-                              },
-                            },
-                            "type": "Lambda",
-                            "var": "result",
-                            "varType": Object {
-                              "type": "Text",
-                            },
-                          },
-                        },
-                        "type": "RecordLit",
-                      },
-                      Object {
-                        "a": Object {
-                          "a": Object {
-                            "a": Object {
-                              "a": Object {
-                                "a": Object {
-                                  "type": "List/fold",
-                                },
-                                "b": Object {
-                                  "type": "Text",
-                                },
-                                "type": "App",
-                              },
-                              "b": undefined,
-                              "type": "App",
-                            },
-                            "b": Object {
-                              "alts": Object {
-                                "Empty": Object {
-                                  "fields": Object {},
-                                  "type": "Record",
-                                },
-                              },
-                              "type": "Union",
-                            },
-                            "type": "App",
-                          },
-                          "b": Object {
-                            "body": Object {
-                              "body": Object {
-                                "args": Array [
-                                  Object {
-                                    "fields": Object {
-                                      "Empty": Object {
-                                        "body": Object {
-                                          "alts": Object {
-                                            "Empty": Object {
-                                              "fields": Object {},
-                                              "type": "Record",
-                                            },
-                                          },
-                                          "choice": Object {
-                                            "expr": Object {
-                                              "type": "Var",
-                                              "var": Object {
-                                                "label": "element",
-                                                "n": 0,
-                                              },
-                                            },
-                                            "name": "NonEmpty",
-                                          },
-                                          "type": "UnionLit",
-                                        },
-                                        "type": "Lambda",
-                                        "var": "_",
-                                        "varType": Object {
-                                          "fields": Object {},
-                                          "type": "Record",
-                                        },
-                                      },
-                                      "NonEmpty": Object {
-                                        "body": Object {
-                                          "alts": Object {
-                                            "Empty": Object {
-                                              "fields": Object {},
-                                              "type": "Record",
-                                            },
-                                          },
-                                          "choice": Object {
-                                            "expr": Object {
-                                              "a": Object {
-                                                "a": Object {
-                                                  "type": "Var",
-                                                  "var": Object {
-                                                    "label": "element",
-                                                    "n": 0,
-                                                  },
-                                                },
-                                                "b": Object {
-                                                  "chunks": Array [
-                                                    ",",
-                                                  ],
-                                                  "type": "TextLit",
-                                                },
-                                                "type": "TextAppend",
-                                              },
-                                              "b": Object {
-                                                "type": "Var",
-                                                "var": Object {
-                                                  "label": "result",
-                                                  "n": 0,
-                                                },
-                                              },
-                                              "type": "TextAppend",
-                                            },
-                                            "name": "NonEmpty",
-                                          },
-                                          "type": "UnionLit",
-                                        },
-                                        "type": "Lambda",
-                                        "var": "result",
-                                        "varType": Object {
-                                          "type": "Text",
-                                        },
-                                      },
-                                    },
-                                    "type": "RecordLit",
-                                  },
-                                  Object {
-                                    "type": "Var",
-                                    "var": Object {
-                                      "label": "status",
-                                      "n": 0,
-                                    },
-                                  },
-                                ],
-                                "type": "Merge",
-                              },
-                              "type": "Lambda",
-                              "var": "status",
-                              "varType": Object {
-                                "alts": Object {
-                                  "Empty": Object {
-                                    "fields": Object {},
-                                    "type": "Record",
-                                  },
-                                },
-                                "type": "Union",
-                              },
-                            },
-                            "type": "Lambda",
-                            "var": "element",
-                            "varType": Object {
-                              "type": "Text",
-                            },
-                          },
-                          "type": "App",
-                        },
-                        "b": Object {
-                          "alts": Object {
-                            "NonEmpty": Object {
-                              "type": "Text",
-                            },
-                          },
-                          "choice": Object {
-                            "expr": Object {
-                              "fields": Object {},
-                              "type": "RecordLit",
-                            },
-                            "name": "Empty",
-                          },
-                          "type": "UnionLit",
-                        },
-                        "type": "App",
-                      },
-                    ],
-                    "type": "Merge",
-                  },
-                  "}",
-                ],
-                " ",
-                Array [
-                  "\${",
-                  undefined,
-                  "}",
-                ],
-                " ",
-                Array [
-                  "\${",
-                  Object {
-                    "a": Object {
-                      "type": "Integer/show",
-                    },
                     "b": Object {
-                      "a": Object {
-                        "type": "Natural/toInteger",
+                      "expr": Object {
+                        "type": "Var",
+                        "var": Object {
+                          "label": "x",
+                          "n": 0,
+                        },
                       },
-                      "b": undefined,
-                      "type": "App",
-                    },
-                    "type": "App",
-                  },
-                  "}",
-                ],
-                " ",
-                Array [
-                  "\${",
-                  Object {
-                    "a": Object {
-                      "type": "Integer/show",
-                    },
-                    "b": Object {
-                      "a": Object {
-                        "type": "Natural/toInteger",
-                      },
-                      "b": undefined,
-                      "type": "App",
+                      "field": "host",
+                      "type": "Field",
                     },
                     "type": "App",
                   },
@@ -1291,7 +1711,17 @@ Object {
                                 },
                                 "type": "App",
                               },
-                              "b": undefined,
+                              "b": Object {
+                                "expr": Object {
+                                  "type": "Var",
+                                  "var": Object {
+                                    "label": "x",
+                                    "n": 0,
+                                  },
+                                },
+                                "field": "platforms",
+                                "type": "Field",
+                              },
                               "type": "App",
                             },
                             "b": Object {
@@ -1442,6 +1872,78 @@ Object {
                 Array [
                   "\${",
                   Object {
+                    "expr": Object {
+                      "type": "Var",
+                      "var": Object {
+                        "label": "x",
+                        "n": 0,
+                      },
+                    },
+                    "field": "key",
+                    "type": "Field",
+                  },
+                  "}",
+                ],
+                " ",
+                Array [
+                  "\${",
+                  Object {
+                    "a": Object {
+                      "type": "Integer/show",
+                    },
+                    "b": Object {
+                      "a": Object {
+                        "type": "Natural/toInteger",
+                      },
+                      "b": Object {
+                        "expr": Object {
+                          "type": "Var",
+                          "var": Object {
+                            "label": "x",
+                            "n": 0,
+                          },
+                        },
+                        "field": "cores",
+                        "type": "Field",
+                      },
+                      "type": "App",
+                    },
+                    "type": "App",
+                  },
+                  "}",
+                ],
+                " ",
+                Array [
+                  "\${",
+                  Object {
+                    "a": Object {
+                      "type": "Integer/show",
+                    },
+                    "b": Object {
+                      "a": Object {
+                        "type": "Natural/toInteger",
+                      },
+                      "b": Object {
+                        "expr": Object {
+                          "type": "Var",
+                          "var": Object {
+                            "label": "x",
+                            "n": 0,
+                          },
+                        },
+                        "field": "speedFactor",
+                        "type": "Field",
+                      },
+                      "type": "App",
+                    },
+                    "type": "App",
+                  },
+                  "}",
+                ],
+                " ",
+                Array [
+                  "\${",
+                  Object {
                     "args": Array [
                       Object {
                         "fields": Object {
@@ -1487,7 +1989,223 @@ Object {
                                 },
                                 "type": "App",
                               },
-                              "b": undefined,
+                              "b": Object {
+                                "expr": Object {
+                                  "type": "Var",
+                                  "var": Object {
+                                    "label": "x",
+                                    "n": 0,
+                                  },
+                                },
+                                "field": "supportedFeatures",
+                                "type": "Field",
+                              },
+                              "type": "App",
+                            },
+                            "b": Object {
+                              "alts": Object {
+                                "Empty": Object {
+                                  "fields": Object {},
+                                  "type": "Record",
+                                },
+                              },
+                              "type": "Union",
+                            },
+                            "type": "App",
+                          },
+                          "b": Object {
+                            "body": Object {
+                              "body": Object {
+                                "args": Array [
+                                  Object {
+                                    "fields": Object {
+                                      "Empty": Object {
+                                        "body": Object {
+                                          "alts": Object {
+                                            "Empty": Object {
+                                              "fields": Object {},
+                                              "type": "Record",
+                                            },
+                                          },
+                                          "choice": Object {
+                                            "expr": Object {
+                                              "type": "Var",
+                                              "var": Object {
+                                                "label": "element",
+                                                "n": 0,
+                                              },
+                                            },
+                                            "name": "NonEmpty",
+                                          },
+                                          "type": "UnionLit",
+                                        },
+                                        "type": "Lambda",
+                                        "var": "_",
+                                        "varType": Object {
+                                          "fields": Object {},
+                                          "type": "Record",
+                                        },
+                                      },
+                                      "NonEmpty": Object {
+                                        "body": Object {
+                                          "alts": Object {
+                                            "Empty": Object {
+                                              "fields": Object {},
+                                              "type": "Record",
+                                            },
+                                          },
+                                          "choice": Object {
+                                            "expr": Object {
+                                              "a": Object {
+                                                "a": Object {
+                                                  "type": "Var",
+                                                  "var": Object {
+                                                    "label": "element",
+                                                    "n": 0,
+                                                  },
+                                                },
+                                                "b": Object {
+                                                  "chunks": Array [
+                                                    ",",
+                                                  ],
+                                                  "type": "TextLit",
+                                                },
+                                                "type": "TextAppend",
+                                              },
+                                              "b": Object {
+                                                "type": "Var",
+                                                "var": Object {
+                                                  "label": "result",
+                                                  "n": 0,
+                                                },
+                                              },
+                                              "type": "TextAppend",
+                                            },
+                                            "name": "NonEmpty",
+                                          },
+                                          "type": "UnionLit",
+                                        },
+                                        "type": "Lambda",
+                                        "var": "result",
+                                        "varType": Object {
+                                          "type": "Text",
+                                        },
+                                      },
+                                    },
+                                    "type": "RecordLit",
+                                  },
+                                  Object {
+                                    "type": "Var",
+                                    "var": Object {
+                                      "label": "status",
+                                      "n": 0,
+                                    },
+                                  },
+                                ],
+                                "type": "Merge",
+                              },
+                              "type": "Lambda",
+                              "var": "status",
+                              "varType": Object {
+                                "alts": Object {
+                                  "Empty": Object {
+                                    "fields": Object {},
+                                    "type": "Record",
+                                  },
+                                },
+                                "type": "Union",
+                              },
+                            },
+                            "type": "Lambda",
+                            "var": "element",
+                            "varType": Object {
+                              "type": "Text",
+                            },
+                          },
+                          "type": "App",
+                        },
+                        "b": Object {
+                          "alts": Object {
+                            "NonEmpty": Object {
+                              "type": "Text",
+                            },
+                          },
+                          "choice": Object {
+                            "expr": Object {
+                              "fields": Object {},
+                              "type": "RecordLit",
+                            },
+                            "name": "Empty",
+                          },
+                          "type": "UnionLit",
+                        },
+                        "type": "App",
+                      },
+                    ],
+                    "type": "Merge",
+                  },
+                  "}",
+                ],
+                " ",
+                Array [
+                  "\${",
+                  Object {
+                    "args": Array [
+                      Object {
+                        "fields": Object {
+                          "Empty": Object {
+                            "body": Object {
+                              "chunks": Array [],
+                              "type": "TextLit",
+                            },
+                            "type": "Lambda",
+                            "var": "_",
+                            "varType": Object {
+                              "fields": Object {},
+                              "type": "Record",
+                            },
+                          },
+                          "NonEmpty": Object {
+                            "body": Object {
+                              "type": "Var",
+                              "var": Object {
+                                "label": "result",
+                                "n": 0,
+                              },
+                            },
+                            "type": "Lambda",
+                            "var": "result",
+                            "varType": Object {
+                              "type": "Text",
+                            },
+                          },
+                        },
+                        "type": "RecordLit",
+                      },
+                      Object {
+                        "a": Object {
+                          "a": Object {
+                            "a": Object {
+                              "a": Object {
+                                "a": Object {
+                                  "type": "List/fold",
+                                },
+                                "b": Object {
+                                  "type": "Text",
+                                },
+                                "type": "App",
+                              },
+                              "b": Object {
+                                "expr": Object {
+                                  "type": "Var",
+                                  "var": Object {
+                                    "label": "x",
+                                    "n": 0,
+                                  },
+                                },
+                                "field": "mandatoryFeatures",
+                                "type": "Field",
+                              },
                               "type": "App",
                             },
                             "b": Object {
@@ -1795,8 +2513,8 @@ Object {
       "baz": Object {
         "type": "Optional",
         "value": Object {
-          "integer": "1",
-          "node": "IntegerLit",
+          "n": "1",
+          "type": "IntegerLit",
         },
       },
       "foo": Object {
@@ -1808,16 +2526,16 @@ Object {
           "b": Object {
             "list": Array [
               Object {
-                "integer": "1",
-                "node": "IntegerLit",
+                "n": "1",
+                "type": "IntegerLit",
               },
               Object {
-                "integer": "2",
-                "node": "IntegerLit",
+                "n": "2",
+                "type": "IntegerLit",
               },
               Object {
-                "integer": "3",
-                "node": "IntegerLit",
+                "n": "3",
+                "type": "IntegerLit",
               },
             ],
             "type": "ListLit",
@@ -1828,16 +2546,16 @@ Object {
           "expr": Object {
             "list": Array [
               Object {
-                "integer": "1",
-                "node": "IntegerLit",
+                "n": "1",
+                "type": "IntegerLit",
               },
               Object {
-                "integer": "2",
-                "node": "IntegerLit",
+                "n": "2",
+                "type": "IntegerLit",
               },
               Object {
-                "integer": "3",
-                "node": "IntegerLit",
+                "n": "3",
+                "type": "IntegerLit",
               },
             ],
             "type": "ListLit",
@@ -1896,8 +2614,8 @@ Object {
 
 exports[`parser/blockComment: parser/blockComment 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
@@ -2181,9 +2899,8 @@ Object {
 `;
 
 exports[`parser/escapedSingleQuotedString: parser/escapedSingleQuotedString 1`] = `
-Array [
-  "''",
-  Array [
+Object {
+  "chunks": Array [
     "
 ",
     Array [
@@ -2202,10 +2919,43 @@ Array [
       ],
     ],
   ],
-]
+  "type": "TextLit",
+}
 `;
 
-exports[`parser/fields: parser/fields 1`] = `undefined`;
+exports[`parser/fields: parser/fields 1`] = `
+Object {
+  "expr": Object {
+    "expr": Object {
+      "expr": Object {
+        "fields": Object {
+          "foo": Object {
+            "fields": Object {
+              "bar": Object {
+                "fields": Object {
+                  "baz": Object {
+                    "n": "1",
+                    "type": "IntegerLit",
+                  },
+                },
+                "type": "RecordLit",
+              },
+            },
+            "type": "RecordLit",
+          },
+        },
+        "type": "RecordLit",
+      },
+      "field": "foo",
+      "type": "Field",
+    },
+    "field": "bar",
+    "type": "Field",
+  },
+  "field": "baz",
+  "type": "Field",
+}
+`;
 
 exports[`parser/forall: parser/forall 1`] = `
 Object {
@@ -2278,17 +3028,17 @@ Object {
 exports[`parser/ifThenElse: parser/ifThenElse 1`] = `
 Object {
   "false": Object {
-    "integer": "2",
-    "node": "IntegerLit",
+    "n": "2",
+    "type": "IntegerLit",
   },
-  "node": "if",
   "predicate": Object {
     "type": "True",
   },
   "true": Object {
-    "integer": "1",
-    "node": "IntegerLit",
+    "n": "1",
+    "type": "IntegerLit",
   },
+  "type": "BoolIf",
 }
 `;
 
@@ -2305,8 +3055,8 @@ Object {
           "type": "Integer/show",
         },
         "b": Object {
-          "integer": "123",
-          "node": "IntegerLit",
+          "n": "123",
+          "type": "IntegerLit",
         },
         "type": "App",
       },
@@ -2318,9 +3068,8 @@ Object {
 `;
 
 exports[`parser/interpolatedSingleQuotedString: parser/interpolatedSingleQuotedString 1`] = `
-Array [
-  "''",
-  Array [
+Object {
+  "chunks": Array [
     "
 ",
     Array [
@@ -2339,8 +3088,8 @@ Array [
                   "type": "Integer/show",
                 },
                 "b": Object {
-                  "integer": "123",
-                  "node": "IntegerLit",
+                  "n": "123",
+                  "type": "IntegerLit",
                 },
                 "type": "App",
               },
@@ -2356,17 +3105,25 @@ Array [
       ],
     ],
   ],
-]
+  "type": "TextLit",
+}
 `;
 
 exports[`parser/label: parser/label 1`] = `
 Object {
   "body": Object {
-    "integer": "1",
-    "node": "IntegerLit",
+    "type": "Var",
+    "var": Object {
+      "label": "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/",
+      "n": 0,
+    },
   },
   "label": "_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/",
   "type": "Let",
+  "val": Object {
+    "n": "1",
+    "type": "IntegerLit",
+  },
   "varType": null,
 }
 `;
@@ -2509,7 +3266,17 @@ Object {
                                                 },
                                                 "type": "App",
                                               },
-                                              "b": undefined,
+                                              "b": Object {
+                                                "expr": Object {
+                                                  "type": "Var",
+                                                  "var": Object {
+                                                    "label": "x",
+                                                    "n": 0,
+                                                  },
+                                                },
+                                                "field": "user",
+                                                "type": "Field",
+                                              },
                                               "type": "App",
                                             },
                                             "b": Object {
@@ -2536,7 +3303,17 @@ Object {
                                                   },
                                                   "type": "TextAppend",
                                                 },
-                                                "b": undefined,
+                                                "b": Object {
+                                                  "expr": Object {
+                                                    "type": "Var",
+                                                    "var": Object {
+                                                      "label": "x",
+                                                      "n": 0,
+                                                    },
+                                                  },
+                                                  "field": "host",
+                                                  "type": "Field",
+                                                },
                                                 "type": "TextAppend",
                                               },
                                               "b": Object {
@@ -2553,7 +3330,17 @@ Object {
                                           },
                                           "type": "App",
                                         },
-                                        "b": undefined,
+                                        "b": Object {
+                                          "expr": Object {
+                                            "type": "Var",
+                                            "var": Object {
+                                              "label": "x",
+                                              "n": 0,
+                                            },
+                                          },
+                                          "field": "host",
+                                          "type": "Field",
+                                        },
                                         "type": "App",
                                       },
                                       "b": Object {
@@ -2616,7 +3403,17 @@ Object {
                                                   },
                                                   "type": "App",
                                                 },
-                                                "b": undefined,
+                                                "b": Object {
+                                                  "expr": Object {
+                                                    "type": "Var",
+                                                    "var": Object {
+                                                      "label": "x",
+                                                      "n": 0,
+                                                    },
+                                                  },
+                                                  "field": "platforms",
+                                                  "type": "Field",
+                                                },
                                                 "type": "App",
                                               },
                                               "b": Object {
@@ -3415,7 +4212,17 @@ Object {
                                   },
                                   "type": "TextAppend",
                                 },
-                                "b": undefined,
+                                "b": Object {
+                                  "expr": Object {
+                                    "type": "Var",
+                                    "var": Object {
+                                      "label": "x",
+                                      "n": 0,
+                                    },
+                                  },
+                                  "field": "key",
+                                  "type": "Field",
+                                },
                                 "type": "TextAppend",
                               },
                               "b": Object {
@@ -3434,7 +4241,17 @@ Object {
                                 "a": Object {
                                   "type": "Natural/toInteger",
                                 },
-                                "b": undefined,
+                                "b": Object {
+                                  "expr": Object {
+                                    "type": "Var",
+                                    "var": Object {
+                                      "label": "x",
+                                      "n": 0,
+                                    },
+                                  },
+                                  "field": "cores",
+                                  "type": "Field",
+                                },
                                 "type": "App",
                               },
                               "type": "App",
@@ -3457,7 +4274,17 @@ Object {
                             "a": Object {
                               "type": "Natural/toInteger",
                             },
-                            "b": undefined,
+                            "b": Object {
+                              "expr": Object {
+                                "type": "Var",
+                                "var": Object {
+                                  "label": "x",
+                                  "n": 0,
+                                },
+                              },
+                              "field": "speedFactor",
+                              "type": "Field",
+                            },
                             "type": "App",
                           },
                           "type": "App",
@@ -3518,7 +4345,17 @@ Object {
                                   },
                                   "type": "App",
                                 },
-                                "b": undefined,
+                                "b": Object {
+                                  "expr": Object {
+                                    "type": "Var",
+                                    "var": Object {
+                                      "label": "x",
+                                      "n": 0,
+                                    },
+                                  },
+                                  "field": "supportedFeatures",
+                                  "type": "Field",
+                                },
                                 "type": "App",
                               },
                               "b": Object {
@@ -3719,7 +4556,17 @@ Object {
                               },
                               "type": "App",
                             },
-                            "b": undefined,
+                            "b": Object {
+                              "expr": Object {
+                                "type": "Var",
+                                "var": Object {
+                                  "label": "x",
+                                  "n": 0,
+                                },
+                              },
+                              "field": "mandatoryFeatures",
+                              "type": "Field",
+                            },
                             "type": "App",
                           },
                           "b": Object {
@@ -4035,19 +4882,37 @@ Object {
 exports[`parser/let: parser/let 1`] = `
 Object {
   "body": Object {
-    "integer": "1",
-    "node": "IntegerLit",
+    "body": Object {
+      "type": "Var",
+      "var": Object {
+        "label": "x",
+        "n": 0,
+      },
+    },
+    "label": "y",
+    "type": "Let",
+    "val": Object {
+      "n": "2",
+      "type": "IntegerLit",
+    },
+    "varType": Object {
+      "type": "Integer",
+    },
   },
   "label": "x",
   "type": "Let",
+  "val": Object {
+    "n": "1",
+    "type": "IntegerLit",
+  },
   "varType": null,
 }
 `;
 
 exports[`parser/lineComment: parser/lineComment 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
@@ -4057,16 +4922,16 @@ Object {
     Object {
       "list": Array [
         Object {
-          "integer": "1",
-          "node": "IntegerLit",
+          "n": "1",
+          "type": "IntegerLit",
         },
         Object {
-          "integer": "2",
-          "node": "IntegerLit",
+          "n": "2",
+          "type": "IntegerLit",
         },
         Object {
-          "integer": "3",
-          "node": "IntegerLit",
+          "n": "3",
+          "type": "IntegerLit",
         },
       ],
       "type": "ListLit",
@@ -4075,16 +4940,16 @@ Object {
       "expr": Object {
         "list": Array [
           Object {
-            "integer": "1",
-            "node": "IntegerLit",
+            "n": "1",
+            "type": "IntegerLit",
           },
           Object {
-            "integer": "2",
-            "node": "IntegerLit",
+            "n": "2",
+            "type": "IntegerLit",
           },
           Object {
-            "integer": "3",
-            "node": "IntegerLit",
+            "n": "3",
+            "type": "IntegerLit",
           },
         ],
         "type": "ListLit",
@@ -4208,8 +5073,8 @@ Object {
 
 exports[`parser/nestedBlockComment: parser/nestedBlockComment 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
@@ -4482,8 +5347,15 @@ Object {
   "fields": Object {
     "example1": Object {
       "body": Object {
-        "integer": "1",
-        "node": "IntegerLit",
+        "type": "Var",
+        "var": Object {
+          "label": Array [
+            "l",
+            "e",
+            "t",
+          ],
+          "n": 0,
+        },
       },
       "label": Array [
         "l",
@@ -4491,18 +5363,32 @@ Object {
         "t",
       ],
       "type": "Let",
+      "val": Object {
+        "n": "1",
+        "type": "IntegerLit",
+      },
       "varType": null,
     },
     "example2": Object {
       "body": Object {
-        "integer": "1",
-        "node": "IntegerLit",
+        "type": "Var",
+        "var": Object {
+          "label": Array [
+            ":",
+            ".",
+          ],
+          "n": 0,
+        },
       },
       "label": Array [
         ":",
         ".",
       ],
       "type": "Let",
+      "val": Object {
+        "n": "1",
+        "type": "IntegerLit",
+      },
       "varType": null,
     },
   },
@@ -4522,8 +5408,8 @@ Object {
         "type": "True",
       },
       "foo": Object {
-        "integer": "1",
-        "node": "IntegerLit",
+        "n": "1",
+        "type": "IntegerLit",
       },
     },
     "type": "RecordLit",
@@ -4549,18 +5435,31 @@ Object {
 exports[`parser/reservedPrefix: parser/reservedPrefix 1`] = `
 Object {
   "body": Object {
-    "type": "Integer",
+    "expr": Object {
+      "n": "1",
+      "type": "IntegerLit",
+    },
+    "node": "annotate",
+    "type": Object {
+      "type": "Var",
+      "var": Object {
+        "label": "TypeSynonym",
+        "n": 0,
+      },
+    },
   },
   "label": "TypeSynonym",
   "type": "Let",
+  "val": Object {
+    "type": "Integer",
+  },
   "varType": null,
 }
 `;
 
 exports[`parser/singleQuotedString: parser/singleQuotedString 1`] = `
-Array [
-  "''",
-  Array [
+Object {
+  "chunks": Array [
     "
 ",
     Array [
@@ -4591,13 +5490,14 @@ Array [
       ],
     ],
   ],
-]
+  "type": "TextLit",
+}
 `;
 
 exports[`parser/unicodeComment: parser/unicodeComment 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
@@ -4650,8 +5550,8 @@ Object {
 
 exports[`parser/whitespace: parser/whitespace 1`] = `
 Object {
-  "integer": "1",
-  "node": "IntegerLit",
+  "n": "1",
+  "type": "IntegerLit",
 }
 `;
 
