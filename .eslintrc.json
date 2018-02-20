@@ -1,0 +1,50 @@
+{
+    "root": true,
+    "parserOptions": {
+        "sourceType": "module"
+    },
+
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-unused-vars": "warn",
+        "mocha/no-exclusive-tests": "error",
+        "no-console": "off",
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "never"
+            }
+        ],
+        "indent": [
+            "warn",
+            4
+        ],
+        "no-tabs": 1,
+        "quotes": [
+            2,
+            "single"
+        ],
+        "space-in-parens": 0,
+        "semi": [
+            "error",
+            "always"
+        ],
+        "space-unary-ops": [
+            2,
+            {
+                "words": true,
+                "nonwords": false,
+                "overrides": {}
+            }
+        ],
+        "strict": 0
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    }
+}
