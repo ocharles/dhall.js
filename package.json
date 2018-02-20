@@ -21,7 +21,8 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "gen:parser": "npx pegjs -o src/parser.js src/dhall.pegjs"
   },
   "repository": "git+https://github.com/ocharles/dhall.js.git",
   "keywords": [],
