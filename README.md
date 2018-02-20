@@ -6,6 +6,14 @@ expressions in JavaScript.
 Currently, we are just working on a parser using [PEG.js](https://pegjs.org/).
 
 
+# Generating parser.js
+
+`npx pegjs -o src/parser.js src/dhall.pegjs`
+
+Install <b>npx</b> if you need it:
+
+`npm install -g npx`
+
 # Does it have to be written in JavaScript?
 
 No, of course not! The goal is simply to produce a JavaScript library. I mostly
