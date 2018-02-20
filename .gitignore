@@ -5,6 +5,7 @@
 coverage
 build
 
+lib/parser.js
 
 # Logs
 logs
