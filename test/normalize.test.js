@@ -1,51 +1,40 @@
-var fs = require('fs'),
-    path = require('path'),
-    filePath = path.join(__dirname, 'start.html');
+const fs = require('fs');
+const path = require('path');
 
 const parser = require('../lib/parser');
 const normalize = require('../src/normalize.js');
 
 function expectNormalize(exprA, exprB) {
-    expect(normalize(parser.parse(exprA)))
-        .toEqual(parser.parse(exprB));
-
+  expect(normalize(parser.parse(exprA)))
+    .toEqual(parser.parse(exprB));
 }
 
 function testNormalize(fileName) {
-    test(fileName, done => {
-        fs.readFile(
-            path.join(__dirname, '../dhall-haskell/tests/normalization/' + fileName + 'A.dhall'),
-            (err, dataA) => {
-                if (err) throw err;
-                fs.readFile(
-                    path.join(__dirname, '../dhall-haskell/tests/normalization/' + fileName + 'B.dhall'),
-                    (err, dataB) => {
-                        if (err) throw err;
+  test(fileName, done => {
+    const filePathA = path.join(__dirname, `../dhall-haskell/tests/${fileName}A.dhall`);
+    const filePathB = path.join(__dirname, `../dhall-haskell/tests/${fileName}B.dhall`);
 
-                        expectNormalize(dataA.toString(), dataB.toString());
-
-                        done();
-                    });
-            });
+    fs.readFile(filePathA, (errA, dataA) => {
+      if (errA) throw errA;
+      fs.readFile(filePathB, (errB, dataB) => {
+        if (errB) throw errB;
+        expectNormalize(dataA.toString(), dataB.toString());
+        done();
+      });
     });
+  });
 }
 
 test('Simple let', () => {
-    expectNormalize(
-        'let x : Bool = True in \\ ( y : Bool) -> x', '\\ ( y : Bool ) -> True'
-    );
+  expectNormalize('let x : Bool = True in \\ ( y : Bool) -> x', '\\ ( y : Bool ) -> True');
 });
 
 test('Beta reduce (bound)', () => {
-    expectNormalize(
-        '(\\(y : Bool) -> y) True', 'True'
-    );
+  expectNormalize('(\\(y : Bool) -> y) True', 'True');
 });
 
 test('Beta reduce (free)', () => {
-    expectNormalize(
-        '(\\(y : Bool) -> x) True', 'x'
-    );
+  expectNormalize('(\\(y : Bool) -> x) True', 'x');
 });
 
 testNormalize('doubleShow');

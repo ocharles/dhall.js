@@ -1,23 +1,17 @@
 const fs = require('fs');
-
 const path = require('path');
-
-const filePath = path.join(__dirname, 'start.html');
-
-
 const parser = require('../lib/parser');
 
 function testParser(fileName) {
-    test(fileName, done => {
-        fs.readFile(
-            path.join(__dirname, `../dhall-haskell/tests/${fileName}.dhall`),
-            (err, data) => {
-                if (err) throw err;
-                expect(parser.parse(data.toString())).toMatchSnapshot(fileName);
-                done();
-            }
-        );
+  test(fileName, done => {
+    const dhallFile = path.join(__dirname, `../dhall-haskell/tests/${fileName}.dhall`);
+
+    fs.readFile(dhallFile, (err, data) => {
+      if (err) throw err;
+      expect(parser.parse(data.toString())).toMatchSnapshot(fileName);
+      done();
     });
+  });
 }
 
 testParser('normalization/doubleShowA');
