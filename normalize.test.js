@@ -5,6 +5,12 @@ var fs = require('fs'),
 var parser = require('./parser.js'),
     normalize = require('./normalize.js');
 
+function expectNormalize(exprA, exprB) {
+    expect(normalize(parser.parse(exprA)))
+        .toEqual(parser.parse(exprB));
+    
+}
+
 function testNormalize(fileName) {
     test(fileName, done => {
         fs.readFile(
@@ -16,13 +22,31 @@ function testNormalize(fileName) {
                     (err, dataB) => {
                         if (err) throw err;
 
-                        expect(normalize(parser.parse(dataA.toString())))
-                            .toEqual(parser.parse(dataB.toString()));
+                        expectNormalize(dataA.toString(), dataB.toString());
+
                         done();
                     });
             });
     });
 }
+
+test('Simple let', () => {
+    expectNormalize(
+        'let x : Bool = True in \\ ( y : Bool) -> x', '\\ ( y : Bool ) -> True' 
+    );
+});
+
+test('Beta reduce (bound)', () => {
+    expectNormalize(
+        '(\\(y : Bool) -> y) True', 'True' 
+    );
+});
+
+test('Beta reduce (free)', () => {
+    expectNormalize(
+        '(\\(y : Bool) -> x) True', 'x' 
+    );
+});
 
 testNormalize('doubleShow');
 testNormalize('naturalShow');

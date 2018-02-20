@@ -108,7 +108,7 @@ singleQuoteContinue =
     / tab                 singleQuoteContinue
     / endOfLine           singleQuoteContinue
 
-singleQuoteLiteral = "''" singleQuoteContinue
+singleQuoteLiteral = "''" a:singleQuoteContinue { return { type: 'TextLit', chunks: a }; };
 
 textLiteral
   = a:(doubleQuoteLiteral / singleQuoteLiteral) whitespace { return a; }
@@ -200,8 +200,8 @@ naturalRaw
 integerLiteral
   = a:"-"? b:naturalRaw whitespace {
       return {
-          node: 'IntegerLit',
-          integer: (a ? a : '') + b
+          type: 'IntegerLit',
+          n: (a ? a : '') + b
       }
   }
 
@@ -381,7 +381,8 @@ expression
           type: "Let",
           label: a,
           varType: b,
-          body: c
+          val: c,
+          body: d
       }
     }
   / forall openParens a:label colon b:expression closeParens arrow c:expression
@@ -525,13 +526,14 @@ applicationExpression
     }
 
 selectorExpression
-  = e:primitiveExpression path:(dot label)* {
-      if (path.length) {
-          // TODO
-      }
-      else {
-          return e;
-      }
+  = e:primitiveExpression path:(dot l:label { return l; })* {
+      return [e].concat(path).reduce(function(a, b) {
+      	return {
+          type: 'Field',
+          expr: a,
+          field: b
+        }
+      });
     }
 
 primitiveExpression
