@@ -19,23 +19,23 @@ function shift(d, x, m, e) {
   }
 
   if (e.type === 'Lambda' && e.var === x) {
-    var A1 = shift(d, x, m, e.varType);
-    var b1 = shift(d, x, m + 1, e.body);
+    const A1 = shift(d, x, m, e.varType);
+    const b1 = shift(d, x, m + 1, e.body);
     e.varType = A1;
     e.body = b1;
     return e;
   }
 
   if (e.type === 'Lambda' && e.var != x) {
-    var A1 = shift(d, x, m, e.varType);
-    var b1 = shift(d, x, m, e.body);
+    const A1 = shift(d, x, m, e.varType);
+    const b1 = shift(d, x, m, e.body);
     e.varType = A1;
     e.body = b1;
     return e;
   }
 
   if (e.type === 'Forall' && e.name != x) {
-    var A1 = shift(d, x, m, e.a);
+    const A1 = shift(d, x, m, e.a);
     const B1 = shift(d, x, m, e.b);
     e.a = A1;
     e.b = B1;
@@ -43,9 +43,9 @@ function shift(d, x, m, e) {
   }
 
   if (e.type === 'Let' && e.var === x && e.varType) {
-    var A1 = shift(d, x, m, e.varType);
-    var a1 = shift(d, x, m, e.val);
-    var b1 = shift(d, x, m + 1, e.body);
+    const A1 = shift(d, x, m, e.varType);
+    const a1 = shift(d, x, m, e.val);
+    const b1 = shift(d, x, m + 1, e.body);
     e.varType = A1;
     e.val = a1;
     e.body = b1;
@@ -53,17 +53,17 @@ function shift(d, x, m, e) {
   }
 
   if (e.type === 'Let' && e.var === x) {
-    var a1 = shift(d, x, m, e.val);
-    var b1 = shift(d, x, m + 1, e.body);
+    const a1 = shift(d, x, m, e.val);
+    const b1 = shift(d, x, m + 1, e.body);
     e.val = a1;
     e.body = b1;
     return e;
   }
 
   if (e.type === 'Let' && e.varType) {
-    var A1 = shift(d, x, m, e.varType);
-    var a1 = shift(d, x, m, e.val);
-    var b1 = shift(d, x, m, e.body);
+    const A1 = shift(d, x, m, e.varType);
+    const a1 = shift(d, x, m, e.val);
+    const b1 = shift(d, x, m, e.body);
     e.varType = A1;
     e.val = a1;
     e.body = b1;
@@ -71,8 +71,8 @@ function shift(d, x, m, e) {
   }
 
   if (e.type === 'Let') {
-    var a1 = shift(d, x, m, e.val);
-    var b1 = shift(d, x, m, e.body);
+    const a1 = shift(d, x, m, e.val);
+    const b1 = shift(d, x, m, e.body);
     e.val = a1;
     e.body = b1;
     return e;
@@ -175,8 +175,8 @@ function subst(v, e, a) {
   }
 
   if (e.type === 'Forall' && e.name != v.label) {
-    var A1 = subst(v, e.a, a);
-    var e1 = shift(1, v.label, 0, a);
+    const A1 = subst(v, e.a, a);
+    const e1 = shift(1, v.label, 0, a);
     const B1 = subst({ label: v.label, n: v.n + 1 }, e.b, e1);
     e.a = A1;
     e.b = B1;
@@ -184,28 +184,28 @@ function subst(v, e, a) {
   }
 
   if (e.type === 'Lambda' && e.label === v.label) {
-    var A1 = subst(v, e.varType, a);
-    var e1 = shift(1, v.label, 0, a);
-    var b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
+    const A1 = subst(v, e.varType, a);
+    const e1 = shift(1, v.label, 0, a);
+    const b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
     e.varType = A1;
     e.body = b1;
     return e;
   }
 
   if (e.type === 'Lambda' && e.label != v.label) {
-    var A1 = subst(v, e.varType, a);
-    var e1 = shift(1, e.var, 0, a);
-    var b1 = subst(v, e.body, e1);
+    const A1 = subst(v, e.varType, a);
+    const e1 = shift(1, e.var, 0, a);
+    const b1 = subst(v, e.body, e1);
     e.varType = A1;
     e.body = b1;
     return e;
   }
 
   if (e.type === 'Let' && e.label === v.label && e.varType) {
-    var A1 = subst(v, e.varType, a);
-    var a1 = subst(v, e.val, a);
-    var e1 = shift(1, v.label, 0, a);
-    var b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
+    const A1 = subst(v, e.varType, a);
+    const a1 = subst(v, e.val, a);
+    const e1 = shift(1, v.label, 0, a);
+    const b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
     return {
       type: 'Let',
       label: e.label,
@@ -216,10 +216,10 @@ function subst(v, e, a) {
   }
 
   if (e.type === 'Let' && e.label != v.label && e.varType) {
-    var A1 = subst(v, e.varType, a);
-    var a1 = subst(v, e.val, a);
-    var e1 = shift(1, e.label, 0, a);
-    var b1 = subst(v, e.body, e1);
+    const A1 = subst(v, e.varType, a);
+    const a1 = subst(v, e.val, a);
+    const e1 = shift(1, e.label, 0, a);
+    const b1 = subst(v, e.body, e1);
     return {
       type: 'Let',
       label: e.label,
@@ -230,9 +230,9 @@ function subst(v, e, a) {
   }
 
   if (e.type === 'Let' && e.label === v.label) {
-    var a1 = subst(v, e.val, a);
-    var e1 = shift(1, v.label, 0, a);
-    var b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
+    const a1 = subst(v, e.val, a);
+    const e1 = shift(1, v.label, 0, a);
+    const b1 = subst({ label: v.label, n: v.n + 1 }, e.body, e1);
     return {
       type: 'Let',
       label: e.label,
@@ -243,9 +243,9 @@ function subst(v, e, a) {
   }
 
   if (e.type === 'Let' && e.label != v.label) {
-    var a1 = subst(v, e.val, a);
-    var e1 = shift(1, e.label, 0, a);
-    var b1 = subst(v, e.body, e1);
+    const a1 = subst(v, e.val, a);
+    const e1 = shift(1, e.label, 0, a);
+    const b1 = subst(v, e.body, e1);
     return {
       type: 'Let',
       label: e.label,
@@ -654,9 +654,9 @@ function normalize(expr) {
   ) {
     expr.a = normalize(expr.a);
 
-    var a1 = shift(1, expr.a.var, 0, expr.b);
-    var b1 = subst({ label: expr.a.var, n: 0 }, expr.a.body, a1);
-    var b2 = shift(-1, expr.a.var, 0, b1);
+    const a1 = shift(1, expr.a.var, 0, expr.b);
+    const b1 = subst({ label: expr.a.var, n: 0 }, expr.a.body, a1);
+    const b2 = shift(-1, expr.a.var, 0, b1);
     const b3 = normalize(b2);
 
     return b3;
@@ -669,9 +669,9 @@ function normalize(expr) {
   }
 
   if (expr.type === 'Let') {
-    var a1 = shift(1, expr.label, 0, expr.val);
-    var b1 = subst({ n: 0, label: expr.label }, expr.body, a1);
-    var b2 = shift(-1, expr.label, 0, b1);
+    const a1 = shift(1, expr.label, 0, expr.val);
+    const b1 = subst({ n: 0, label: expr.label }, expr.body, a1);
+    const b2 = shift(-1, expr.label, 0, b1);
     return normalize(b2);
   }
 
