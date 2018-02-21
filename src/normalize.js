@@ -14,7 +14,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  if (e.type === 'Var' && e.var.label != x) {
+  if (e.type === 'Var' && e.var.label !== x) {
     return e;
   }
 
@@ -26,7 +26,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  if (e.type === 'Lambda' && e.var != x) {
+  if (e.type === 'Lambda' && e.var !== x) {
     const A1 = shift(d, x, m, e.varType);
     const b1 = shift(d, x, m, e.body);
     e.varType = A1;
@@ -34,7 +34,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  if (e.type === 'Forall' && e.name != x) {
+  if (e.type === 'Forall' && e.name !== x) {
     const A1 = shift(d, x, m, e.a);
     const B1 = shift(d, x, m, e.b);
     e.a = A1;
@@ -125,7 +125,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  if (e.type === 'OptionalLit' && e.value != null) {
+  if (e.type === 'OptionalLit' && e.value !== null) {
     e.value = shift(d, x, m, e.value);
     return e;
   }
@@ -174,7 +174,7 @@ function subst(v, e, a) {
     return e;
   }
 
-  if (e.type === 'Forall' && e.name != v.label) {
+  if (e.type === 'Forall' && e.name !== v.label) {
     const A1 = subst(v, e.a, a);
     const e1 = shift(1, v.label, 0, a);
     const B1 = subst({ label: v.label, n: v.n + 1 }, e.b, e1);
@@ -192,7 +192,7 @@ function subst(v, e, a) {
     return e;
   }
 
-  if (e.type === 'Lambda' && e.label != v.label) {
+  if (e.type === 'Lambda' && e.label !== v.label) {
     const A1 = subst(v, e.varType, a);
     const e1 = shift(1, e.var, 0, a);
     const b1 = subst(v, e.body, e1);
@@ -215,7 +215,7 @@ function subst(v, e, a) {
     };
   }
 
-  if (e.type === 'Let' && e.label != v.label && e.varType) {
+  if (e.type === 'Let' && e.label !== v.label && e.varType) {
     const A1 = subst(v, e.varType, a);
     const a1 = subst(v, e.val, a);
     const e1 = shift(1, e.label, 0, a);
@@ -242,7 +242,7 @@ function subst(v, e, a) {
     };
   }
 
-  if (e.type === 'Let' && e.label != v.label) {
+  if (e.type === 'Let' && e.label !== v.label) {
     const a1 = subst(v, e.val, a);
     const e1 = shift(1, e.label, 0, a);
     const b1 = subst(v, e.body, e1);
@@ -322,7 +322,7 @@ function subst(v, e, a) {
     return e;
   }
 
-  if (e.type === 'OptionalLit' && e.value != null) {
+  if (e.type === 'OptionalLit' && e.value !== null) {
     e.value = subst(v, e.value, a);
     return e;
   }
@@ -528,7 +528,7 @@ function normalize(expr) {
         && normalize(expr.a).a.a.type === 'App'
         && normalize(expr.a).a.a.a.type === 'App'
         && normalize(expr.a).a.a.a.a.type === 'Optional/fold'
-        && normalize(expr.a).a.a.value != null
+        && normalize(expr.a).a.a.value !== null
   ) {
     expr = normalize({
       type: 'App',
