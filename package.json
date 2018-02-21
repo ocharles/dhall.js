@@ -30,7 +30,7 @@
     "test": "jest",
     "lint": "eslint src",
     "lint:fix": "eslint --fix ./src",
-    "gen:parser": "npx pegjs -o lib/parser.js lib/dhall.pegjs"
+    "gen:parser": "pegjs -o lib/parser.js lib/dhall.pegjs"
   },
   "repository": "git+https://github.com/ocharles/dhall.js.git",
   "keywords": [],
