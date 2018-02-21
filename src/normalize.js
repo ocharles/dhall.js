@@ -535,7 +535,6 @@ function normalize(expr) {
       a: normalize(expr.a).b,
       b: normalize(expr.a).a.a.b.value,
     });
-    console.log(expr);
     return expr;
   }
 
