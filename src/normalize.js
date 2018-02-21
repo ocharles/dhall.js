@@ -1,6 +1,10 @@
-const BigNumber = require('bignumber');
+const BigNumber = require('bignumber.js');
 
 function shift(d, x, m, e) {
+  if (x == null) debugger;
+
+  if (e.type == 'Var' && !Number.isInteger(e.var.n)) debugger;
+
   if (e.type == 'Var' && e.var.label == x && m <= e.var.n) {
     e.var.n += d;
     return e;
@@ -14,7 +18,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  if (e.type === 'Lambda' && e.var == x) {
+  if (e.type == 'Lambda' && e.var == x) {
     var A1 = shift(d, x, m, e.varType);
     var b1 = shift(d, x, m + 1, e.body);
     e.varType = A1;
@@ -27,6 +31,14 @@ function shift(d, x, m, e) {
     var b1 = shift(d, x, m, e.body);
     e.varType = A1;
     e.body = b1;
+    return e;
+  }
+
+  if (e.type == 'Forall' && e.name != x) {
+    var A1 = shift(d, x, m, e.a);
+    const B1 = shift(d, x, m, e.b);
+    e.a = A1;
+    e.b = B1;
     return e;
   }
 
@@ -67,7 +79,7 @@ function shift(d, x, m, e) {
   }
 
   if (e.type == 'Record') {
-    Object.keys(e.fields).forEach((k) => {
+    Object.keys(e.fields).forEach(k => {
       e.fields[k] = shift(d, x, m, e.fields[k]);
     });
     return e;
@@ -97,7 +109,28 @@ function shift(d, x, m, e) {
     return e;
   }
 
+  if (e.type == 'Integer') {
+    return e;
+  }
+
+  if (e.type == 'IntegerLit') {
+    return e;
+  }
+
+  if (e.type == 'NaturalLit') {
+    return e;
+  }
+
   if (e.type == 'Optional') {
+    return e;
+  }
+
+  if (e.type == 'OptionalLit' && e.value != null) {
+    e.value = shift(d, x, m, e.value);
+    return e;
+  }
+
+  if (e.type == 'OptionalLit') {
     return e;
   }
 
@@ -129,7 +162,7 @@ function shift(d, x, m, e) {
     return e;
   }
 
-  throw `shift${JSON.stringify(e)}`;
+  throw `shift${JSON.stringify([d, x, m, e])}`;
 }
 
 function subst(v, e, a) {
@@ -138,6 +171,15 @@ function subst(v, e, a) {
   }
 
   if (e.type == 'Var') {
+    return e;
+  }
+
+  if (e.type == 'Forall' && e.name != v.label) {
+    var A1 = subst(v, e.a, a);
+    var e1 = shift(1, v.label, 0, a);
+    const B1 = subst({ label: v.label, n: v.n + 1 }, e.b, e1);
+    e.a = A1;
+    e.b = B1;
     return e;
   }
 
@@ -224,7 +266,7 @@ function subst(v, e, a) {
   }
 
   if (e.type == 'Record') {
-    Object.keys(e.fields).forEach((k) => {
+    Object.keys(e.fields).forEach(k => {
       e.fields[k] = subst(v, e.fields[k], a);
     });
     return e;
@@ -260,11 +302,28 @@ function subst(v, e, a) {
     return e;
   }
 
+  if (e.type == 'Integer') {
+    return e;
+  }
+
+  if (e.type == 'IntegerLit') {
+    return e;
+  }
+
+  if (e.type == 'NaturalLit') {
+    return e;
+  }
+
   if (e.type == 'Natural/toInteger') {
     return e;
   }
 
   if (e.type == 'Optional') {
+    return e;
+  }
+
+  if (e.type == 'OptionalLit' && e.value != null) {
+    e.value = subst(v, e.value, a);
     return e;
   }
 
@@ -387,8 +446,8 @@ function normalize(expr) {
 
   if (
     expr.type == 'App'
-        && normalize(expr.a).type == 'Natural/toInteger'
-        && normalize(expr.b).type == 'NaturalLit'
+            && normalize(expr.a).type == 'Natural/toInteger'
+            && normalize(expr.b).type == 'NaturalLit'
   ) {
     return {
       type: 'IntegerLit',
@@ -398,8 +457,8 @@ function normalize(expr) {
 
   if (
     expr.type == 'App'
-        && normalize(expr.a).type == 'Natural/show'
-        && normalize(expr.b).type == 'NaturalLit'
+            && normalize(expr.a).type == 'Natural/show'
+            && normalize(expr.b).type == 'NaturalLit'
   ) {
     return {
       type: 'TextLit',
@@ -423,15 +482,90 @@ function normalize(expr) {
         && normalize(expr.a).type == 'App'
         && normalize(expr.a).a.type == 'Optional/build'
   ) {
-    throw 'Optional/build App';
+    const A = normalize(expr.a).b;
+    return normalize({
+      type: 'App',
+      a: {
+        type: 'App',
+        a: {
+          type: 'App',
+          a: expr.b,
+          b: {
+            type: 'App',
+            a: {
+              type: 'Optional',
+            },
+            b: A,
+          },
+        },
+        b: {
+          type: 'Lambda',
+          var: 'a',
+          varType: A,
+          body: {
+            type: 'OptionalLit',
+            value: {
+              type: 'Var',
+              var: {
+                label: 'a',
+                n: 0,
+              },
+            },
+          },
+        },
+      },
+      b: {
+        type: 'OptionalLit',
+        value: null,
+      },
+    });
+  }
+
+  // TODO More checks the premises hold
+  if (expr.type == 'App'
+        && normalize(expr.a).type == 'App'
+        && normalize(expr.a).a.type == 'App'
+        && normalize(expr.a).a.a.type == 'App'
+        && normalize(expr.a).a.a.a.type == 'App'
+        && normalize(expr.a).a.a.a.a.type == 'Optional/fold'
+        && normalize(expr.a).a.a.value != null
+  ) {
+    expr = normalize({
+      type: 'App',
+      a: normalize(expr.a).b,
+      b: normalize(expr.a).a.a.b.value,
+    });
+    console.log(expr);
+    return expr;
+  }
+
+  // TODO More checks the premises hold
+  if (expr.type == 'App'
+        && normalize(expr.a).type == 'App'
+        && normalize(expr.a).a.type == 'App'
+        && normalize(expr.a).a.a.type == 'App'
+        && normalize(expr.a).a.a.a.type == 'App'
+        && normalize(expr.a).a.a.a.a.type == 'Optional/fold'
+        && normalize(expr.a).a.a.value == null
+  ) {
+    return normalize(expr.b);
+  }
+
+  if (expr.type == 'OptionalLit') {
+    expr.value = expr.value == null ? null : normalize(expr.value);
+    return expr;
   }
 
   if (expr.type == 'Optional/build') {
     return expr;
   }
 
+  if (expr.type == 'Optional/fold') {
+    return expr;
+  }
+
   if (expr.type == 'RecordLit') {
-    Object.keys(expr.fields).forEach((k) => {
+    Object.keys(expr.fields).forEach(k => {
       expr.fields[k] = normalize(expr.fields[k]);
     });
 
@@ -439,7 +573,7 @@ function normalize(expr) {
   }
 
   if (expr.type == 'Record') {
-    Object.keys(expr.fields).forEach((k) => {
+    Object.keys(expr.fields).forEach(k => {
       expr.fields[k] = normalize(expr.fields[k]);
     });
 
@@ -489,8 +623,8 @@ function normalize(expr) {
 
   if (
     expr.type == 'App'
-        && normalize(expr.a).type == 'Double/show'
-        && normalize(expr.b).type == 'DoubleLit'
+            && normalize(expr.a).type == 'Double/show'
+            && normalize(expr.b).type == 'DoubleLit'
   ) {
     return {
       type: 'TextLit',
@@ -508,9 +642,15 @@ function normalize(expr) {
     return expr;
   }
 
+  if (expr.type == 'Forall') {
+    expr.a = normalize(expr.a);
+    expr.b = normalize(expr.b);
+    return expr;
+  }
+
   if (
     expr.type == 'App'
-        && normalize(expr.a).type == 'Lambda'
+            && normalize(expr.a).type == 'Lambda'
   ) {
     expr.a = normalize(expr.a);
 
@@ -529,9 +669,9 @@ function normalize(expr) {
   }
 
   if (expr.type == 'Let') {
-    var a1 = shift(1, { n: 0, label: expr.label }, 0, expr.val);
+    var a1 = shift(1, expr.label, 0, expr.val);
     var b1 = subst({ n: 0, label: expr.label }, expr.body, a1);
-    var b2 = shift(-1, { n: 0, label: expr.label }, 0, b1);
+    var b2 = shift(-1, expr.label, 0, b1);
     return normalize(b2);
   }
 
