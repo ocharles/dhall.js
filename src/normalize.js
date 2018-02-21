@@ -435,8 +435,8 @@ function normalize(expr) {
   }
 
   if (expr.type === 'NaturalPlus') {
-    a = normalize(expr.a);
-    b = normalize(expr.b);
+    let a = normalize(expr.a);
+    let b = normalize(expr.b);
 
     return {
       type: 'NaturalLit',
