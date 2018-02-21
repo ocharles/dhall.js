@@ -925,8 +925,11 @@ Object {
                       "body": Object {
                         "body": Object {
                           "chunks": Array [
-                            "
+                            Array [
+                              null,
+                              "
 ",
+                            ],
                             Array [
                               " ",
                               Array [
@@ -1042,8 +1045,11 @@ Object {
                                                                                       },
                                                                                       "}",
                                                                                       Array [
-                                                                                        "
+                                                                                        Array [
+                                                                                          null,
+                                                                                          "
 ",
+                                                                                        ],
                                                                                         Array [
                                                                                           " ",
                                                                                           Array [
@@ -2901,18 +2907,27 @@ Object {
 exports[`parser/escapedSingleQuotedString: parser/escapedSingleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "''\${",
       Array [
-        "
+        Array [
+          null,
+          "
 ",
+        ],
         Array [
           "'''",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             "''",
           ],
         ],
@@ -3070,8 +3085,11 @@ Object {
 exports[`parser/interpolatedSingleQuotedString: parser/interpolatedSingleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "A",
       Array [
@@ -3079,8 +3097,11 @@ Object {
         Array [
           "C",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             Array [
               "\${",
               Object {
@@ -3095,8 +3116,11 @@ Object {
               },
               "}",
               Array [
-                "
+                Array [
+                  null,
+                  "
 ",
+                ],
                 "''",
               ],
             ],
@@ -5460,8 +5484,11 @@ Object {
 exports[`parser/singleQuotedString: parser/singleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "A",
       Array [
@@ -5469,8 +5496,11 @@ Object {
         Array [
           "C",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             Array [
               "D",
               Array [
@@ -5478,8 +5508,11 @@ Object {
                 Array [
                   "F",
                   Array [
-                    "
+                    Array [
+                      null,
+                      "
 ",
+                    ],
                     "''",
                   ],
                 ],
