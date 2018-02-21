@@ -4,11 +4,22 @@
   "description": "`dhall.js` allows you to work with [Dhall](https://github.com/dhall-lang) expressions in JavaScript.",
   "main": "index.js",
   "dependencies": {
-    "bignumber.js": "^6.0.0"
+    "bignumber.js": "^6.0.0",
+    "eslint-plugin-react": "^7.7.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-jest": "^22.2.2",
+    "babel-env": "^2.4.1",
+    "babel-jest": "^22.4.0",
+    "babel-preset-airbnb": "^2.4.0",
+    "babel-preset-env": "^1.6.1",
+    "bignumber": "^1.1.0",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "jest": "^22.3.0",
     "jest-cli": "^22.3.0",
     "pegjs": "^0.10.0",
@@ -16,12 +27,12 @@
     "webpack": "^3.11.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix ./src",
+    "gen:parser": "npx pegjs -o lib/parser.js lib/dhall.pegjs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ocharles/dhall.js.git"
-  },
+  "repository": "git+https://github.com/ocharles/dhall.js.git",
   "keywords": [],
   "author": "",
   "license": "ISC",

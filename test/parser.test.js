@@ -1,19 +1,17 @@
-var fs = require('fs'),
-    path = require('path'),
-    filePath = path.join(__dirname, 'start.html');
-
-var parser = require('./parser.js');
+const fs = require('fs');
+const path = require('path');
+const parser = require('../lib/parser');
 
 function testParser(fileName) {
-    test(fileName, done => {
-        fs.readFile(
-            path.join(__dirname, 'dhall-haskell/tests/' + fileName + '.dhall'),
-            (err, data) => {
-                if (err) throw err;
-                expect(parser.parse(data.toString())).toMatchSnapshot(fileName);
-                done();
-            });
+  test(fileName, done => {
+    const dhallFile = path.join(__dirname, `../dhall-haskell/tests/${fileName}.dhall`);
+
+    fs.readFile(dhallFile, (err, data) => {
+      if (err) throw err;
+      expect(parser.parse(data.toString())).toMatchSnapshot(fileName);
+      done();
     });
+  });
 }
 
 testParser('normalization/doubleShowA');
@@ -32,7 +30,7 @@ testParser('normalization/optionalBuildFoldA');
 testParser('normalization/optionalBuildFoldB');
 testParser('normalization/optionalFoldA');
 testParser('normalization/optionalFoldB');
-testParser('normalization/remoteSystemsA'); 
+testParser('normalization/remoteSystemsA');
 testParser('normalization/remoteSystemsB');
 testParser('parser/annotations');
 testParser('parser/blockComment');
@@ -71,4 +69,4 @@ testParser('parser/unicodeDoubleQuotedString');
 testParser('parser/union');
 testParser('parser/urls');
 testParser('parser/whitespace');
-testParser('parser/whitespaceBuffet'); 
+testParser('parser/whitespaceBuffet');
