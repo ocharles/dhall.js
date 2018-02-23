@@ -1,4 +1,4 @@
-const BigNumber = require('bignumber.js');
+const BigNumber = require('bignumber');
 
 function shift(d, x, m, e) {
   if (x === null) debugger;
