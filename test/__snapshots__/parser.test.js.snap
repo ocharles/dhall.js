@@ -273,7 +273,7 @@ Object {
                 "type": "Var",
                 "var": Object {
                   "label": "x",
-                  "n": "1",
+                  "n": 1,
                 },
               },
               "b": Object {
@@ -436,14 +436,14 @@ exports[`normalization/optionalBuildB: normalization/optionalBuildB 1`] = `
 Object {
   "fields": Object {
     "example0": Object {
-      "type": "Optional",
+      "type": "OptionalLit",
       "value": Object {
         "n": "1",
         "type": "NaturalLit",
       },
     },
     "example1": Object {
-      "type": "Optional",
+      "type": "OptionalLit",
       "value": Object {
         "n": "1",
         "type": "IntegerLit",
@@ -666,7 +666,7 @@ Object {
           "type": "App",
         },
         "b": Object {
-          "type": "Optional",
+          "type": "OptionalLit",
           "value": Object {
             "chunks": Array [
               "f",
@@ -743,7 +743,7 @@ Object {
       },
     },
     "example1": Object {
-      "type": "Optional",
+      "type": "OptionalLit",
       "value": Object {
         "chunks": Array [
           "f",
@@ -771,7 +771,7 @@ Object {
           },
         },
         "b": Object {
-          "type": "Optional",
+          "type": "OptionalLit",
           "value": Object {
             "chunks": Array [
               "f",
@@ -792,7 +792,7 @@ Object {
           },
         },
         "b": Object {
-          "type": "Optional",
+          "type": "OptionalLit",
           "value": null,
         },
         "type": "App",
@@ -925,8 +925,11 @@ Object {
                       "body": Object {
                         "body": Object {
                           "chunks": Array [
-                            "
+                            Array [
+                              null,
+                              "
 ",
+                            ],
                             Array [
                               " ",
                               Array [
@@ -1042,8 +1045,11 @@ Object {
                                                                                       },
                                                                                       "}",
                                                                                       Array [
-                                                                                        "
+                                                                                        Array [
+                                                                                          null,
+                                                                                          "
 ",
+                                                                                        ],
                                                                                         Array [
                                                                                           " ",
                                                                                           Array [
@@ -2507,11 +2513,11 @@ Object {
   "expr": Object {
     "fields": Object {
       "bar": Object {
-        "type": "Optional",
+        "type": "OptionalLit",
         "value": null,
       },
       "baz": Object {
-        "type": "Optional",
+        "type": "OptionalLit",
         "value": Object {
           "n": "1",
           "type": "IntegerLit",
@@ -2901,18 +2907,27 @@ Object {
 exports[`parser/escapedSingleQuotedString: parser/escapedSingleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "''\${",
       Array [
-        "
+        Array [
+          null,
+          "
 ",
+        ],
         Array [
           "'''",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             "''",
           ],
         ],
@@ -3008,7 +3023,7 @@ Object {
       "type": "Var",
       "var": Object {
         "label": "a",
-        "n": "1",
+        "n": 1,
       },
     },
     "type": "Lambda",
@@ -3070,8 +3085,11 @@ Object {
 exports[`parser/interpolatedSingleQuotedString: parser/interpolatedSingleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "A",
       Array [
@@ -3079,8 +3097,11 @@ Object {
         Array [
           "C",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             Array [
               "\${",
               Object {
@@ -3095,8 +3116,11 @@ Object {
               },
               "}",
               Array [
-                "
+                Array [
+                  null,
+                  "
 ",
+                ],
                 "''",
               ],
             ],
@@ -5460,8 +5484,11 @@ Object {
 exports[`parser/singleQuotedString: parser/singleQuotedString 1`] = `
 Object {
   "chunks": Array [
-    "
+    Array [
+      null,
+      "
 ",
+    ],
     Array [
       "A",
       Array [
@@ -5469,8 +5496,11 @@ Object {
         Array [
           "C",
           Array [
-            "
+            Array [
+              null,
+              "
 ",
+            ],
             Array [
               "D",
               Array [
@@ -5478,8 +5508,11 @@ Object {
                 Array [
                   "F",
                   Array [
-                    "
+                    Array [
+                      null,
+                      "
 ",
+                    ],
                     "''",
                   ],
                 ],
