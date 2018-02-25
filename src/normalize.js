@@ -1,9 +1,15 @@
 const BigNumber = require('bignumber.js');
 
-function shift(d, x, m, e) {
-  if (x === null) debugger;
+const isNumeric = numberValue => !isNaN(numberValue);
 
-  if (e.type === 'Var' && !Number.isInteger(e.var.n)) debugger;
+function shift(d, x, m, e) {
+  if (x === null) {
+    throw new Error('x is null');
+  }
+
+  if (e.type === 'Var' && !isNumeric(e.var.n)) {
+    throw new Error('is Var and not Int');
+  }
 
   if (e.type === 'Var' && e.var.label === x && m <= e.var.n) {
     e.var.n += d;
@@ -489,64 +495,64 @@ function normalize(expr) {
   // ──────────────────
   // l == r₀ ⇥ r₁
   if (expr.type === 'BoolEQ' && normalize(expr.a) === 'True') {
-      return normalize(expr.b);
+    return normalize(expr.b);
   }
 
   // r ⇥ True   l₀ ⇥ l₁
   // ──────────────────
   // l₀ == r ⇥ l₁
   if (expr.type === 'BoolEQ' && normalize(expr.b) === 'True') {
-      return normalize(expr.a);
+    return normalize(expr.a);
   }
 
   // l ⇥ False   r ⇥ False
   // ─────────────────────
   // l == r ⇥ True
   if (expr.type === 'BoolEQ' && normalize(expr.a) === 'False' && normalize(expr.a) === 'False') {
-      return {
-          type: 'True'
-      };
+    return {
+      type: 'True',
+    };
   }
 
   // l₀ ⇥ l₁   r₀ ⇥ r₁
   // ───────────────────
   // l₀ == r₀ ⇥ l₁ == r₁
   if (expr.type === 'BoolEQ') {
-      expr.a = normalize(expr.a);
-      expr.b = normalize(expr.b);
-      return expr;
+    expr.a = normalize(expr.a);
+    expr.b = normalize(expr.b);
+    return expr;
   }
 
   // l ⇥ False   r₀ ⇥ r₁
   // ──────────────────
   // l != r₀ ⇥ r₁
   if (expr.type === 'BoolNE' && normalize(expr.a) === 'False') {
-      return normalize(expr.b);
+    return normalize(expr.b);
   }
 
   // r ⇥ False   l₀ ⇥ l₁
   // ──────────────────
   // l₀ != r ⇥ l₁
   if (expr.type === 'BoolNE' && normalize(expr.b) === 'False') {
-      return normalize(expr.a);
+    return normalize(expr.a);
   }
 
   // l ⇥ True   r ⇥ True
   // ─────────────────────
   // l != r ⇥ True
   if (expr.type === 'BoolNE' && normalize(expr.a) === 'True' && normalize(expr.a) === 'True') {
-      return {
-          type: 'False'
-      };
+    return {
+      type: 'False',
+    };
   }
 
   // l₀ ⇥ l₁   r₀ ⇥ r₁
   // ───────────────────
   // l₀ != r₀ ⇥ l₁ != r₁
   if (expr.type === 'BoolNE') {
-      expr.a = normalize(expr.a);
-      expr.b = normalize(expr.b);
-      return expr;
+    expr.a = normalize(expr.a);
+    expr.b = normalize(expr.b);
+    return expr;
   }
 
   // ─────────────────
@@ -602,8 +608,8 @@ function normalize(expr) {
   // l + r ⇥ +m + +n
   // TODO Lacking premise checks
   if (expr.type === 'NaturalPlus') {
-    let a = normalize(expr.a);
-    let b = normalize(expr.b);
+    const a = normalize(expr.a);
+    const b = normalize(expr.b);
 
     return {
       type: 'NaturalLit',

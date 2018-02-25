@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const parser = require('../lib/parser');
-const normalize = require('../src/normalize.js');
+const normalize = require('../src/normalize');
+
 
 function expectNormalize(exprA, exprB) {
   expect(normalize(parser.parse(exprA)))
