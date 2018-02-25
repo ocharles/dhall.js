@@ -1,9 +1,15 @@
 const BigNumber = require('bignumber.js');
 
-function shift(d, x, m, e) {
-  if (x === null) debugger;
+const isNumeric = numberValue => !isNaN(numberValue);
 
-  if (e.type === 'Var' && !Number.isInteger(e.var.n)) debugger;
+function shift(d, x, m, e) {
+  if (x === null) {
+    throw new Error('x is null');
+  }
+
+  if (e.type === 'Var' && !isNumeric(e.var.n)) {
+    throw new Error('is Var and not Int');
+  }
 
   if (e.type === 'Var' && e.var.label === x && m <= e.var.n) {
     e.var.n += d;
