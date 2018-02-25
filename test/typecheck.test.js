@@ -5,7 +5,7 @@ const parser = require('../lib/parser');
 const normalize = require('../src/normalize.js');
 
 
-function testNormalize(fileName) {
+function testTypeChecks(fileName) {
   test.only(fileName, done => {
     const filePathA = path.join(__dirname, `../dhall-haskell/tests/typecheck/${fileName}A.dhall`);
     const filePathB = path.join(__dirname, `../dhall-haskell/tests/typecheck/${fileName}B.dhall`);
